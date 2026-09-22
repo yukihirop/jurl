@@ -50,6 +50,8 @@ fn run(parsed: cli::Parsed, typed: &str) -> Result<i32, JurlError> {
     }
     // `jurl demo [N]`: 例を選んで、残りのフラグ(-n, --explain, -y …)はそのまま効かせる。
     if words[0] == "demo" {
+        // demo は解釈を見せるのが目的なので、--explain を常に付ける。
+        let opts = cli::Opts { explain: true, ..opts };
         if let Some(n) = words.get(1) {
             let ex = demo::pick(n)?;
             let w: Vec<String> = ex.words.iter().map(|s| s.to_string()).collect();

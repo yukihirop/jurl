@@ -10,7 +10,8 @@ usage: jurl [words ...] [flags] [-- curl args]
 
 commands:
   setup           save your OpenRouter API key to ~/.config/jurl/config.toml (0600)
-  demo [N]        pick one of 12 examples against public APIs (arrow keys) and run it; flags below apply
+  demo [N]        pick one of 12 examples against public APIs (arrow keys) and run it
+                  with --explain always on; the other flags below apply
 
 flags:
   -n, --dry-run   print the curl command instead of running it
