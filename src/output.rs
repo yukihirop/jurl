@@ -99,6 +99,11 @@ pub struct JevInfo {
 }
 
 pub fn confirm(prompt: &str) -> bool {
+    // 端末でなければ聞けない。--yes が無い限り実行しない。
+    if !std::io::stdin().is_terminal() {
+        eprintln!("{prompt} — not a terminal, refusing to guess (use --yes)");
+        return false;
+    }
     eprint!("{prompt} [Y/n] ");
     let _ = std::io::stderr().flush();
     let mut s = String::new();

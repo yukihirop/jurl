@@ -72,6 +72,15 @@ pub fn build(tokens: &[Token]) -> Built {
         }
     }
 
+    // メソッドが無く、jev に聞く単語があるときだけ「これは読み取り(GET + クエリ)か」を同梱する。
+    // 決定(2026-09-22)の「ボディあり → POST」は、jev が GET 意図と言わなかったときの既定になる。
+    if method_known.is_none() && !questions.is_empty() {
+        questions.insert(
+            "get_intent".into(),
+            noul("Is this command a read-only lookup (an HTTP GET whose key/value words are query parameters), rather than sending or creating data (POST)?"),
+        );
+    }
+
     let state = json!({
         "tool": TOOL_DESC,
         "tokens": words,

@@ -47,6 +47,7 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
     // 1–2. 規則で分類。全部決まれば高速パス。
     let mut tokens = rules::classify(&words);
     let mut jev_info: Option<output::JevInfo> = None;
+    let mut get_intent: Option<f32> = None;
 
     // 3. 決まらなかったものがあれば jev に全トークンを渡す。
     if tokens.iter().any(|t| !t.resolved()) {
@@ -68,12 +69,21 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
         let res = oracle.decide(built.state, built.questions)?;
         jev_info = Some(output::JevInfo { model: res.model.clone(), questions: n, ms: t0.elapsed().as_millis(), usage: res.usage.clone() });
         jev::prompt::apply(&mut tokens, &res.answers);
-        let is_get = tokens.iter().any(|t| t.role == Some(Role::Method) && t.value() == "GET");
+        let mut is_get = tokens.iter().any(|t| t.role == Some(Role::Method) && t.value() == "GET");
+        if let Some(p) = res.answers.get("get_intent").and_then(|a| a.noul()) {
+            if p > 0.5 && !tokens.iter().any(|t| t.role == Some(Role::Method)) {
+                is_get = true;
+                get_intent = Some(p);
+            }
+        }
         repair::pair_key_values(&mut tokens, is_get);
     }
 
     if opts.explain {
         output::explain(&tokens, jev_info.as_ref());
+        if let Some(p) = get_intent {
+            eprintln!("jev: read-only lookup p={p:.2} → GET, key/value words as query");
+        }
     }
 
     // 4–5. 組み立て。
