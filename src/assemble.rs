@@ -121,11 +121,10 @@ pub fn assemble(tokens: &[Token], default_content_type: &str) -> Result<Request,
         return Err(JurlError::Conflict(conflicts.join("; ")));
     }
     let mut url = url.ok_or_else(|| JurlError::Unresolved("no url".into()))?;
-    if let Some(p) = ports.first() {
-        if url.port.is_none() {
+    if let Some(p) = ports.first()
+        && url.port.is_none() {
             url.port = Some(*p);
         }
-    }
     for p in &paths {
         url.push_path(p);
     }

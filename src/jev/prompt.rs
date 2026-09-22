@@ -156,8 +156,8 @@ pub fn apply(tokens: &mut [Token], answers: &Answers) {
                 }
             }
             Role::Url => {
-                if !crate::rules::looks_like_url(&t.text) {
-                    if let Some(a2) = answers.get(&format!("host.{i}")) {
+                if !crate::rules::looks_like_url(&t.text)
+                    && let Some(a2) = answers.get(&format!("host.{i}")) {
                         match a2.choice() {
                             Some("none") | None => {}
                             Some(h) => {
@@ -166,7 +166,6 @@ pub fn apply(tokens: &mut [Token], answers: &Answers) {
                             }
                         }
                     }
-                }
             }
             Role::FieldValue => {
                 if let Some(p) = answers.get(&format!("typed.{i}")).and_then(|a| a.noul()) {

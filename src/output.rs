@@ -100,13 +100,12 @@ pub fn print_response(stdout: &[u8], raw: bool, headers: bool) -> std::io::Resul
         }
     }
     let s = Split { body, status: s.status };
-    if tty && !raw {
-        if let Ok(v) = serde_json::from_slice::<serde_json::Value>(s.body) {
+    if tty && !raw
+        && let Ok(v) = serde_json::from_slice::<serde_json::Value>(s.body) {
             let pretty = serde_json::to_string_pretty(&v).unwrap_or_default();
             writeln!(o, "{}", color::json(color::stdout_enabled(), &pretty))?;
             return Ok(());
         }
-    }
     o.write_all(s.body)?;
     if tty && !s.body.ends_with(b"\n") && !s.body.is_empty() {
         writeln!(o)?;
@@ -141,11 +140,10 @@ pub fn explain_text(tokens: &[Token], jev: Option<&JevInfo>, on: bool) -> String
             Source::Jev => paint(on, C::Blue, "jev "),
         };
         let mut note = t.note.clone().unwrap_or_default();
-        if let Some(f) = &t.fixed {
-            if f != &t.text {
+        if let Some(f) = &t.fixed
+            && f != &t.text {
                 note = format!("→ {f}{}{note}", if note.is_empty() { "" } else { "; " });
             }
-        }
         if t.typed {
             note.push_str(" (typed)");
         }
@@ -253,11 +251,10 @@ pub fn edit_command(rendered: &str, typed: &str, explain: &str) -> Result<Option
         return Err(JurlError::Usage("empty $EDITOR".into()));
     }
     // GUI エディタはファイルを開いてすぐ戻るので、閉じるまで待つフラグを足す(無ければ編集前に実行してしまう)。
-    if let Some(flag) = wait_flag(&words[0]) {
-        if !words.iter().any(|w| w == flag || w == "-w" || w == "--wait") {
+    if let Some(flag) = wait_flag(&words[0])
+        && !words.iter().any(|w| w == flag || w == "-w" || w == "--wait") {
             words.push(flag.to_string());
         }
-    }
     eprintln!("{}", paint(color::stderr_enabled(), C::Dim, &format!("editing with: {} {}", shell_words::join(&words), path.display())));
     let (prog, args) = words.split_first().unwrap();
     let status = std::process::Command::new(prog).args(args).arg(&path).status()?;

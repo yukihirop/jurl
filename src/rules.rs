@@ -59,8 +59,8 @@ pub fn classify(words: &[String]) -> Vec<Token> {
         let mut t = Token::new(w.clone());
 
         // -H "Name: value" / -X POST は次のトークンごと jurl の意味に読み替える。
-        if w == "-H" || w == "--header" {
-            if let Some(next) = words.get(i + 1) {
+        if (w == "-H" || w == "--header")
+            && let Some(next) = words.get(i + 1) {
                 t.set_rule(Role::Noise);
                 t.note = Some("header flag".into());
                 out.push(t);
@@ -70,9 +70,8 @@ pub fn classify(words: &[String]) -> Vec<Token> {
                 i += 2;
                 continue;
             }
-        }
-        if w == "-X" || w == "--request" {
-            if let Some(next) = words.get(i + 1) {
+        if (w == "-X" || w == "--request")
+            && let Some(next) = words.get(i + 1) {
                 t.set_rule(Role::Noise);
                 t.note = Some("method flag".into());
                 out.push(t);
@@ -84,20 +83,18 @@ pub fn classify(words: &[String]) -> Vec<Token> {
                 i += 2;
                 continue;
             }
-        }
 
         if let Some((_, takes_value)) = CURL_FLAGS.iter().find(|(f, _)| f == w) {
             t.set_rule(Role::CurlFlag);
             out.push(t);
-            if *takes_value {
-                if let Some(next) = words.get(i + 1) {
+            if *takes_value
+                && let Some(next) = words.get(i + 1) {
                     let mut v = Token::new(next.clone());
                     v.set_rule(Role::CurlFlagValue);
                     out.push(v);
                     i += 2;
                     continue;
                 }
-            }
             i += 1;
             continue;
         }

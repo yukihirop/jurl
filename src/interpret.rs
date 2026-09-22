@@ -25,12 +25,11 @@ pub fn interpret(tokens: &mut Vec<Token>, oracle: &dyn Oracle) -> Result<Interpr
 
     let mut is_get = tokens.iter().any(|t| t.role == Some(Role::Method) && t.value() == "GET");
     let mut get_intent = None;
-    if let Some(p) = res.answers.get("get_intent").and_then(|a| a.noul()) {
-        if p > 0.5 && !tokens.iter().any(|t| t.role == Some(Role::Method)) {
+    if let Some(p) = res.answers.get("get_intent").and_then(|a| a.noul())
+        && p > 0.5 && !tokens.iter().any(|t| t.role == Some(Role::Method)) {
             is_get = true;
             get_intent = Some(p);
         }
-    }
     repair::pair_key_values(tokens, is_get);
     Ok(Interpreted { info, get_intent })
 }
