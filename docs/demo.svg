@@ -1,252 +1,257 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="796" height="516" viewBox="0 0 796 516" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14">
-<style>@keyframes cursor{0%,49%{opacity:1}50%,100%{opacity:0}}.a{opacity:0;animation-duration:26.62s;animation-timing-function:step-end;animation-iteration-count:infinite;animation-fill-mode:both}@keyframes k0_1{0%{opacity:0}3.174%{opacity:1}100%{opacity:1}}@keyframes k0_2{0%{opacity:0}3.343%{opacity:1}100%{opacity:1}}@keyframes k0_3{0%{opacity:0}3.512%{opacity:1}100%{opacity:1}}@keyframes k0_4{0%{opacity:0}3.681%{opacity:1}100%{opacity:1}}@keyframes k0_5{0%{opacity:0}3.850%{opacity:1}100%{opacity:1}}@keyframes k0_6{0%{opacity:0}4.020%{opacity:1}100%{opacity:1}}@keyframes k0_7{0%{opacity:0}4.189%{opacity:1}100%{opacity:1}}@keyframes k0_8{0%{opacity:0}4.358%{opacity:1}100%{opacity:1}}@keyframes k0_9{0%{opacity:0}4.527%{opacity:1}100%{opacity:1}}@keyframes k0_10{0%{opacity:0}4.696%{opacity:1}100%{opacity:1}}@keyframes k0_11{0%{opacity:0}4.865%{opacity:1}100%{opacity:1}}@keyframes k0_12{0%{opacity:0}5.034%{opacity:1}100%{opacity:1}}@keyframes k0_13{0%{opacity:0}5.203%{opacity:1}100%{opacity:1}}@keyframes k0_14{0%{opacity:0}5.372%{opacity:1}100%{opacity:1}}@keyframes k0_15{0%{opacity:0}5.541%{opacity:1}100%{opacity:1}}@keyframes k0_16{0%{opacity:0}5.710%{opacity:1}100%{opacity:1}}@keyframes k0_17{0%{opacity:0}5.879%{opacity:1}100%{opacity:1}}@keyframes k0_18{0%{opacity:0}6.048%{opacity:1}100%{opacity:1}}@keyframes k0_19{0%{opacity:0}6.217%{opacity:1}100%{opacity:1}}@keyframes k0_20{0%{opacity:0}6.386%{opacity:1}100%{opacity:1}}@keyframes k0_21{0%{opacity:0}6.555%{opacity:1}100%{opacity:1}}@keyframes k0_22{0%{opacity:0}6.724%{opacity:1}100%{opacity:1}}@keyframes k0_23{0%{opacity:0}6.893%{opacity:1}100%{opacity:1}}@keyframes k0_24{0%{opacity:0}7.062%{opacity:1}100%{opacity:1}}@keyframes k0_25{0%{opacity:0}7.231%{opacity:1}100%{opacity:1}}@keyframes k0_26{0%{opacity:0}7.400%{opacity:1}100%{opacity:1}}@keyframes k0_27{0%{opacity:0}7.569%{opacity:1}100%{opacity:1}}@keyframes k0_28{0%{opacity:0}7.739%{opacity:1}100%{opacity:1}}@keyframes k0_29{0%{opacity:0}7.908%{opacity:1}100%{opacity:1}}@keyframes k0_30{0%{opacity:0}8.077%{opacity:1}100%{opacity:1}}@keyframes k0_31{0%{opacity:0}8.246%{opacity:1}100%{opacity:1}}@keyframes k0_32{0%{opacity:0}11.439%{opacity:1}100%{opacity:1}}@keyframes k0_33{0%{opacity:0}11.627%{opacity:1}100%{opacity:1}}@keyframes k0_34{0%{opacity:0}11.739%{opacity:1}100%{opacity:1}}@keyframes k0_35{0%{opacity:0}11.852%{opacity:1}100%{opacity:1}}@keyframes k0_36{0%{opacity:0}11.965%{opacity:1}100%{opacity:1}}@keyframes k0_37{0%{opacity:0}12.077%{opacity:1}100%{opacity:1}}@keyframes k0_38{0%{opacity:0}12.190%{opacity:1}100%{opacity:1}}@keyframes k0_39{0%{opacity:0}12.303%{opacity:1}100%{opacity:1}}@keyframes k0_40{0%{opacity:0}12.415%{opacity:1}100%{opacity:1}}@keyframes k0_41{0%{opacity:0}12.528%{opacity:1}100%{opacity:1}}@keyframes k0_42{0%{opacity:0}12.641%{opacity:1}100%{opacity:1}}@keyframes k0_43{0%{opacity:0}12.754%{opacity:1}100%{opacity:1}}@keyframes k0_44{0%{opacity:0}12.866%{opacity:1}100%{opacity:1}}@keyframes k0_45{0%{opacity:0}12.979%{opacity:1}100%{opacity:1}}@keyframes k0_46{0%{opacity:0}13.092%{opacity:1}100%{opacity:1}}@keyframes k0_47{0%{opacity:0}13.204%{opacity:1}100%{opacity:1}}@keyframes k0_48{0%{opacity:0}13.317%{opacity:1}100%{opacity:1}}@keyframes k0_49{0%{opacity:0}13.430%{opacity:1}100%{opacity:1}}@keyframes k0_50{0%{opacity:0}13.542%{opacity:1}100%{opacity:1}}@keyframes k0_51{0%{opacity:0}13.655%{opacity:1}100%{opacity:1}}@keyframes k1_53{0%{opacity:0}25.958%{opacity:1}100%{opacity:1}}@keyframes k1_54{0%{opacity:0}26.127%{opacity:1}100%{opacity:1}}@keyframes k1_55{0%{opacity:0}26.296%{opacity:1}100%{opacity:1}}@keyframes k1_56{0%{opacity:0}26.465%{opacity:1}100%{opacity:1}}@keyframes k1_57{0%{opacity:0}26.634%{opacity:1}100%{opacity:1}}@keyframes k1_58{0%{opacity:0}26.803%{opacity:1}100%{opacity:1}}@keyframes k1_59{0%{opacity:0}26.972%{opacity:1}100%{opacity:1}}@keyframes k1_60{0%{opacity:0}27.141%{opacity:1}100%{opacity:1}}@keyframes k1_61{0%{opacity:0}27.310%{opacity:1}100%{opacity:1}}@keyframes k1_62{0%{opacity:0}27.479%{opacity:1}100%{opacity:1}}@keyframes k1_63{0%{opacity:0}27.648%{opacity:1}100%{opacity:1}}@keyframes k1_64{0%{opacity:0}27.817%{opacity:1}100%{opacity:1}}@keyframes k1_65{0%{opacity:0}27.986%{opacity:1}100%{opacity:1}}@keyframes k1_66{0%{opacity:0}28.156%{opacity:1}100%{opacity:1}}@keyframes k1_67{0%{opacity:0}28.325%{opacity:1}100%{opacity:1}}@keyframes k1_68{0%{opacity:0}28.494%{opacity:1}100%{opacity:1}}@keyframes k1_69{0%{opacity:0}28.663%{opacity:1}100%{opacity:1}}@keyframes k1_70{0%{opacity:0}28.832%{opacity:1}100%{opacity:1}}@keyframes k1_71{0%{opacity:0}29.001%{opacity:1}100%{opacity:1}}@keyframes k1_72{0%{opacity:0}29.170%{opacity:1}100%{opacity:1}}@keyframes k1_73{0%{opacity:0}29.339%{opacity:1}100%{opacity:1}}@keyframes k1_74{0%{opacity:0}29.508%{opacity:1}100%{opacity:1}}@keyframes k1_75{0%{opacity:0}29.677%{opacity:1}100%{opacity:1}}@keyframes k1_76{0%{opacity:0}29.846%{opacity:1}100%{opacity:1}}@keyframes k1_77{0%{opacity:0}30.015%{opacity:1}100%{opacity:1}}@keyframes k1_78{0%{opacity:0}30.184%{opacity:1}100%{opacity:1}}@keyframes k1_79{0%{opacity:0}30.353%{opacity:1}100%{opacity:1}}@keyframes k1_80{0%{opacity:0}30.522%{opacity:1}100%{opacity:1}}@keyframes k1_81{0%{opacity:0}30.691%{opacity:1}100%{opacity:1}}@keyframes k1_82{0%{opacity:0}30.860%{opacity:1}100%{opacity:1}}@keyframes k1_83{0%{opacity:0}31.029%{opacity:1}100%{opacity:1}}@keyframes k1_84{0%{opacity:0}31.198%{opacity:1}100%{opacity:1}}@keyframes k1_85{0%{opacity:0}31.367%{opacity:1}100%{opacity:1}}@keyframes k1_86{0%{opacity:0}31.536%{opacity:1}100%{opacity:1}}@keyframes k1_87{0%{opacity:0}31.705%{opacity:1}100%{opacity:1}}@keyframes k1_88{0%{opacity:0}31.875%{opacity:1}100%{opacity:1}}@keyframes k1_89{0%{opacity:0}32.044%{opacity:1}100%{opacity:1}}@keyframes k1_90{0%{opacity:0}32.213%{opacity:1}100%{opacity:1}}@keyframes k1_91{0%{opacity:0}32.382%{opacity:1}100%{opacity:1}}@keyframes k1_92{0%{opacity:0}32.551%{opacity:1}100%{opacity:1}}@keyframes k1_93{0%{opacity:0}32.720%{opacity:1}100%{opacity:1}}@keyframes k1_94{0%{opacity:0}32.889%{opacity:1}100%{opacity:1}}@keyframes k1_95{0%{opacity:0}33.058%{opacity:1}100%{opacity:1}}@keyframes k1_96{0%{opacity:0}33.227%{opacity:1}100%{opacity:1}}@keyframes k1_97{0%{opacity:0}33.396%{opacity:1}100%{opacity:1}}@keyframes k1_98{0%{opacity:0}33.565%{opacity:1}100%{opacity:1}}@keyframes k1_99{0%{opacity:0}33.734%{opacity:1}100%{opacity:1}}@keyframes k1_100{0%{opacity:0}33.903%{opacity:1}100%{opacity:1}}@keyframes k1_101{0%{opacity:0}34.072%{opacity:1}100%{opacity:1}}@keyframes k1_102{0%{opacity:0}34.241%{opacity:1}100%{opacity:1}}@keyframes k1_103{0%{opacity:0}34.410%{opacity:1}100%{opacity:1}}@keyframes k1_104{0%{opacity:0}34.579%{opacity:1}100%{opacity:1}}@keyframes k1_105{0%{opacity:0}34.748%{opacity:1}100%{opacity:1}}@keyframes k1_106{0%{opacity:0}34.917%{opacity:1}100%{opacity:1}}@keyframes k1_107{0%{opacity:0}35.086%{opacity:1}100%{opacity:1}}@keyframes k1_108{0%{opacity:0}35.255%{opacity:1}100%{opacity:1}}@keyframes k1_109{0%{opacity:0}35.424%{opacity:1}100%{opacity:1}}@keyframes k1_110{0%{opacity:0}35.594%{opacity:1}100%{opacity:1}}@keyframes k1_111{0%{opacity:0}35.763%{opacity:1}100%{opacity:1}}@keyframes k1_112{0%{opacity:0}35.932%{opacity:1}100%{opacity:1}}@keyframes k1_113{0%{opacity:0}36.101%{opacity:1}100%{opacity:1}}@keyframes k1_114{0%{opacity:0}36.270%{opacity:1}100%{opacity:1}}@keyframes k1_115{0%{opacity:0}36.439%{opacity:1}100%{opacity:1}}@keyframes k1_116{0%{opacity:0}36.608%{opacity:1}100%{opacity:1}}@keyframes k1_117{0%{opacity:0}36.777%{opacity:1}100%{opacity:1}}@keyframes k1_118{0%{opacity:0}36.946%{opacity:1}100%{opacity:1}}@keyframes k1_119{0%{opacity:0}37.115%{opacity:1}100%{opacity:1}}@keyframes k1_120{0%{opacity:0}37.284%{opacity:1}100%{opacity:1}}@keyframes k1_121{0%{opacity:0}37.453%{opacity:1}100%{opacity:1}}@keyframes k1_122{0%{opacity:0}37.622%{opacity:1}100%{opacity:1}}@keyframes k1_123{0%{opacity:0}42.130%{opacity:1}100%{opacity:1}}@keyframes k1_124{0%{opacity:0}42.243%{opacity:1}100%{opacity:1}}@keyframes k1_125{0%{opacity:0}42.355%{opacity:1}100%{opacity:1}}@keyframes k1_126{0%{opacity:0}42.468%{opacity:1}100%{opacity:1}}@keyframes k1_127{0%{opacity:0}42.581%{opacity:1}100%{opacity:1}}@keyframes k1_128{0%{opacity:0}42.693%{opacity:1}100%{opacity:1}}@keyframes k1_129{0%{opacity:0}42.806%{opacity:1}100%{opacity:1}}@keyframes k1_130{0%{opacity:0}42.919%{opacity:1}100%{opacity:1}}@keyframes k1_131{0%{opacity:0}43.032%{opacity:1}100%{opacity:1}}@keyframes k1_132{0%{opacity:0}43.144%{opacity:1}100%{opacity:1}}@keyframes k1_133{0%{opacity:0}48.403%{opacity:1}100%{opacity:1}}@keyframes k1_134{0%{opacity:0}48.516%{opacity:1}100%{opacity:1}}@keyframes k1_135{0%{opacity:0}48.704%{opacity:1}100%{opacity:1}}@keyframes k1_136{0%{opacity:0}48.817%{opacity:1}100%{opacity:1}}@keyframes k1_137{0%{opacity:0}48.929%{opacity:1}100%{opacity:1}}@keyframes k1_138{0%{opacity:0}49.042%{opacity:1}100%{opacity:1}}@keyframes k1_139{0%{opacity:0}49.155%{opacity:1}100%{opacity:1}}@keyframes k2_141{0%{opacity:0}61.458%{opacity:1}100%{opacity:1}}@keyframes k2_142{0%{opacity:0}61.627%{opacity:1}100%{opacity:1}}@keyframes k2_143{0%{opacity:0}61.796%{opacity:1}100%{opacity:1}}@keyframes k2_144{0%{opacity:0}61.965%{opacity:1}100%{opacity:1}}@keyframes k2_145{0%{opacity:0}62.134%{opacity:1}100%{opacity:1}}@keyframes k2_146{0%{opacity:0}62.303%{opacity:1}100%{opacity:1}}@keyframes k2_147{0%{opacity:0}62.472%{opacity:1}100%{opacity:1}}@keyframes k2_148{0%{opacity:0}62.641%{opacity:1}100%{opacity:1}}@keyframes k2_149{0%{opacity:0}62.810%{opacity:1}100%{opacity:1}}@keyframes k2_150{0%{opacity:0}62.979%{opacity:1}100%{opacity:1}}@keyframes k2_151{0%{opacity:0}63.148%{opacity:1}100%{opacity:1}}@keyframes k2_152{0%{opacity:0}63.317%{opacity:1}100%{opacity:1}}@keyframes k2_153{0%{opacity:0}63.486%{opacity:1}100%{opacity:1}}@keyframes k2_154{0%{opacity:0}63.655%{opacity:1}100%{opacity:1}}@keyframes k2_155{0%{opacity:0}63.824%{opacity:1}100%{opacity:1}}@keyframes k2_156{0%{opacity:0}63.993%{opacity:1}100%{opacity:1}}@keyframes k2_157{0%{opacity:0}64.162%{opacity:1}100%{opacity:1}}@keyframes k2_158{0%{opacity:0}64.331%{opacity:1}100%{opacity:1}}@keyframes k2_159{0%{opacity:0}64.500%{opacity:1}100%{opacity:1}}@keyframes k2_160{0%{opacity:0}64.669%{opacity:1}100%{opacity:1}}@keyframes k2_161{0%{opacity:0}64.838%{opacity:1}100%{opacity:1}}@keyframes k2_162{0%{opacity:0}65.008%{opacity:1}100%{opacity:1}}@keyframes k2_163{0%{opacity:0}65.177%{opacity:1}100%{opacity:1}}@keyframes k2_164{0%{opacity:0}65.346%{opacity:1}100%{opacity:1}}@keyframes k2_165{0%{opacity:0}65.515%{opacity:1}100%{opacity:1}}@keyframes k2_166{0%{opacity:0}65.684%{opacity:1}100%{opacity:1}}@keyframes k2_167{0%{opacity:0}65.853%{opacity:1}100%{opacity:1}}@keyframes k2_168{0%{opacity:0}66.022%{opacity:1}100%{opacity:1}}@keyframes k2_169{0%{opacity:0}66.191%{opacity:1}100%{opacity:1}}@keyframes k2_170{0%{opacity:0}66.360%{opacity:1}100%{opacity:1}}@keyframes k2_171{0%{opacity:0}66.529%{opacity:1}100%{opacity:1}}@keyframes k2_172{0%{opacity:0}66.698%{opacity:1}100%{opacity:1}}@keyframes k2_173{0%{opacity:0}66.867%{opacity:1}100%{opacity:1}}@keyframes k2_174{0%{opacity:0}67.036%{opacity:1}100%{opacity:1}}@keyframes k2_175{0%{opacity:0}67.205%{opacity:1}100%{opacity:1}}@keyframes k2_176{0%{opacity:0}67.374%{opacity:1}100%{opacity:1}}@keyframes k2_177{0%{opacity:0}67.543%{opacity:1}100%{opacity:1}}@keyframes k2_178{0%{opacity:0}67.712%{opacity:1}100%{opacity:1}}@keyframes k2_179{0%{opacity:0}67.881%{opacity:1}100%{opacity:1}}@keyframes k2_180{0%{opacity:0}68.050%{opacity:1}100%{opacity:1}}@keyframes k2_181{0%{opacity:0}68.219%{opacity:1}100%{opacity:1}}@keyframes k2_182{0%{opacity:0}68.388%{opacity:1}100%{opacity:1}}@keyframes k2_183{0%{opacity:0}68.557%{opacity:1}100%{opacity:1}}@keyframes k2_184{0%{opacity:0}68.727%{opacity:1}100%{opacity:1}}@keyframes k2_185{0%{opacity:0}68.896%{opacity:1}100%{opacity:1}}@keyframes k2_186{0%{opacity:0}69.065%{opacity:1}100%{opacity:1}}@keyframes k2_187{0%{opacity:0}69.234%{opacity:1}100%{opacity:1}}@keyframes k2_188{0%{opacity:0}69.403%{opacity:1}100%{opacity:1}}@keyframes k2_189{0%{opacity:0}69.572%{opacity:1}100%{opacity:1}}@keyframes k2_190{0%{opacity:0}69.741%{opacity:1}100%{opacity:1}}@keyframes k2_191{0%{opacity:0}69.910%{opacity:1}100%{opacity:1}}@keyframes k2_192{0%{opacity:0}70.079%{opacity:1}100%{opacity:1}}@keyframes k2_193{0%{opacity:0}70.248%{opacity:1}100%{opacity:1}}@keyframes k2_194{0%{opacity:0}70.417%{opacity:1}100%{opacity:1}}@keyframes k2_195{0%{opacity:0}70.586%{opacity:1}100%{opacity:1}}@keyframes k2_196{0%{opacity:0}70.755%{opacity:1}100%{opacity:1}}@keyframes k2_197{0%{opacity:0}70.924%{opacity:1}100%{opacity:1}}@keyframes k2_198{0%{opacity:0}71.093%{opacity:1}100%{opacity:1}}@keyframes k2_199{0%{opacity:0}71.262%{opacity:1}100%{opacity:1}}@keyframes k2_200{0%{opacity:0}71.431%{opacity:1}100%{opacity:1}}@keyframes k2_201{0%{opacity:0}71.600%{opacity:1}100%{opacity:1}}@keyframes k2_202{0%{opacity:0}71.769%{opacity:1}100%{opacity:1}}@keyframes k2_203{0%{opacity:0}71.938%{opacity:1}100%{opacity:1}}@keyframes k2_204{0%{opacity:0}72.107%{opacity:1}100%{opacity:1}}@keyframes k2_205{0%{opacity:0}72.276%{opacity:1}100%{opacity:1}}@keyframes k2_206{0%{opacity:0}72.446%{opacity:1}100%{opacity:1}}@keyframes k2_207{0%{opacity:0}72.615%{opacity:1}100%{opacity:1}}@keyframes k2_208{0%{opacity:0}72.784%{opacity:1}100%{opacity:1}}@keyframes k2_209{0%{opacity:0}72.953%{opacity:1}100%{opacity:1}}@keyframes k2_210{0%{opacity:0}73.122%{opacity:1}100%{opacity:1}}@keyframes k2_211{0%{opacity:0}73.291%{opacity:1}100%{opacity:1}}@keyframes k2_212{0%{opacity:0}73.460%{opacity:1}100%{opacity:1}}@keyframes k2_213{0%{opacity:0}73.629%{opacity:1}100%{opacity:1}}@keyframes k2_214{0%{opacity:0}73.798%{opacity:1}100%{opacity:1}}@keyframes k2_215{0%{opacity:0}73.967%{opacity:1}100%{opacity:1}}@keyframes k2_216{0%{opacity:0}74.136%{opacity:1}100%{opacity:1}}@keyframes k2_217{0%{opacity:0}74.305%{opacity:1}100%{opacity:1}}@keyframes k2_218{0%{opacity:0}74.474%{opacity:1}100%{opacity:1}}@keyframes k2_219{0%{opacity:0}74.643%{opacity:1}100%{opacity:1}}@keyframes k2_220{0%{opacity:0}79.151%{opacity:1}100%{opacity:1}}@keyframes k2_221{0%{opacity:0}79.264%{opacity:1}100%{opacity:1}}@keyframes k2_222{0%{opacity:0}79.376%{opacity:1}100%{opacity:1}}@keyframes k2_223{0%{opacity:0}79.489%{opacity:1}100%{opacity:1}}@keyframes k2_224{0%{opacity:0}79.602%{opacity:1}100%{opacity:1}}@keyframes k2_225{0%{opacity:0}79.715%{opacity:1}100%{opacity:1}}@keyframes k2_226{0%{opacity:0}79.827%{opacity:1}100%{opacity:1}}@keyframes k2_227{0%{opacity:0}79.940%{opacity:1}100%{opacity:1}}@keyframes k2_228{0%{opacity:0}80.053%{opacity:1}100%{opacity:1}}@keyframes k2_229{0%{opacity:0}80.165%{opacity:1}100%{opacity:1}}@keyframes k2_230{0%{opacity:0}80.278%{opacity:1}100%{opacity:1}}@keyframes k2_231{0%{opacity:0}80.391%{opacity:1}100%{opacity:1}}@keyframes k2_232{0%{opacity:0}80.503%{opacity:1}100%{opacity:1}}@keyframes k2_233{0%{opacity:0}80.616%{opacity:1}100%{opacity:1}}@keyframes k2_234{0%{opacity:0}80.729%{opacity:1}100%{opacity:1}}@keyframes k2_235{0%{opacity:0}80.841%{opacity:1}100%{opacity:1}}@keyframes k2_236{0%{opacity:0}86.101%{opacity:1}100%{opacity:1}}@keyframes k2_237{0%{opacity:0}86.213%{opacity:1}100%{opacity:1}}@keyframes k2_238{0%{opacity:0}86.401%{opacity:1}100%{opacity:1}}@keyframes k2_239{0%{opacity:0}86.514%{opacity:1}100%{opacity:1}}@keyframes k2_240{0%{opacity:0}86.627%{opacity:1}100%{opacity:1}}@keyframes k2_241{0%{opacity:0}86.739%{opacity:1}100%{opacity:1}}.s0{animation:scene0 26.62s step-end infinite}.s1{animation:scene1 26.62s step-end infinite}.s2{animation:scene2 26.62s step-end infinite}@keyframes scene0{0%{opacity:0}3.005%{opacity:1}25.789%{opacity:0}100%{opacity:0}}@keyframes scene1{0%{opacity:0}25.789%{opacity:1}61.289%{opacity:0}100%{opacity:0}}@keyframes scene2{0%{opacity:0}61.289%{opacity:1}98.873%{opacity:0}100%{opacity:0}}</style>
+<style>@keyframes cursor{0%,49%{opacity:1}50%,100%{opacity:0}}.a{opacity:0;animation-duration:26.62s;animation-timing-function:step-end;animation-iteration-count:infinite;animation-fill-mode:both}@keyframes k0_2{0%{opacity:0}3.174%{opacity:1}100%{opacity:1}}@keyframes k0_3{0%{opacity:0}3.343%{opacity:1}100%{opacity:1}}@keyframes k0_4{0%{opacity:0}3.512%{opacity:1}100%{opacity:1}}@keyframes k0_5{0%{opacity:0}3.681%{opacity:1}100%{opacity:1}}@keyframes k0_6{0%{opacity:0}3.850%{opacity:1}100%{opacity:1}}@keyframes k0_7{0%{opacity:0}4.020%{opacity:1}100%{opacity:1}}@keyframes k0_8{0%{opacity:0}4.189%{opacity:1}100%{opacity:1}}@keyframes k0_9{0%{opacity:0}4.358%{opacity:1}100%{opacity:1}}@keyframes k0_10{0%{opacity:0}4.527%{opacity:1}100%{opacity:1}}@keyframes k0_11{0%{opacity:0}4.696%{opacity:1}100%{opacity:1}}@keyframes k0_12{0%{opacity:0}4.865%{opacity:1}100%{opacity:1}}@keyframes k0_13{0%{opacity:0}5.034%{opacity:1}100%{opacity:1}}@keyframes k0_14{0%{opacity:0}5.203%{opacity:1}100%{opacity:1}}@keyframes k0_15{0%{opacity:0}5.372%{opacity:1}100%{opacity:1}}@keyframes k0_16{0%{opacity:0}5.541%{opacity:1}100%{opacity:1}}@keyframes k0_17{0%{opacity:0}5.710%{opacity:1}100%{opacity:1}}@keyframes k0_18{0%{opacity:0}5.879%{opacity:1}100%{opacity:1}}@keyframes k0_19{0%{opacity:0}6.048%{opacity:1}100%{opacity:1}}@keyframes k0_20{0%{opacity:0}6.217%{opacity:1}100%{opacity:1}}@keyframes k0_21{0%{opacity:0}6.386%{opacity:1}100%{opacity:1}}@keyframes k0_22{0%{opacity:0}6.555%{opacity:1}100%{opacity:1}}@keyframes k0_23{0%{opacity:0}6.724%{opacity:1}100%{opacity:1}}@keyframes k0_24{0%{opacity:0}6.893%{opacity:1}100%{opacity:1}}@keyframes k0_25{0%{opacity:0}7.062%{opacity:1}100%{opacity:1}}@keyframes k0_26{0%{opacity:0}7.231%{opacity:1}100%{opacity:1}}@keyframes k0_27{0%{opacity:0}7.400%{opacity:1}100%{opacity:1}}@keyframes k0_28{0%{opacity:0}7.569%{opacity:1}100%{opacity:1}}@keyframes k0_29{0%{opacity:0}7.739%{opacity:1}100%{opacity:1}}@keyframes k0_30{0%{opacity:0}7.908%{opacity:1}100%{opacity:1}}@keyframes k0_31{0%{opacity:0}8.077%{opacity:1}100%{opacity:1}}@keyframes k0_32{0%{opacity:0}8.246%{opacity:1}100%{opacity:1}}@keyframes k0_33{0%{opacity:0}11.439%{opacity:1}100%{opacity:1}}@keyframes k0_34{0%{opacity:0}11.627%{opacity:1}100%{opacity:1}}@keyframes k0_35{0%{opacity:0}11.739%{opacity:1}100%{opacity:1}}@keyframes k0_36{0%{opacity:0}11.852%{opacity:1}100%{opacity:1}}@keyframes k0_37{0%{opacity:0}11.965%{opacity:1}100%{opacity:1}}@keyframes k0_38{0%{opacity:0}12.077%{opacity:1}100%{opacity:1}}@keyframes k0_39{0%{opacity:0}12.190%{opacity:1}100%{opacity:1}}@keyframes k0_40{0%{opacity:0}12.303%{opacity:1}100%{opacity:1}}@keyframes k0_41{0%{opacity:0}12.415%{opacity:1}100%{opacity:1}}@keyframes k0_42{0%{opacity:0}12.528%{opacity:1}100%{opacity:1}}@keyframes k0_43{0%{opacity:0}12.641%{opacity:1}100%{opacity:1}}@keyframes k0_44{0%{opacity:0}12.754%{opacity:1}100%{opacity:1}}@keyframes k0_45{0%{opacity:0}12.866%{opacity:1}100%{opacity:1}}@keyframes k0_46{0%{opacity:0}12.979%{opacity:1}100%{opacity:1}}@keyframes k0_47{0%{opacity:0}13.092%{opacity:1}100%{opacity:1}}@keyframes k0_48{0%{opacity:0}13.204%{opacity:1}100%{opacity:1}}@keyframes k0_49{0%{opacity:0}13.317%{opacity:1}100%{opacity:1}}@keyframes k0_50{0%{opacity:0}13.430%{opacity:1}100%{opacity:1}}@keyframes k0_51{0%{opacity:0}13.542%{opacity:1}100%{opacity:1}}@keyframes k0_52{0%{opacity:0}13.655%{opacity:1}100%{opacity:1}}@keyframes k1_56{0%{opacity:0}25.958%{opacity:1}100%{opacity:1}}@keyframes k1_57{0%{opacity:0}26.127%{opacity:1}100%{opacity:1}}@keyframes k1_58{0%{opacity:0}26.296%{opacity:1}100%{opacity:1}}@keyframes k1_59{0%{opacity:0}26.465%{opacity:1}100%{opacity:1}}@keyframes k1_60{0%{opacity:0}26.634%{opacity:1}100%{opacity:1}}@keyframes k1_61{0%{opacity:0}26.803%{opacity:1}100%{opacity:1}}@keyframes k1_62{0%{opacity:0}26.972%{opacity:1}100%{opacity:1}}@keyframes k1_63{0%{opacity:0}27.141%{opacity:1}100%{opacity:1}}@keyframes k1_64{0%{opacity:0}27.310%{opacity:1}100%{opacity:1}}@keyframes k1_65{0%{opacity:0}27.479%{opacity:1}100%{opacity:1}}@keyframes k1_66{0%{opacity:0}27.648%{opacity:1}100%{opacity:1}}@keyframes k1_67{0%{opacity:0}27.817%{opacity:1}100%{opacity:1}}@keyframes k1_68{0%{opacity:0}27.986%{opacity:1}100%{opacity:1}}@keyframes k1_69{0%{opacity:0}28.156%{opacity:1}100%{opacity:1}}@keyframes k1_70{0%{opacity:0}28.325%{opacity:1}100%{opacity:1}}@keyframes k1_71{0%{opacity:0}28.494%{opacity:1}100%{opacity:1}}@keyframes k1_72{0%{opacity:0}28.663%{opacity:1}100%{opacity:1}}@keyframes k1_73{0%{opacity:0}28.832%{opacity:1}100%{opacity:1}}@keyframes k1_74{0%{opacity:0}29.001%{opacity:1}100%{opacity:1}}@keyframes k1_75{0%{opacity:0}29.170%{opacity:1}100%{opacity:1}}@keyframes k1_76{0%{opacity:0}29.339%{opacity:1}100%{opacity:1}}@keyframes k1_77{0%{opacity:0}29.508%{opacity:1}100%{opacity:1}}@keyframes k1_78{0%{opacity:0}29.677%{opacity:1}100%{opacity:1}}@keyframes k1_79{0%{opacity:0}29.846%{opacity:1}100%{opacity:1}}@keyframes k1_80{0%{opacity:0}30.015%{opacity:1}100%{opacity:1}}@keyframes k1_81{0%{opacity:0}30.184%{opacity:1}100%{opacity:1}}@keyframes k1_82{0%{opacity:0}30.353%{opacity:1}100%{opacity:1}}@keyframes k1_83{0%{opacity:0}30.522%{opacity:1}100%{opacity:1}}@keyframes k1_84{0%{opacity:0}30.691%{opacity:1}100%{opacity:1}}@keyframes k1_85{0%{opacity:0}30.860%{opacity:1}100%{opacity:1}}@keyframes k1_86{0%{opacity:0}31.029%{opacity:1}100%{opacity:1}}@keyframes k1_87{0%{opacity:0}31.198%{opacity:1}100%{opacity:1}}@keyframes k1_88{0%{opacity:0}31.367%{opacity:1}100%{opacity:1}}@keyframes k1_89{0%{opacity:0}31.536%{opacity:1}100%{opacity:1}}@keyframes k1_90{0%{opacity:0}31.705%{opacity:1}100%{opacity:1}}@keyframes k1_91{0%{opacity:0}31.875%{opacity:1}100%{opacity:1}}@keyframes k1_92{0%{opacity:0}32.044%{opacity:1}100%{opacity:1}}@keyframes k1_93{0%{opacity:0}32.213%{opacity:1}100%{opacity:1}}@keyframes k1_94{0%{opacity:0}32.382%{opacity:1}100%{opacity:1}}@keyframes k1_95{0%{opacity:0}32.551%{opacity:1}100%{opacity:1}}@keyframes k1_96{0%{opacity:0}32.720%{opacity:1}100%{opacity:1}}@keyframes k1_97{0%{opacity:0}32.889%{opacity:1}100%{opacity:1}}@keyframes k1_98{0%{opacity:0}33.058%{opacity:1}100%{opacity:1}}@keyframes k1_99{0%{opacity:0}33.227%{opacity:1}100%{opacity:1}}@keyframes k1_100{0%{opacity:0}33.396%{opacity:1}100%{opacity:1}}@keyframes k1_101{0%{opacity:0}33.565%{opacity:1}100%{opacity:1}}@keyframes k1_102{0%{opacity:0}33.734%{opacity:1}100%{opacity:1}}@keyframes k1_103{0%{opacity:0}33.903%{opacity:1}100%{opacity:1}}@keyframes k1_104{0%{opacity:0}34.072%{opacity:1}100%{opacity:1}}@keyframes k1_105{0%{opacity:0}34.241%{opacity:1}100%{opacity:1}}@keyframes k1_106{0%{opacity:0}34.410%{opacity:1}100%{opacity:1}}@keyframes k1_107{0%{opacity:0}34.579%{opacity:1}100%{opacity:1}}@keyframes k1_108{0%{opacity:0}34.748%{opacity:1}100%{opacity:1}}@keyframes k1_109{0%{opacity:0}34.917%{opacity:1}100%{opacity:1}}@keyframes k1_110{0%{opacity:0}35.086%{opacity:1}100%{opacity:1}}@keyframes k1_111{0%{opacity:0}35.255%{opacity:1}100%{opacity:1}}@keyframes k1_112{0%{opacity:0}35.424%{opacity:1}100%{opacity:1}}@keyframes k1_113{0%{opacity:0}35.594%{opacity:1}100%{opacity:1}}@keyframes k1_114{0%{opacity:0}35.763%{opacity:1}100%{opacity:1}}@keyframes k1_115{0%{opacity:0}35.932%{opacity:1}100%{opacity:1}}@keyframes k1_116{0%{opacity:0}36.101%{opacity:1}100%{opacity:1}}@keyframes k1_117{0%{opacity:0}36.270%{opacity:1}100%{opacity:1}}@keyframes k1_118{0%{opacity:0}36.439%{opacity:1}100%{opacity:1}}@keyframes k1_119{0%{opacity:0}36.608%{opacity:1}100%{opacity:1}}@keyframes k1_120{0%{opacity:0}36.777%{opacity:1}100%{opacity:1}}@keyframes k1_121{0%{opacity:0}36.946%{opacity:1}100%{opacity:1}}@keyframes k1_122{0%{opacity:0}37.115%{opacity:1}100%{opacity:1}}@keyframes k1_123{0%{opacity:0}37.284%{opacity:1}100%{opacity:1}}@keyframes k1_124{0%{opacity:0}37.453%{opacity:1}100%{opacity:1}}@keyframes k1_125{0%{opacity:0}37.622%{opacity:1}100%{opacity:1}}@keyframes k1_126{0%{opacity:0}42.130%{opacity:1}100%{opacity:1}}@keyframes k1_127{0%{opacity:0}42.243%{opacity:1}100%{opacity:1}}@keyframes k1_128{0%{opacity:0}42.355%{opacity:1}100%{opacity:1}}@keyframes k1_129{0%{opacity:0}42.468%{opacity:1}100%{opacity:1}}@keyframes k1_130{0%{opacity:0}42.581%{opacity:1}100%{opacity:1}}@keyframes k1_131{0%{opacity:0}42.693%{opacity:1}100%{opacity:1}}@keyframes k1_132{0%{opacity:0}42.806%{opacity:1}100%{opacity:1}}@keyframes k1_133{0%{opacity:0}42.919%{opacity:1}100%{opacity:1}}@keyframes k1_134{0%{opacity:0}43.032%{opacity:1}100%{opacity:1}}@keyframes k1_135{0%{opacity:0}43.144%{opacity:1}100%{opacity:1}}@keyframes k1_136{0%{opacity:0}48.403%{opacity:1}100%{opacity:1}}@keyframes k1_137{0%{opacity:0}48.516%{opacity:1}100%{opacity:1}}@keyframes k1_138{0%{opacity:0}48.704%{opacity:1}100%{opacity:1}}@keyframes k1_139{0%{opacity:0}48.817%{opacity:1}100%{opacity:1}}@keyframes k1_140{0%{opacity:0}48.929%{opacity:1}100%{opacity:1}}@keyframes k1_141{0%{opacity:0}49.042%{opacity:1}100%{opacity:1}}@keyframes k1_142{0%{opacity:0}49.155%{opacity:1}100%{opacity:1}}@keyframes k2_146{0%{opacity:0}61.458%{opacity:1}100%{opacity:1}}@keyframes k2_147{0%{opacity:0}61.627%{opacity:1}100%{opacity:1}}@keyframes k2_148{0%{opacity:0}61.796%{opacity:1}100%{opacity:1}}@keyframes k2_149{0%{opacity:0}61.965%{opacity:1}100%{opacity:1}}@keyframes k2_150{0%{opacity:0}62.134%{opacity:1}100%{opacity:1}}@keyframes k2_151{0%{opacity:0}62.303%{opacity:1}100%{opacity:1}}@keyframes k2_152{0%{opacity:0}62.472%{opacity:1}100%{opacity:1}}@keyframes k2_153{0%{opacity:0}62.641%{opacity:1}100%{opacity:1}}@keyframes k2_154{0%{opacity:0}62.810%{opacity:1}100%{opacity:1}}@keyframes k2_155{0%{opacity:0}62.979%{opacity:1}100%{opacity:1}}@keyframes k2_156{0%{opacity:0}63.148%{opacity:1}100%{opacity:1}}@keyframes k2_157{0%{opacity:0}63.317%{opacity:1}100%{opacity:1}}@keyframes k2_158{0%{opacity:0}63.486%{opacity:1}100%{opacity:1}}@keyframes k2_159{0%{opacity:0}63.655%{opacity:1}100%{opacity:1}}@keyframes k2_160{0%{opacity:0}63.824%{opacity:1}100%{opacity:1}}@keyframes k2_161{0%{opacity:0}63.993%{opacity:1}100%{opacity:1}}@keyframes k2_162{0%{opacity:0}64.162%{opacity:1}100%{opacity:1}}@keyframes k2_163{0%{opacity:0}64.331%{opacity:1}100%{opacity:1}}@keyframes k2_164{0%{opacity:0}64.500%{opacity:1}100%{opacity:1}}@keyframes k2_165{0%{opacity:0}64.669%{opacity:1}100%{opacity:1}}@keyframes k2_166{0%{opacity:0}64.838%{opacity:1}100%{opacity:1}}@keyframes k2_167{0%{opacity:0}65.008%{opacity:1}100%{opacity:1}}@keyframes k2_168{0%{opacity:0}65.177%{opacity:1}100%{opacity:1}}@keyframes k2_169{0%{opacity:0}65.346%{opacity:1}100%{opacity:1}}@keyframes k2_170{0%{opacity:0}65.515%{opacity:1}100%{opacity:1}}@keyframes k2_171{0%{opacity:0}65.684%{opacity:1}100%{opacity:1}}@keyframes k2_172{0%{opacity:0}65.853%{opacity:1}100%{opacity:1}}@keyframes k2_173{0%{opacity:0}66.022%{opacity:1}100%{opacity:1}}@keyframes k2_174{0%{opacity:0}66.191%{opacity:1}100%{opacity:1}}@keyframes k2_175{0%{opacity:0}66.360%{opacity:1}100%{opacity:1}}@keyframes k2_176{0%{opacity:0}66.529%{opacity:1}100%{opacity:1}}@keyframes k2_177{0%{opacity:0}66.698%{opacity:1}100%{opacity:1}}@keyframes k2_178{0%{opacity:0}66.867%{opacity:1}100%{opacity:1}}@keyframes k2_179{0%{opacity:0}67.036%{opacity:1}100%{opacity:1}}@keyframes k2_180{0%{opacity:0}67.205%{opacity:1}100%{opacity:1}}@keyframes k2_181{0%{opacity:0}67.374%{opacity:1}100%{opacity:1}}@keyframes k2_182{0%{opacity:0}67.543%{opacity:1}100%{opacity:1}}@keyframes k2_183{0%{opacity:0}67.712%{opacity:1}100%{opacity:1}}@keyframes k2_184{0%{opacity:0}67.881%{opacity:1}100%{opacity:1}}@keyframes k2_185{0%{opacity:0}68.050%{opacity:1}100%{opacity:1}}@keyframes k2_186{0%{opacity:0}68.219%{opacity:1}100%{opacity:1}}@keyframes k2_187{0%{opacity:0}68.388%{opacity:1}100%{opacity:1}}@keyframes k2_188{0%{opacity:0}68.557%{opacity:1}100%{opacity:1}}@keyframes k2_189{0%{opacity:0}68.727%{opacity:1}100%{opacity:1}}@keyframes k2_190{0%{opacity:0}68.896%{opacity:1}100%{opacity:1}}@keyframes k2_191{0%{opacity:0}69.065%{opacity:1}100%{opacity:1}}@keyframes k2_192{0%{opacity:0}69.234%{opacity:1}100%{opacity:1}}@keyframes k2_193{0%{opacity:0}69.403%{opacity:1}100%{opacity:1}}@keyframes k2_194{0%{opacity:0}69.572%{opacity:1}100%{opacity:1}}@keyframes k2_195{0%{opacity:0}69.741%{opacity:1}100%{opacity:1}}@keyframes k2_196{0%{opacity:0}69.910%{opacity:1}100%{opacity:1}}@keyframes k2_197{0%{opacity:0}70.079%{opacity:1}100%{opacity:1}}@keyframes k2_198{0%{opacity:0}70.248%{opacity:1}100%{opacity:1}}@keyframes k2_199{0%{opacity:0}70.417%{opacity:1}100%{opacity:1}}@keyframes k2_200{0%{opacity:0}70.586%{opacity:1}100%{opacity:1}}@keyframes k2_201{0%{opacity:0}70.755%{opacity:1}100%{opacity:1}}@keyframes k2_202{0%{opacity:0}70.924%{opacity:1}100%{opacity:1}}@keyframes k2_203{0%{opacity:0}71.093%{opacity:1}100%{opacity:1}}@keyframes k2_204{0%{opacity:0}71.262%{opacity:1}100%{opacity:1}}@keyframes k2_205{0%{opacity:0}71.431%{opacity:1}100%{opacity:1}}@keyframes k2_206{0%{opacity:0}71.600%{opacity:1}100%{opacity:1}}@keyframes k2_207{0%{opacity:0}71.769%{opacity:1}100%{opacity:1}}@keyframes k2_208{0%{opacity:0}71.938%{opacity:1}100%{opacity:1}}@keyframes k2_209{0%{opacity:0}72.107%{opacity:1}100%{opacity:1}}@keyframes k2_210{0%{opacity:0}72.276%{opacity:1}100%{opacity:1}}@keyframes k2_211{0%{opacity:0}72.446%{opacity:1}100%{opacity:1}}@keyframes k2_212{0%{opacity:0}72.615%{opacity:1}100%{opacity:1}}@keyframes k2_213{0%{opacity:0}72.784%{opacity:1}100%{opacity:1}}@keyframes k2_214{0%{opacity:0}72.953%{opacity:1}100%{opacity:1}}@keyframes k2_215{0%{opacity:0}73.122%{opacity:1}100%{opacity:1}}@keyframes k2_216{0%{opacity:0}73.291%{opacity:1}100%{opacity:1}}@keyframes k2_217{0%{opacity:0}73.460%{opacity:1}100%{opacity:1}}@keyframes k2_218{0%{opacity:0}73.629%{opacity:1}100%{opacity:1}}@keyframes k2_219{0%{opacity:0}73.798%{opacity:1}100%{opacity:1}}@keyframes k2_220{0%{opacity:0}73.967%{opacity:1}100%{opacity:1}}@keyframes k2_221{0%{opacity:0}74.136%{opacity:1}100%{opacity:1}}@keyframes k2_222{0%{opacity:0}74.305%{opacity:1}100%{opacity:1}}@keyframes k2_223{0%{opacity:0}74.474%{opacity:1}100%{opacity:1}}@keyframes k2_224{0%{opacity:0}74.643%{opacity:1}100%{opacity:1}}@keyframes k2_225{0%{opacity:0}79.151%{opacity:1}100%{opacity:1}}@keyframes k2_226{0%{opacity:0}79.264%{opacity:1}100%{opacity:1}}@keyframes k2_227{0%{opacity:0}79.376%{opacity:1}100%{opacity:1}}@keyframes k2_228{0%{opacity:0}79.489%{opacity:1}100%{opacity:1}}@keyframes k2_229{0%{opacity:0}79.602%{opacity:1}100%{opacity:1}}@keyframes k2_230{0%{opacity:0}79.715%{opacity:1}100%{opacity:1}}@keyframes k2_231{0%{opacity:0}79.827%{opacity:1}100%{opacity:1}}@keyframes k2_232{0%{opacity:0}79.940%{opacity:1}100%{opacity:1}}@keyframes k2_233{0%{opacity:0}80.053%{opacity:1}100%{opacity:1}}@keyframes k2_234{0%{opacity:0}80.165%{opacity:1}100%{opacity:1}}@keyframes k2_235{0%{opacity:0}80.278%{opacity:1}100%{opacity:1}}@keyframes k2_236{0%{opacity:0}80.391%{opacity:1}100%{opacity:1}}@keyframes k2_237{0%{opacity:0}80.503%{opacity:1}100%{opacity:1}}@keyframes k2_238{0%{opacity:0}80.616%{opacity:1}100%{opacity:1}}@keyframes k2_239{0%{opacity:0}80.729%{opacity:1}100%{opacity:1}}@keyframes k2_240{0%{opacity:0}80.841%{opacity:1}100%{opacity:1}}@keyframes k2_241{0%{opacity:0}86.101%{opacity:1}100%{opacity:1}}@keyframes k2_242{0%{opacity:0}86.213%{opacity:1}100%{opacity:1}}@keyframes k2_243{0%{opacity:0}86.401%{opacity:1}100%{opacity:1}}@keyframes k2_244{0%{opacity:0}86.514%{opacity:1}100%{opacity:1}}@keyframes k2_245{0%{opacity:0}86.627%{opacity:1}100%{opacity:1}}@keyframes k2_246{0%{opacity:0}86.739%{opacity:1}100%{opacity:1}}.s0{animation:scene0 26.62s step-end infinite}.s1{animation:scene1 26.62s step-end infinite}.s2{animation:scene2 26.62s step-end infinite}@keyframes scene0{0%{opacity:0}3.005%{opacity:1}25.789%{opacity:0}100%{opacity:0}}@keyframes scene1{0%{opacity:0}25.789%{opacity:1}61.289%{opacity:0}100%{opacity:0}}@keyframes scene2{0%{opacity:0}61.289%{opacity:1}98.873%{opacity:0}100%{opacity:0}}</style>
 <rect width="796" height="516" rx="12" fill="#0f1716"/>
 <rect width="796" height="32" rx="12" fill="#1a2423"/><rect y="20" width="796" height="12" fill="#1a2423"/>
 <circle cx="20" cy="16" r="6" fill="#ff5f57"/>
 <circle cx="40" cy="16" r="6" fill="#febc2e"/>
 <circle cx="60" cy="16" r="6" fill="#28c840"/>
 <text x="398.0" y="21" text-anchor="middle" font-size="12" fill="#97a19e">jurl — jev × curl</text>
-
-<text x="20" y="44" class="s0" fill="#97a19e" xml:space="preserve">$ </text>
-<text x="36.8" y="44" class="s0 a" style="animation-name:k0_1" fill="#e6eae8" xml:space="preserve">j</text>
-<text x="45.2" y="44" class="s0 a" style="animation-name:k0_2" fill="#e6eae8" xml:space="preserve">u</text>
-<text x="53.6" y="44" class="s0 a" style="animation-name:k0_3" fill="#e6eae8" xml:space="preserve">r</text>
-<text x="62.0" y="44" class="s0 a" style="animation-name:k0_4" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="70.4" y="44" class="s0 a" style="animation-name:k0_5" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="78.8" y="44" class="s0 a" style="animation-name:k0_6" fill="#e6eae8" xml:space="preserve">a</text>
-<text x="87.2" y="44" class="s0 a" style="animation-name:k0_7" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="95.6" y="44" class="s0 a" style="animation-name:k0_8" fill="#e6eae8" xml:space="preserve">i</text>
-<text x="104.0" y="44" class="s0 a" style="animation-name:k0_9" fill="#e6eae8" xml:space="preserve">.</text>
-<text x="112.4" y="44" class="s0 a" style="animation-name:k0_10" fill="#e6eae8" xml:space="preserve">a</text>
-<text x="120.8" y="44" class="s0 a" style="animation-name:k0_11" fill="#e6eae8" xml:space="preserve">g</text>
-<text x="129.2" y="44" class="s0 a" style="animation-name:k0_12" fill="#e6eae8" xml:space="preserve">i</text>
-<text x="137.6" y="44" class="s0 a" style="animation-name:k0_13" fill="#e6eae8" xml:space="preserve">f</text>
-<text x="146.0" y="44" class="s0 a" style="animation-name:k0_14" fill="#e6eae8" xml:space="preserve">y</text>
-<text x="154.4" y="44" class="s0 a" style="animation-name:k0_15" fill="#e6eae8" xml:space="preserve">.</text>
-<text x="162.8" y="44" class="s0 a" style="animation-name:k0_16" fill="#e6eae8" xml:space="preserve">i</text>
-<text x="171.2" y="44" class="s0 a" style="animation-name:k0_17" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="179.6" y="44" class="s0 a" style="animation-name:k0_18" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="188.0" y="44" class="s0 a" style="animation-name:k0_19" fill="#e6eae8" xml:space="preserve">n</text>
-<text x="196.4" y="44" class="s0 a" style="animation-name:k0_20" fill="#e6eae8" xml:space="preserve">a</text>
-<text x="204.8" y="44" class="s0 a" style="animation-name:k0_21" fill="#e6eae8" xml:space="preserve">m</text>
-<text x="213.2" y="44" class="s0 a" style="animation-name:k0_22" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="221.6" y="44" class="s0 a" style="animation-name:k0_23" fill="#e6eae8" xml:space="preserve">=</text>
-<text x="230.0" y="44" class="s0 a" style="animation-name:k0_24" fill="#e6eae8" xml:space="preserve">=</text>
-<text x="238.4" y="44" class="s0 a" style="animation-name:k0_25" fill="#e6eae8" xml:space="preserve">m</text>
-<text x="246.8" y="44" class="s0 a" style="animation-name:k0_26" fill="#e6eae8" xml:space="preserve">i</text>
-<text x="255.2" y="44" class="s0 a" style="animation-name:k0_27" fill="#e6eae8" xml:space="preserve">c</text>
-<text x="263.6" y="44" class="s0 a" style="animation-name:k0_28" fill="#e6eae8" xml:space="preserve">h</text>
-<text x="272.0" y="44" class="s0 a" style="animation-name:k0_29" fill="#e6eae8" xml:space="preserve">a</text>
-<text x="280.4" y="44" class="s0 a" style="animation-name:k0_30" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="288.8" y="44" class="s0 a" style="animation-name:k0_31" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="20" y="63" class="s0 a" style="animation-name:k0_32" xml:space="preserve"><tspan fill="#8fd9be">HTTP/2 200</tspan><tspan fill="#97a19e">  · 690ms</tspan></text>
-<text x="20" y="82" class="s0 a" style="animation-name:k0_33" xml:space="preserve"><tspan fill="#7ed6d4">server</tspan><tspan fill="#e6eae8">: nginx/1.16.1</tspan></text>
-<text x="20" y="101" class="s0 a" style="animation-name:k0_34" xml:space="preserve"><tspan fill="#7ed6d4">date</tspan><tspan fill="#e6eae8">: Tue, 22 Sep 2026 01:41:56 GMT</tspan></text>
-<text x="20" y="120" class="s0 a" style="animation-name:k0_35" xml:space="preserve"><tspan fill="#7ed6d4">content-type</tspan><tspan fill="#e6eae8">: application/json; charset=utf-8</tspan></text>
-<text x="20" y="139" class="s0 a" style="animation-name:k0_36" xml:space="preserve"><tspan fill="#7ed6d4">content-length</tspan><tspan fill="#e6eae8">: 42</tspan></text>
-<text x="20" y="158" class="s0 a" style="animation-name:k0_37" xml:space="preserve"><tspan fill="#7ed6d4">vary</tspan><tspan fill="#e6eae8">: accept-encoding</tspan></text>
-<text x="20" y="177" class="s0 a" style="animation-name:k0_38" xml:space="preserve"><tspan fill="#7ed6d4">cache-control</tspan><tspan fill="#e6eae8">: max-age=0, private, must-revalidate</tspan></text>
-<text x="20" y="196" class="s0 a" style="animation-name:k0_39" xml:space="preserve"><tspan fill="#7ed6d4">x-request-id</tspan><tspan fill="#e6eae8">: GNeBF97lTkdsG3oA2xoE</tspan></text>
-<text x="20" y="215" class="s0 a" style="animation-name:k0_40" xml:space="preserve"><tspan fill="#7ed6d4">access-control-allow-credentials</tspan><tspan fill="#e6eae8">: true</tspan></text>
-<text x="20" y="234" class="s0 a" style="animation-name:k0_41" xml:space="preserve"><tspan fill="#7ed6d4">access-control-allow-origin</tspan><tspan fill="#e6eae8">: *</tspan></text>
-<text x="20" y="253" class="s0 a" style="animation-name:k0_42" xml:space="preserve"><tspan fill="#7ed6d4">access-control-expose-headers</tspan><tspan fill="#e6eae8">: x-rate-limit-limit,x-rate-limit-remaining,x-rate-limit-res…</tspan></text>
-<text x="20" y="272" class="s0 a" style="animation-name:k0_43" xml:space="preserve"><tspan fill="#7ed6d4">x-rate-limit-limit</tspan><tspan fill="#e6eae8">: 25</tspan></text>
-<text x="20" y="291" class="s0 a" style="animation-name:k0_44" xml:space="preserve"><tspan fill="#7ed6d4">x-rate-limit-remaining</tspan><tspan fill="#e6eae8">: 10</tspan></text>
-<text x="20" y="310" class="s0 a" style="animation-name:k0_45" xml:space="preserve"><tspan fill="#7ed6d4">x-rate-limit-reset</tspan><tspan fill="#e6eae8">: 80284</tspan></text>
-<text x="20" y="329" class="s0 a" style="animation-name:k0_46" xml:space="preserve"></text>
-<text x="20" y="348" class="s0 a" style="animation-name:k0_47" xml:space="preserve"><tspan fill="#e6eae8">{</tspan></text>
-<text x="20" y="367" class="s0 a" style="animation-name:k0_48" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;count&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#d3a4f7">311558</tspan><tspan fill="#e6eae8">,</tspan></text>
-<text x="20" y="386" class="s0 a" style="animation-name:k0_49" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;name&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#8fd9be">&quot;michael&quot;</tspan><tspan fill="#e6eae8">,</tspan></text>
-<text x="20" y="405" class="s0 a" style="animation-name:k0_50" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;age&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#d3a4f7">57</tspan></text>
-<text x="20" y="424" class="s0 a" style="animation-name:k0_51" xml:space="preserve"><tspan fill="#e6eae8">}</tspan></text>
-<text x="20" y="44" class="s1" fill="#97a19e" xml:space="preserve">$ </text>
-<text x="36.8" y="44" class="s1 a" style="animation-name:k1_53" fill="#e6eae8" xml:space="preserve">j</text>
-<text x="45.2" y="44" class="s1 a" style="animation-name:k1_54" fill="#e6eae8" xml:space="preserve">u</text>
-<text x="53.6" y="44" class="s1 a" style="animation-name:k1_55" fill="#e6eae8" xml:space="preserve">r</text>
-<text x="62.0" y="44" class="s1 a" style="animation-name:k1_56" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="70.4" y="44" class="s1 a" style="animation-name:k1_57" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="78.8" y="44" class="s1 a" style="animation-name:k1_58" fill="#e6eae8" xml:space="preserve">j</text>
-<text x="87.2" y="44" class="s1 a" style="animation-name:k1_59" fill="#e6eae8" xml:space="preserve">s</text>
-<text x="95.6" y="44" class="s1 a" style="animation-name:k1_60" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="104.0" y="44" class="s1 a" style="animation-name:k1_61" fill="#e6eae8" xml:space="preserve">n</text>
-<text x="112.4" y="44" class="s1 a" style="animation-name:k1_62" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="120.8" y="44" class="s1 a" style="animation-name:k1_63" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="129.2" y="44" class="s1 a" style="animation-name:k1_64" fill="#e6eae8" xml:space="preserve">a</text>
-<text x="137.6" y="44" class="s1 a" style="animation-name:k1_65" fill="#e6eae8" xml:space="preserve">c</text>
-<text x="146.0" y="44" class="s1 a" style="animation-name:k1_66" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="154.4" y="44" class="s1 a" style="animation-name:k1_67" fill="#e6eae8" xml:space="preserve">h</text>
-<text x="162.8" y="44" class="s1 a" style="animation-name:k1_68" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="171.2" y="44" class="s1 a" style="animation-name:k1_69" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="179.6" y="44" class="s1 a" style="animation-name:k1_70" fill="#e6eae8" xml:space="preserve">d</text>
-<text x="188.0" y="44" class="s1 a" style="animation-name:k1_71" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="196.4" y="44" class="s1 a" style="animation-name:k1_72" fill="#e6eae8" xml:space="preserve">r</text>
-<text x="204.8" y="44" class="s1 a" style="animation-name:k1_73" fill="#e6eae8" xml:space="preserve">.</text>
-<text x="213.2" y="44" class="s1 a" style="animation-name:k1_74" fill="#e6eae8" xml:space="preserve">t</text>
-<text x="221.6" y="44" class="s1 a" style="animation-name:k1_75" fill="#e6eae8" xml:space="preserve">y</text>
-<text x="230.0" y="44" class="s1 a" style="animation-name:k1_76" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="238.4" y="44" class="s1 a" style="animation-name:k1_77" fill="#e6eae8" xml:space="preserve">i</text>
-<text x="246.8" y="44" class="s1 a" style="animation-name:k1_78" fill="#e6eae8" xml:space="preserve">c</text>
-<text x="255.2" y="44" class="s1 a" style="animation-name:k1_79" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="263.6" y="44" class="s1 a" style="animation-name:k1_80" fill="#e6eae8" xml:space="preserve">d</text>
-<text x="272.0" y="44" class="s1 a" style="animation-name:k1_81" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="280.4" y="44" class="s1 a" style="animation-name:k1_82" fill="#e6eae8" xml:space="preserve">.</text>
-<text x="288.8" y="44" class="s1 a" style="animation-name:k1_83" fill="#e6eae8" xml:space="preserve">c</text>
-<text x="297.2" y="44" class="s1 a" style="animation-name:k1_84" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="305.6" y="44" class="s1 a" style="animation-name:k1_85" fill="#e6eae8" xml:space="preserve">m</text>
-<text x="314.0" y="44" class="s1 a" style="animation-name:k1_86" fill="#e6eae8" xml:space="preserve">/</text>
-<text x="322.4" y="44" class="s1 a" style="animation-name:k1_87" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="330.8" y="44" class="s1 a" style="animation-name:k1_88" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="339.2" y="44" class="s1 a" style="animation-name:k1_89" fill="#e6eae8" xml:space="preserve">s</text>
-<text x="347.6" y="44" class="s1 a" style="animation-name:k1_90" fill="#e6eae8" xml:space="preserve">t</text>
-<text x="356.0" y="44" class="s1 a" style="animation-name:k1_91" fill="#e6eae8" xml:space="preserve">s</text>
-<text x="364.4" y="44" class="s1 a" style="animation-name:k1_92" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="372.8" y="44" class="s1 a" style="animation-name:k1_93" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="381.2" y="44" class="s1 a" style="animation-name:k1_94" fill="#e6eae8" xml:space="preserve">s</text>
-<text x="389.6" y="44" class="s1 a" style="animation-name:k1_95" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="398.0" y="44" class="s1 a" style="animation-name:k1_96" fill="#e6eae8" xml:space="preserve">t</text>
-<text x="406.4" y="44" class="s1 a" style="animation-name:k1_97" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="414.8" y="44" class="s1 a" style="animation-name:k1_98" fill="#e6eae8" xml:space="preserve">u</text>
-<text x="423.2" y="44" class="s1 a" style="animation-name:k1_99" fill="#e6eae8" xml:space="preserve">s</text>
-<text x="431.6" y="44" class="s1 a" style="animation-name:k1_100" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="440.0" y="44" class="s1 a" style="animation-name:k1_101" fill="#e6eae8" xml:space="preserve">r</text>
-<text x="448.4" y="44" class="s1 a" style="animation-name:k1_102" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="456.8" y="44" class="s1 a" style="animation-name:k1_103" fill="#e6eae8" xml:space="preserve">m</text>
-<text x="465.2" y="44" class="s1 a" style="animation-name:k1_104" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="473.6" y="44" class="s1 a" style="animation-name:k1_105" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="482.0" y="44" class="s1 a" style="animation-name:k1_106" fill="#e6eae8" xml:space="preserve">r</text>
-<text x="490.4" y="44" class="s1 a" style="animation-name:k1_107" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="498.8" y="44" class="s1 a" style="animation-name:k1_108" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="507.2" y="44" class="s1 a" style="animation-name:k1_109" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="515.6" y="44" class="s1 a" style="animation-name:k1_110" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="524.0" y="44" class="s1 a" style="animation-name:k1_111" fill="#e6eae8" xml:space="preserve">a</text>
-<text x="532.4" y="44" class="s1 a" style="animation-name:k1_112" fill="#e6eae8" xml:space="preserve">d</text>
-<text x="540.8" y="44" class="s1 a" style="animation-name:k1_113" fill="#e6eae8" xml:space="preserve">m</text>
-<text x="549.2" y="44" class="s1 a" style="animation-name:k1_114" fill="#e6eae8" xml:space="preserve">i</text>
-<text x="557.6" y="44" class="s1 a" style="animation-name:k1_115" fill="#e6eae8" xml:space="preserve">n</text>
-<text x="566.0" y="44" class="s1 a" style="animation-name:k1_116" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="574.4" y="44" class="s1 a" style="animation-name:k1_117" fill="#e6eae8" xml:space="preserve">-</text>
-<text x="582.8" y="44" class="s1 a" style="animation-name:k1_118" fill="#e6eae8" xml:space="preserve">-</text>
-<text x="591.2" y="44" class="s1 a" style="animation-name:k1_119" fill="#e6eae8" xml:space="preserve">b</text>
-<text x="599.6" y="44" class="s1 a" style="animation-name:k1_120" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="608.0" y="44" class="s1 a" style="animation-name:k1_121" fill="#e6eae8" xml:space="preserve">d</text>
-<text x="616.4" y="44" class="s1 a" style="animation-name:k1_122" fill="#e6eae8" xml:space="preserve">y</text>
-<text x="20" y="63" class="s1 a" style="animation-name:k1_123" xml:space="preserve"></text>
-<text x="20" y="82" class="s1 a" style="animation-name:k1_124" xml:space="preserve"><tspan fill="#e6eae8" font-weight="700">curl</tspan><tspan fill="#e6eae8"> \</tspan></text>
-<text x="20" y="101" class="s1 a" style="animation-name:k1_125" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-sS</tspan><tspan fill="#e6eae8"> \</tspan></text>
-<text x="20" y="120" class="s1 a" style="animation-name:k1_126" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-X</tspan><tspan fill="#e6eae8"> POST \</tspan></text>
-<text x="20" y="139" class="s1 a" style="animation-name:k1_127" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7" font-weight="700">https://jsonplaceholder.typicode.com/posts</tspan><tspan fill="#e6eae8"> \</tspan></text>
-<text x="20" y="158" class="s1 a" style="animation-name:k1_128" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-H</tspan><tspan fill="#e6eae8"> &#x27;Content-Type: application/json&#x27; \</tspan></text>
-<text x="20" y="177" class="s1 a" style="animation-name:k1_129" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-H</tspan><tspan fill="#e6eae8"> &#x27;Accept: application/json&#x27; \</tspan></text>
-<text x="20" y="196" class="s1 a" style="animation-name:k1_130" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">--data</tspan><tspan fill="#e6eae8"> &#x27;{&quot;user&quot;:&quot;me&quot;,&quot;role&quot;:&quot;admin&quot;}&#x27;</tspan></text>
-<text x="20" y="215" class="s1 a" style="animation-name:k1_131" xml:space="preserve"></text>
-<text x="20" y="234" class="s1 a" style="animation-name:k1_132" xml:space="preserve"><tspan fill="#f0c96a">run this? (interpreted by jev, confidence 0.78)</tspan><tspan fill="#e6eae8"> </tspan><tspan fill="#97a19e">[Y/n/e]</tspan><tspan fill="#e6eae8"> </tspan></text>
-<text x="20" y="253" class="s1 a" style="animation-name:k1_133" xml:space="preserve"></text>
-<text x="20" y="272" class="s1 a" style="animation-name:k1_134" xml:space="preserve"><tspan fill="#8fd9be">HTTP 201</tspan><tspan fill="#97a19e">  · 211ms</tspan></text>
-<text x="20" y="291" class="s1 a" style="animation-name:k1_135" xml:space="preserve"><tspan fill="#e6eae8">{</tspan></text>
-<text x="20" y="310" class="s1 a" style="animation-name:k1_136" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;user&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#8fd9be">&quot;me&quot;</tspan><tspan fill="#e6eae8">,</tspan></text>
-<text x="20" y="329" class="s1 a" style="animation-name:k1_137" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;role&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#8fd9be">&quot;admin&quot;</tspan><tspan fill="#e6eae8">,</tspan></text>
-<text x="20" y="348" class="s1 a" style="animation-name:k1_138" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;id&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#d3a4f7">101</tspan></text>
-<text x="20" y="367" class="s1 a" style="animation-name:k1_139" xml:space="preserve"><tspan fill="#e6eae8">}</tspan></text>
-<text x="20" y="44" class="s2" fill="#97a19e" xml:space="preserve">$ </text>
-<text x="36.8" y="44" class="s2 a" style="animation-name:k2_141" fill="#e6eae8" xml:space="preserve">j</text>
-<text x="45.2" y="44" class="s2 a" style="animation-name:k2_142" fill="#e6eae8" xml:space="preserve">u</text>
-<text x="53.6" y="44" class="s2 a" style="animation-name:k2_143" fill="#e6eae8" xml:space="preserve">r</text>
-<text x="62.0" y="44" class="s2 a" style="animation-name:k2_144" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="70.4" y="44" class="s2 a" style="animation-name:k2_145" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="78.8" y="44" class="s2 a" style="animation-name:k2_146" fill="#e6eae8" xml:space="preserve">j</text>
-<text x="87.2" y="44" class="s2 a" style="animation-name:k2_147" fill="#e6eae8" xml:space="preserve">s</text>
-<text x="95.6" y="44" class="s2 a" style="animation-name:k2_148" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="104.0" y="44" class="s2 a" style="animation-name:k2_149" fill="#e6eae8" xml:space="preserve">n</text>
-<text x="112.4" y="44" class="s2 a" style="animation-name:k2_150" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="120.8" y="44" class="s2 a" style="animation-name:k2_151" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="129.2" y="44" class="s2 a" style="animation-name:k2_152" fill="#e6eae8" xml:space="preserve">a</text>
-<text x="137.6" y="44" class="s2 a" style="animation-name:k2_153" fill="#e6eae8" xml:space="preserve">c</text>
-<text x="146.0" y="44" class="s2 a" style="animation-name:k2_154" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="154.4" y="44" class="s2 a" style="animation-name:k2_155" fill="#e6eae8" xml:space="preserve">h</text>
-<text x="162.8" y="44" class="s2 a" style="animation-name:k2_156" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="171.2" y="44" class="s2 a" style="animation-name:k2_157" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="179.6" y="44" class="s2 a" style="animation-name:k2_158" fill="#e6eae8" xml:space="preserve">d</text>
-<text x="188.0" y="44" class="s2 a" style="animation-name:k2_159" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="196.4" y="44" class="s2 a" style="animation-name:k2_160" fill="#e6eae8" xml:space="preserve">r</text>
-<text x="204.8" y="44" class="s2 a" style="animation-name:k2_161" fill="#e6eae8" xml:space="preserve">.</text>
-<text x="213.2" y="44" class="s2 a" style="animation-name:k2_162" fill="#e6eae8" xml:space="preserve">t</text>
-<text x="221.6" y="44" class="s2 a" style="animation-name:k2_163" fill="#e6eae8" xml:space="preserve">y</text>
-<text x="230.0" y="44" class="s2 a" style="animation-name:k2_164" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="238.4" y="44" class="s2 a" style="animation-name:k2_165" fill="#e6eae8" xml:space="preserve">i</text>
-<text x="246.8" y="44" class="s2 a" style="animation-name:k2_166" fill="#e6eae8" xml:space="preserve">c</text>
-<text x="255.2" y="44" class="s2 a" style="animation-name:k2_167" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="263.6" y="44" class="s2 a" style="animation-name:k2_168" fill="#e6eae8" xml:space="preserve">d</text>
-<text x="272.0" y="44" class="s2 a" style="animation-name:k2_169" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="280.4" y="44" class="s2 a" style="animation-name:k2_170" fill="#e6eae8" xml:space="preserve">.</text>
-<text x="288.8" y="44" class="s2 a" style="animation-name:k2_171" fill="#e6eae8" xml:space="preserve">c</text>
-<text x="297.2" y="44" class="s2 a" style="animation-name:k2_172" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="305.6" y="44" class="s2 a" style="animation-name:k2_173" fill="#e6eae8" xml:space="preserve">m</text>
-<text x="314.0" y="44" class="s2 a" style="animation-name:k2_174" fill="#e6eae8" xml:space="preserve">/</text>
-<text x="322.4" y="44" class="s2 a" style="animation-name:k2_175" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="330.8" y="44" class="s2 a" style="animation-name:k2_176" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="339.2" y="44" class="s2 a" style="animation-name:k2_177" fill="#e6eae8" xml:space="preserve">s</text>
-<text x="347.6" y="44" class="s2 a" style="animation-name:k2_178" fill="#e6eae8" xml:space="preserve">t</text>
-<text x="356.0" y="44" class="s2 a" style="animation-name:k2_179" fill="#e6eae8" xml:space="preserve">s</text>
-<text x="364.4" y="44" class="s2 a" style="animation-name:k2_180" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="372.8" y="44" class="s2 a" style="animation-name:k2_181" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="381.2" y="44" class="s2 a" style="animation-name:k2_182" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="389.6" y="44" class="s2 a" style="animation-name:k2_183" fill="#e6eae8" xml:space="preserve">s</text>
-<text x="398.0" y="44" class="s2 a" style="animation-name:k2_184" fill="#e6eae8" xml:space="preserve">t</text>
-<text x="406.4" y="44" class="s2 a" style="animation-name:k2_185" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="414.8" y="44" class="s2 a" style="animation-name:k2_186" fill="#e6eae8" xml:space="preserve">t</text>
-<text x="423.2" y="44" class="s2 a" style="animation-name:k2_187" fill="#e6eae8" xml:space="preserve">i</text>
-<text x="431.6" y="44" class="s2 a" style="animation-name:k2_188" fill="#e6eae8" xml:space="preserve">t</text>
-<text x="440.0" y="44" class="s2 a" style="animation-name:k2_189" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="448.4" y="44" class="s2 a" style="animation-name:k2_190" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="456.8" y="44" class="s2 a" style="animation-name:k2_191" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="465.2" y="44" class="s2 a" style="animation-name:k2_192" fill="#e6eae8" xml:space="preserve">h</text>
-<text x="473.6" y="44" class="s2 a" style="animation-name:k2_193" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="482.0" y="44" class="s2 a" style="animation-name:k2_194" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="490.4" y="44" class="s2 a" style="animation-name:k2_195" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="498.8" y="44" class="s2 a" style="animation-name:k2_196" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="507.2" y="44" class="s2 a" style="animation-name:k2_197" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="515.6" y="44" class="s2 a" style="animation-name:k2_198" fill="#e6eae8" xml:space="preserve">w</text>
-<text x="524.0" y="44" class="s2 a" style="animation-name:k2_199" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="532.4" y="44" class="s2 a" style="animation-name:k2_200" fill="#e6eae8" xml:space="preserve">r</text>
-<text x="540.8" y="44" class="s2 a" style="animation-name:k2_201" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="549.2" y="44" class="s2 a" style="animation-name:k2_202" fill="#e6eae8" xml:space="preserve">d</text>
-<text x="557.6" y="44" class="s2 a" style="animation-name:k2_203" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="566.0" y="44" class="s2 a" style="animation-name:k2_204" fill="#e6eae8" xml:space="preserve">-</text>
-<text x="574.4" y="44" class="s2 a" style="animation-name:k2_205" fill="#e6eae8" xml:space="preserve">-</text>
-<text x="582.8" y="44" class="s2 a" style="animation-name:k2_206" fill="#e6eae8" xml:space="preserve">e</text>
-<text x="591.2" y="44" class="s2 a" style="animation-name:k2_207" fill="#e6eae8" xml:space="preserve">x</text>
-<text x="599.6" y="44" class="s2 a" style="animation-name:k2_208" fill="#e6eae8" xml:space="preserve">p</text>
-<text x="608.0" y="44" class="s2 a" style="animation-name:k2_209" fill="#e6eae8" xml:space="preserve">l</text>
-<text x="616.4" y="44" class="s2 a" style="animation-name:k2_210" fill="#e6eae8" xml:space="preserve">a</text>
-<text x="624.8" y="44" class="s2 a" style="animation-name:k2_211" fill="#e6eae8" xml:space="preserve">i</text>
-<text x="633.2" y="44" class="s2 a" style="animation-name:k2_212" fill="#e6eae8" xml:space="preserve">n</text>
-<text x="641.6" y="44" class="s2 a" style="animation-name:k2_213" fill="#e6eae8" xml:space="preserve"> </text>
-<text x="650.0" y="44" class="s2 a" style="animation-name:k2_214" fill="#e6eae8" xml:space="preserve">-</text>
-<text x="658.4" y="44" class="s2 a" style="animation-name:k2_215" fill="#e6eae8" xml:space="preserve">-</text>
-<text x="666.8" y="44" class="s2 a" style="animation-name:k2_216" fill="#e6eae8" xml:space="preserve">b</text>
-<text x="675.2" y="44" class="s2 a" style="animation-name:k2_217" fill="#e6eae8" xml:space="preserve">o</text>
-<text x="683.6" y="44" class="s2 a" style="animation-name:k2_218" fill="#e6eae8" xml:space="preserve">d</text>
-<text x="692.0" y="44" class="s2 a" style="animation-name:k2_219" fill="#e6eae8" xml:space="preserve">y</text>
-<text x="20" y="63" class="s2 a" style="animation-name:k2_220" xml:space="preserve"><tspan fill="#97a19e">word                                role             conf  by    note</tspan></text>
-<text x="20" y="82" class="s2 a" style="animation-name:k2_221" xml:space="preserve"><tspan fill="#e6eae8">jsonplaceholder.typicode.com/posts  </tspan><tspan fill="#7aa2f7">url</tspan><tspan fill="#e6eae8">              </tspan><tspan fill="#8fd9be">1.00</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">rule</tspan><tspan fill="#e6eae8">  </tspan></text>
-<text x="20" y="101" class="s2 a" style="animation-name:k2_222" xml:space="preserve"><tspan fill="#e6eae8">post                                </tspan><tspan fill="#d3a4f7">method</tspan><tspan fill="#e6eae8">           </tspan><tspan fill="#8fd9be">1.00</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">rule</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">→ POST</tspan></text>
-<text x="20" y="120" class="s2 a" style="animation-name:k2_223" xml:space="preserve"><tspan fill="#e6eae8">title                               </tspan><tspan fill="#8fd9be">field_key</tspan><tspan fill="#e6eae8">        </tspan><tspan fill="#8fd9be">1.00</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">jev </tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">field_key 1.00, body_fil…</tspan></text>
-<text x="20" y="139" class="s2 a" style="animation-name:k2_224" xml:space="preserve"><tspan fill="#e6eae8">hello world                         </tspan><tspan fill="#8fd9be">field_value</tspan><tspan fill="#e6eae8">      </tspan><tspan fill="#8fd9be">0.85</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">jev </tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">joined &quot;world&quot; p=0.85; f…</tspan></text>
-<text x="20" y="158" class="s2 a" style="animation-name:k2_225" xml:space="preserve"><tspan fill="#97a19e">jev: typesafe/jev-1.13-20260917 · 14 questions · 360 ms · 2418 in / 921 out tokens · $0.0…</tspan></text>
-<text x="20" y="177" class="s2 a" style="animation-name:k2_226" xml:space="preserve"></text>
-<text x="20" y="196" class="s2 a" style="animation-name:k2_227" xml:space="preserve"><tspan fill="#e6eae8" font-weight="700">curl</tspan><tspan fill="#e6eae8"> \</tspan></text>
-<text x="20" y="215" class="s2 a" style="animation-name:k2_228" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-sS</tspan><tspan fill="#e6eae8"> \</tspan></text>
-<text x="20" y="234" class="s2 a" style="animation-name:k2_229" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-X</tspan><tspan fill="#e6eae8"> POST \</tspan></text>
-<text x="20" y="253" class="s2 a" style="animation-name:k2_230" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7" font-weight="700">https://jsonplaceholder.typicode.com/posts</tspan><tspan fill="#e6eae8"> \</tspan></text>
-<text x="20" y="272" class="s2 a" style="animation-name:k2_231" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-H</tspan><tspan fill="#e6eae8"> &#x27;Content-Type: application/json&#x27; \</tspan></text>
-<text x="20" y="291" class="s2 a" style="animation-name:k2_232" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-H</tspan><tspan fill="#e6eae8"> &#x27;Accept: application/json&#x27; \</tspan></text>
-<text x="20" y="310" class="s2 a" style="animation-name:k2_233" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">--data</tspan><tspan fill="#e6eae8"> &#x27;{&quot;title&quot;:&quot;hello world&quot;}&#x27;</tspan></text>
-<text x="20" y="329" class="s2 a" style="animation-name:k2_234" xml:space="preserve"></text>
-<text x="20" y="348" class="s2 a" style="animation-name:k2_235" xml:space="preserve"><tspan fill="#f0c96a">run this? (interpreted by jev, confidence 0.85)</tspan><tspan fill="#e6eae8"> </tspan><tspan fill="#97a19e">[Y/n/e]</tspan><tspan fill="#e6eae8"> </tspan></text>
-<text x="20" y="367" class="s2 a" style="animation-name:k2_236" xml:space="preserve"></text>
-<text x="20" y="386" class="s2 a" style="animation-name:k2_237" xml:space="preserve"><tspan fill="#8fd9be">HTTP 201</tspan><tspan fill="#97a19e">  · 498ms</tspan></text>
-<text x="20" y="405" class="s2 a" style="animation-name:k2_238" xml:space="preserve"><tspan fill="#e6eae8">{</tspan></text>
-<text x="20" y="424" class="s2 a" style="animation-name:k2_239" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;title&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#8fd9be">&quot;hello world&quot;</tspan><tspan fill="#e6eae8">,</tspan></text>
-<text x="20" y="443" class="s2 a" style="animation-name:k2_240" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;id&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#d3a4f7">101</tspan></text>
-<text x="20" y="462" class="s2 a" style="animation-name:k2_241" xml:space="preserve"><tspan fill="#e6eae8">}</tspan></text>
+<g class="s0" data-scene="0">
+<text x="20" y="44" fill="#97a19e" xml:space="preserve">$ </text>
+<text x="36.8" y="44" class="a" style="animation-name:k0_2" fill="#e6eae8" xml:space="preserve">j</text>
+<text x="45.2" y="44" class="a" style="animation-name:k0_3" fill="#e6eae8" xml:space="preserve">u</text>
+<text x="53.6" y="44" class="a" style="animation-name:k0_4" fill="#e6eae8" xml:space="preserve">r</text>
+<text x="62.0" y="44" class="a" style="animation-name:k0_5" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="70.4" y="44" class="a" style="animation-name:k0_6" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="78.8" y="44" class="a" style="animation-name:k0_7" fill="#e6eae8" xml:space="preserve">a</text>
+<text x="87.2" y="44" class="a" style="animation-name:k0_8" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="95.6" y="44" class="a" style="animation-name:k0_9" fill="#e6eae8" xml:space="preserve">i</text>
+<text x="104.0" y="44" class="a" style="animation-name:k0_10" fill="#e6eae8" xml:space="preserve">.</text>
+<text x="112.4" y="44" class="a" style="animation-name:k0_11" fill="#e6eae8" xml:space="preserve">a</text>
+<text x="120.8" y="44" class="a" style="animation-name:k0_12" fill="#e6eae8" xml:space="preserve">g</text>
+<text x="129.2" y="44" class="a" style="animation-name:k0_13" fill="#e6eae8" xml:space="preserve">i</text>
+<text x="137.6" y="44" class="a" style="animation-name:k0_14" fill="#e6eae8" xml:space="preserve">f</text>
+<text x="146.0" y="44" class="a" style="animation-name:k0_15" fill="#e6eae8" xml:space="preserve">y</text>
+<text x="154.4" y="44" class="a" style="animation-name:k0_16" fill="#e6eae8" xml:space="preserve">.</text>
+<text x="162.8" y="44" class="a" style="animation-name:k0_17" fill="#e6eae8" xml:space="preserve">i</text>
+<text x="171.2" y="44" class="a" style="animation-name:k0_18" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="179.6" y="44" class="a" style="animation-name:k0_19" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="188.0" y="44" class="a" style="animation-name:k0_20" fill="#e6eae8" xml:space="preserve">n</text>
+<text x="196.4" y="44" class="a" style="animation-name:k0_21" fill="#e6eae8" xml:space="preserve">a</text>
+<text x="204.8" y="44" class="a" style="animation-name:k0_22" fill="#e6eae8" xml:space="preserve">m</text>
+<text x="213.2" y="44" class="a" style="animation-name:k0_23" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="221.6" y="44" class="a" style="animation-name:k0_24" fill="#e6eae8" xml:space="preserve">=</text>
+<text x="230.0" y="44" class="a" style="animation-name:k0_25" fill="#e6eae8" xml:space="preserve">=</text>
+<text x="238.4" y="44" class="a" style="animation-name:k0_26" fill="#e6eae8" xml:space="preserve">m</text>
+<text x="246.8" y="44" class="a" style="animation-name:k0_27" fill="#e6eae8" xml:space="preserve">i</text>
+<text x="255.2" y="44" class="a" style="animation-name:k0_28" fill="#e6eae8" xml:space="preserve">c</text>
+<text x="263.6" y="44" class="a" style="animation-name:k0_29" fill="#e6eae8" xml:space="preserve">h</text>
+<text x="272.0" y="44" class="a" style="animation-name:k0_30" fill="#e6eae8" xml:space="preserve">a</text>
+<text x="280.4" y="44" class="a" style="animation-name:k0_31" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="288.8" y="44" class="a" style="animation-name:k0_32" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="20" y="63" class="a" style="animation-name:k0_33" xml:space="preserve"><tspan fill="#8fd9be">HTTP/2 200</tspan><tspan fill="#97a19e">  · 690ms</tspan></text>
+<text x="20" y="82" class="a" style="animation-name:k0_34" xml:space="preserve"><tspan fill="#7ed6d4">server</tspan><tspan fill="#e6eae8">: nginx/1.16.1</tspan></text>
+<text x="20" y="101" class="a" style="animation-name:k0_35" xml:space="preserve"><tspan fill="#7ed6d4">date</tspan><tspan fill="#e6eae8">: Tue, 22 Sep 2026 01:41:56 GMT</tspan></text>
+<text x="20" y="120" class="a" style="animation-name:k0_36" xml:space="preserve"><tspan fill="#7ed6d4">content-type</tspan><tspan fill="#e6eae8">: application/json; charset=utf-8</tspan></text>
+<text x="20" y="139" class="a" style="animation-name:k0_37" xml:space="preserve"><tspan fill="#7ed6d4">content-length</tspan><tspan fill="#e6eae8">: 42</tspan></text>
+<text x="20" y="158" class="a" style="animation-name:k0_38" xml:space="preserve"><tspan fill="#7ed6d4">vary</tspan><tspan fill="#e6eae8">: accept-encoding</tspan></text>
+<text x="20" y="177" class="a" style="animation-name:k0_39" xml:space="preserve"><tspan fill="#7ed6d4">cache-control</tspan><tspan fill="#e6eae8">: max-age=0, private, must-revalidate</tspan></text>
+<text x="20" y="196" class="a" style="animation-name:k0_40" xml:space="preserve"><tspan fill="#7ed6d4">x-request-id</tspan><tspan fill="#e6eae8">: GNeBF97lTkdsG3oA2xoE</tspan></text>
+<text x="20" y="215" class="a" style="animation-name:k0_41" xml:space="preserve"><tspan fill="#7ed6d4">access-control-allow-credentials</tspan><tspan fill="#e6eae8">: true</tspan></text>
+<text x="20" y="234" class="a" style="animation-name:k0_42" xml:space="preserve"><tspan fill="#7ed6d4">access-control-allow-origin</tspan><tspan fill="#e6eae8">: *</tspan></text>
+<text x="20" y="253" class="a" style="animation-name:k0_43" xml:space="preserve"><tspan fill="#7ed6d4">access-control-expose-headers</tspan><tspan fill="#e6eae8">: x-rate-limit-limit,x-rate-limit-remaining,x-rate-limit-res…</tspan></text>
+<text x="20" y="272" class="a" style="animation-name:k0_44" xml:space="preserve"><tspan fill="#7ed6d4">x-rate-limit-limit</tspan><tspan fill="#e6eae8">: 25</tspan></text>
+<text x="20" y="291" class="a" style="animation-name:k0_45" xml:space="preserve"><tspan fill="#7ed6d4">x-rate-limit-remaining</tspan><tspan fill="#e6eae8">: 10</tspan></text>
+<text x="20" y="310" class="a" style="animation-name:k0_46" xml:space="preserve"><tspan fill="#7ed6d4">x-rate-limit-reset</tspan><tspan fill="#e6eae8">: 80284</tspan></text>
+<text x="20" y="329" class="a" style="animation-name:k0_47" xml:space="preserve"></text>
+<text x="20" y="348" class="a" style="animation-name:k0_48" xml:space="preserve"><tspan fill="#e6eae8">{</tspan></text>
+<text x="20" y="367" class="a" style="animation-name:k0_49" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;count&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#d3a4f7">311558</tspan><tspan fill="#e6eae8">,</tspan></text>
+<text x="20" y="386" class="a" style="animation-name:k0_50" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;name&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#8fd9be">&quot;michael&quot;</tspan><tspan fill="#e6eae8">,</tspan></text>
+<text x="20" y="405" class="a" style="animation-name:k0_51" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;age&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#d3a4f7">57</tspan></text>
+<text x="20" y="424" class="a" style="animation-name:k0_52" xml:space="preserve"><tspan fill="#e6eae8">}</tspan></text>
+</g>
+<g class="s1" data-scene="1">
+<text x="20" y="44" fill="#97a19e" xml:space="preserve">$ </text>
+<text x="36.8" y="44" class="a" style="animation-name:k1_56" fill="#e6eae8" xml:space="preserve">j</text>
+<text x="45.2" y="44" class="a" style="animation-name:k1_57" fill="#e6eae8" xml:space="preserve">u</text>
+<text x="53.6" y="44" class="a" style="animation-name:k1_58" fill="#e6eae8" xml:space="preserve">r</text>
+<text x="62.0" y="44" class="a" style="animation-name:k1_59" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="70.4" y="44" class="a" style="animation-name:k1_60" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="78.8" y="44" class="a" style="animation-name:k1_61" fill="#e6eae8" xml:space="preserve">j</text>
+<text x="87.2" y="44" class="a" style="animation-name:k1_62" fill="#e6eae8" xml:space="preserve">s</text>
+<text x="95.6" y="44" class="a" style="animation-name:k1_63" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="104.0" y="44" class="a" style="animation-name:k1_64" fill="#e6eae8" xml:space="preserve">n</text>
+<text x="112.4" y="44" class="a" style="animation-name:k1_65" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="120.8" y="44" class="a" style="animation-name:k1_66" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="129.2" y="44" class="a" style="animation-name:k1_67" fill="#e6eae8" xml:space="preserve">a</text>
+<text x="137.6" y="44" class="a" style="animation-name:k1_68" fill="#e6eae8" xml:space="preserve">c</text>
+<text x="146.0" y="44" class="a" style="animation-name:k1_69" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="154.4" y="44" class="a" style="animation-name:k1_70" fill="#e6eae8" xml:space="preserve">h</text>
+<text x="162.8" y="44" class="a" style="animation-name:k1_71" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="171.2" y="44" class="a" style="animation-name:k1_72" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="179.6" y="44" class="a" style="animation-name:k1_73" fill="#e6eae8" xml:space="preserve">d</text>
+<text x="188.0" y="44" class="a" style="animation-name:k1_74" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="196.4" y="44" class="a" style="animation-name:k1_75" fill="#e6eae8" xml:space="preserve">r</text>
+<text x="204.8" y="44" class="a" style="animation-name:k1_76" fill="#e6eae8" xml:space="preserve">.</text>
+<text x="213.2" y="44" class="a" style="animation-name:k1_77" fill="#e6eae8" xml:space="preserve">t</text>
+<text x="221.6" y="44" class="a" style="animation-name:k1_78" fill="#e6eae8" xml:space="preserve">y</text>
+<text x="230.0" y="44" class="a" style="animation-name:k1_79" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="238.4" y="44" class="a" style="animation-name:k1_80" fill="#e6eae8" xml:space="preserve">i</text>
+<text x="246.8" y="44" class="a" style="animation-name:k1_81" fill="#e6eae8" xml:space="preserve">c</text>
+<text x="255.2" y="44" class="a" style="animation-name:k1_82" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="263.6" y="44" class="a" style="animation-name:k1_83" fill="#e6eae8" xml:space="preserve">d</text>
+<text x="272.0" y="44" class="a" style="animation-name:k1_84" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="280.4" y="44" class="a" style="animation-name:k1_85" fill="#e6eae8" xml:space="preserve">.</text>
+<text x="288.8" y="44" class="a" style="animation-name:k1_86" fill="#e6eae8" xml:space="preserve">c</text>
+<text x="297.2" y="44" class="a" style="animation-name:k1_87" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="305.6" y="44" class="a" style="animation-name:k1_88" fill="#e6eae8" xml:space="preserve">m</text>
+<text x="314.0" y="44" class="a" style="animation-name:k1_89" fill="#e6eae8" xml:space="preserve">/</text>
+<text x="322.4" y="44" class="a" style="animation-name:k1_90" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="330.8" y="44" class="a" style="animation-name:k1_91" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="339.2" y="44" class="a" style="animation-name:k1_92" fill="#e6eae8" xml:space="preserve">s</text>
+<text x="347.6" y="44" class="a" style="animation-name:k1_93" fill="#e6eae8" xml:space="preserve">t</text>
+<text x="356.0" y="44" class="a" style="animation-name:k1_94" fill="#e6eae8" xml:space="preserve">s</text>
+<text x="364.4" y="44" class="a" style="animation-name:k1_95" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="372.8" y="44" class="a" style="animation-name:k1_96" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="381.2" y="44" class="a" style="animation-name:k1_97" fill="#e6eae8" xml:space="preserve">s</text>
+<text x="389.6" y="44" class="a" style="animation-name:k1_98" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="398.0" y="44" class="a" style="animation-name:k1_99" fill="#e6eae8" xml:space="preserve">t</text>
+<text x="406.4" y="44" class="a" style="animation-name:k1_100" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="414.8" y="44" class="a" style="animation-name:k1_101" fill="#e6eae8" xml:space="preserve">u</text>
+<text x="423.2" y="44" class="a" style="animation-name:k1_102" fill="#e6eae8" xml:space="preserve">s</text>
+<text x="431.6" y="44" class="a" style="animation-name:k1_103" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="440.0" y="44" class="a" style="animation-name:k1_104" fill="#e6eae8" xml:space="preserve">r</text>
+<text x="448.4" y="44" class="a" style="animation-name:k1_105" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="456.8" y="44" class="a" style="animation-name:k1_106" fill="#e6eae8" xml:space="preserve">m</text>
+<text x="465.2" y="44" class="a" style="animation-name:k1_107" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="473.6" y="44" class="a" style="animation-name:k1_108" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="482.0" y="44" class="a" style="animation-name:k1_109" fill="#e6eae8" xml:space="preserve">r</text>
+<text x="490.4" y="44" class="a" style="animation-name:k1_110" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="498.8" y="44" class="a" style="animation-name:k1_111" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="507.2" y="44" class="a" style="animation-name:k1_112" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="515.6" y="44" class="a" style="animation-name:k1_113" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="524.0" y="44" class="a" style="animation-name:k1_114" fill="#e6eae8" xml:space="preserve">a</text>
+<text x="532.4" y="44" class="a" style="animation-name:k1_115" fill="#e6eae8" xml:space="preserve">d</text>
+<text x="540.8" y="44" class="a" style="animation-name:k1_116" fill="#e6eae8" xml:space="preserve">m</text>
+<text x="549.2" y="44" class="a" style="animation-name:k1_117" fill="#e6eae8" xml:space="preserve">i</text>
+<text x="557.6" y="44" class="a" style="animation-name:k1_118" fill="#e6eae8" xml:space="preserve">n</text>
+<text x="566.0" y="44" class="a" style="animation-name:k1_119" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="574.4" y="44" class="a" style="animation-name:k1_120" fill="#e6eae8" xml:space="preserve">-</text>
+<text x="582.8" y="44" class="a" style="animation-name:k1_121" fill="#e6eae8" xml:space="preserve">-</text>
+<text x="591.2" y="44" class="a" style="animation-name:k1_122" fill="#e6eae8" xml:space="preserve">b</text>
+<text x="599.6" y="44" class="a" style="animation-name:k1_123" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="608.0" y="44" class="a" style="animation-name:k1_124" fill="#e6eae8" xml:space="preserve">d</text>
+<text x="616.4" y="44" class="a" style="animation-name:k1_125" fill="#e6eae8" xml:space="preserve">y</text>
+<text x="20" y="63" class="a" style="animation-name:k1_126" xml:space="preserve"></text>
+<text x="20" y="82" class="a" style="animation-name:k1_127" xml:space="preserve"><tspan fill="#e6eae8" font-weight="700">curl</tspan><tspan fill="#e6eae8"> \</tspan></text>
+<text x="20" y="101" class="a" style="animation-name:k1_128" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-sS</tspan><tspan fill="#e6eae8"> \</tspan></text>
+<text x="20" y="120" class="a" style="animation-name:k1_129" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-X</tspan><tspan fill="#e6eae8"> POST \</tspan></text>
+<text x="20" y="139" class="a" style="animation-name:k1_130" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7" font-weight="700">https://jsonplaceholder.typicode.com/posts</tspan><tspan fill="#e6eae8"> \</tspan></text>
+<text x="20" y="158" class="a" style="animation-name:k1_131" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-H</tspan><tspan fill="#e6eae8"> &#x27;Content-Type: application/json&#x27; \</tspan></text>
+<text x="20" y="177" class="a" style="animation-name:k1_132" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-H</tspan><tspan fill="#e6eae8"> &#x27;Accept: application/json&#x27; \</tspan></text>
+<text x="20" y="196" class="a" style="animation-name:k1_133" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">--data</tspan><tspan fill="#e6eae8"> &#x27;{&quot;user&quot;:&quot;me&quot;,&quot;role&quot;:&quot;admin&quot;}&#x27;</tspan></text>
+<text x="20" y="215" class="a" style="animation-name:k1_134" xml:space="preserve"></text>
+<text x="20" y="234" class="a" style="animation-name:k1_135" xml:space="preserve"><tspan fill="#f0c96a">run this? (interpreted by jev, confidence 0.78)</tspan><tspan fill="#e6eae8"> </tspan><tspan fill="#97a19e">[Y/n/e]</tspan><tspan fill="#e6eae8"> </tspan></text>
+<text x="20" y="253" class="a" style="animation-name:k1_136" xml:space="preserve"></text>
+<text x="20" y="272" class="a" style="animation-name:k1_137" xml:space="preserve"><tspan fill="#8fd9be">HTTP 201</tspan><tspan fill="#97a19e">  · 211ms</tspan></text>
+<text x="20" y="291" class="a" style="animation-name:k1_138" xml:space="preserve"><tspan fill="#e6eae8">{</tspan></text>
+<text x="20" y="310" class="a" style="animation-name:k1_139" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;user&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#8fd9be">&quot;me&quot;</tspan><tspan fill="#e6eae8">,</tspan></text>
+<text x="20" y="329" class="a" style="animation-name:k1_140" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;role&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#8fd9be">&quot;admin&quot;</tspan><tspan fill="#e6eae8">,</tspan></text>
+<text x="20" y="348" class="a" style="animation-name:k1_141" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;id&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#d3a4f7">101</tspan></text>
+<text x="20" y="367" class="a" style="animation-name:k1_142" xml:space="preserve"><tspan fill="#e6eae8">}</tspan></text>
+</g>
+<g class="s2" data-scene="2">
+<text x="20" y="44" fill="#97a19e" xml:space="preserve">$ </text>
+<text x="36.8" y="44" class="a" style="animation-name:k2_146" fill="#e6eae8" xml:space="preserve">j</text>
+<text x="45.2" y="44" class="a" style="animation-name:k2_147" fill="#e6eae8" xml:space="preserve">u</text>
+<text x="53.6" y="44" class="a" style="animation-name:k2_148" fill="#e6eae8" xml:space="preserve">r</text>
+<text x="62.0" y="44" class="a" style="animation-name:k2_149" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="70.4" y="44" class="a" style="animation-name:k2_150" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="78.8" y="44" class="a" style="animation-name:k2_151" fill="#e6eae8" xml:space="preserve">j</text>
+<text x="87.2" y="44" class="a" style="animation-name:k2_152" fill="#e6eae8" xml:space="preserve">s</text>
+<text x="95.6" y="44" class="a" style="animation-name:k2_153" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="104.0" y="44" class="a" style="animation-name:k2_154" fill="#e6eae8" xml:space="preserve">n</text>
+<text x="112.4" y="44" class="a" style="animation-name:k2_155" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="120.8" y="44" class="a" style="animation-name:k2_156" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="129.2" y="44" class="a" style="animation-name:k2_157" fill="#e6eae8" xml:space="preserve">a</text>
+<text x="137.6" y="44" class="a" style="animation-name:k2_158" fill="#e6eae8" xml:space="preserve">c</text>
+<text x="146.0" y="44" class="a" style="animation-name:k2_159" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="154.4" y="44" class="a" style="animation-name:k2_160" fill="#e6eae8" xml:space="preserve">h</text>
+<text x="162.8" y="44" class="a" style="animation-name:k2_161" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="171.2" y="44" class="a" style="animation-name:k2_162" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="179.6" y="44" class="a" style="animation-name:k2_163" fill="#e6eae8" xml:space="preserve">d</text>
+<text x="188.0" y="44" class="a" style="animation-name:k2_164" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="196.4" y="44" class="a" style="animation-name:k2_165" fill="#e6eae8" xml:space="preserve">r</text>
+<text x="204.8" y="44" class="a" style="animation-name:k2_166" fill="#e6eae8" xml:space="preserve">.</text>
+<text x="213.2" y="44" class="a" style="animation-name:k2_167" fill="#e6eae8" xml:space="preserve">t</text>
+<text x="221.6" y="44" class="a" style="animation-name:k2_168" fill="#e6eae8" xml:space="preserve">y</text>
+<text x="230.0" y="44" class="a" style="animation-name:k2_169" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="238.4" y="44" class="a" style="animation-name:k2_170" fill="#e6eae8" xml:space="preserve">i</text>
+<text x="246.8" y="44" class="a" style="animation-name:k2_171" fill="#e6eae8" xml:space="preserve">c</text>
+<text x="255.2" y="44" class="a" style="animation-name:k2_172" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="263.6" y="44" class="a" style="animation-name:k2_173" fill="#e6eae8" xml:space="preserve">d</text>
+<text x="272.0" y="44" class="a" style="animation-name:k2_174" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="280.4" y="44" class="a" style="animation-name:k2_175" fill="#e6eae8" xml:space="preserve">.</text>
+<text x="288.8" y="44" class="a" style="animation-name:k2_176" fill="#e6eae8" xml:space="preserve">c</text>
+<text x="297.2" y="44" class="a" style="animation-name:k2_177" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="305.6" y="44" class="a" style="animation-name:k2_178" fill="#e6eae8" xml:space="preserve">m</text>
+<text x="314.0" y="44" class="a" style="animation-name:k2_179" fill="#e6eae8" xml:space="preserve">/</text>
+<text x="322.4" y="44" class="a" style="animation-name:k2_180" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="330.8" y="44" class="a" style="animation-name:k2_181" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="339.2" y="44" class="a" style="animation-name:k2_182" fill="#e6eae8" xml:space="preserve">s</text>
+<text x="347.6" y="44" class="a" style="animation-name:k2_183" fill="#e6eae8" xml:space="preserve">t</text>
+<text x="356.0" y="44" class="a" style="animation-name:k2_184" fill="#e6eae8" xml:space="preserve">s</text>
+<text x="364.4" y="44" class="a" style="animation-name:k2_185" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="372.8" y="44" class="a" style="animation-name:k2_186" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="381.2" y="44" class="a" style="animation-name:k2_187" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="389.6" y="44" class="a" style="animation-name:k2_188" fill="#e6eae8" xml:space="preserve">s</text>
+<text x="398.0" y="44" class="a" style="animation-name:k2_189" fill="#e6eae8" xml:space="preserve">t</text>
+<text x="406.4" y="44" class="a" style="animation-name:k2_190" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="414.8" y="44" class="a" style="animation-name:k2_191" fill="#e6eae8" xml:space="preserve">t</text>
+<text x="423.2" y="44" class="a" style="animation-name:k2_192" fill="#e6eae8" xml:space="preserve">i</text>
+<text x="431.6" y="44" class="a" style="animation-name:k2_193" fill="#e6eae8" xml:space="preserve">t</text>
+<text x="440.0" y="44" class="a" style="animation-name:k2_194" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="448.4" y="44" class="a" style="animation-name:k2_195" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="456.8" y="44" class="a" style="animation-name:k2_196" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="465.2" y="44" class="a" style="animation-name:k2_197" fill="#e6eae8" xml:space="preserve">h</text>
+<text x="473.6" y="44" class="a" style="animation-name:k2_198" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="482.0" y="44" class="a" style="animation-name:k2_199" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="490.4" y="44" class="a" style="animation-name:k2_200" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="498.8" y="44" class="a" style="animation-name:k2_201" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="507.2" y="44" class="a" style="animation-name:k2_202" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="515.6" y="44" class="a" style="animation-name:k2_203" fill="#e6eae8" xml:space="preserve">w</text>
+<text x="524.0" y="44" class="a" style="animation-name:k2_204" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="532.4" y="44" class="a" style="animation-name:k2_205" fill="#e6eae8" xml:space="preserve">r</text>
+<text x="540.8" y="44" class="a" style="animation-name:k2_206" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="549.2" y="44" class="a" style="animation-name:k2_207" fill="#e6eae8" xml:space="preserve">d</text>
+<text x="557.6" y="44" class="a" style="animation-name:k2_208" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="566.0" y="44" class="a" style="animation-name:k2_209" fill="#e6eae8" xml:space="preserve">-</text>
+<text x="574.4" y="44" class="a" style="animation-name:k2_210" fill="#e6eae8" xml:space="preserve">-</text>
+<text x="582.8" y="44" class="a" style="animation-name:k2_211" fill="#e6eae8" xml:space="preserve">e</text>
+<text x="591.2" y="44" class="a" style="animation-name:k2_212" fill="#e6eae8" xml:space="preserve">x</text>
+<text x="599.6" y="44" class="a" style="animation-name:k2_213" fill="#e6eae8" xml:space="preserve">p</text>
+<text x="608.0" y="44" class="a" style="animation-name:k2_214" fill="#e6eae8" xml:space="preserve">l</text>
+<text x="616.4" y="44" class="a" style="animation-name:k2_215" fill="#e6eae8" xml:space="preserve">a</text>
+<text x="624.8" y="44" class="a" style="animation-name:k2_216" fill="#e6eae8" xml:space="preserve">i</text>
+<text x="633.2" y="44" class="a" style="animation-name:k2_217" fill="#e6eae8" xml:space="preserve">n</text>
+<text x="641.6" y="44" class="a" style="animation-name:k2_218" fill="#e6eae8" xml:space="preserve"> </text>
+<text x="650.0" y="44" class="a" style="animation-name:k2_219" fill="#e6eae8" xml:space="preserve">-</text>
+<text x="658.4" y="44" class="a" style="animation-name:k2_220" fill="#e6eae8" xml:space="preserve">-</text>
+<text x="666.8" y="44" class="a" style="animation-name:k2_221" fill="#e6eae8" xml:space="preserve">b</text>
+<text x="675.2" y="44" class="a" style="animation-name:k2_222" fill="#e6eae8" xml:space="preserve">o</text>
+<text x="683.6" y="44" class="a" style="animation-name:k2_223" fill="#e6eae8" xml:space="preserve">d</text>
+<text x="692.0" y="44" class="a" style="animation-name:k2_224" fill="#e6eae8" xml:space="preserve">y</text>
+<text x="20" y="63" class="a" style="animation-name:k2_225" xml:space="preserve"><tspan fill="#97a19e">word                                role             conf  by    note</tspan></text>
+<text x="20" y="82" class="a" style="animation-name:k2_226" xml:space="preserve"><tspan fill="#e6eae8">jsonplaceholder.typicode.com/posts  </tspan><tspan fill="#7aa2f7">url</tspan><tspan fill="#e6eae8">              </tspan><tspan fill="#8fd9be">1.00</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">rule</tspan><tspan fill="#e6eae8">  </tspan></text>
+<text x="20" y="101" class="a" style="animation-name:k2_227" xml:space="preserve"><tspan fill="#e6eae8">post                                </tspan><tspan fill="#d3a4f7">method</tspan><tspan fill="#e6eae8">           </tspan><tspan fill="#8fd9be">1.00</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">rule</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">→ POST</tspan></text>
+<text x="20" y="120" class="a" style="animation-name:k2_228" xml:space="preserve"><tspan fill="#e6eae8">title                               </tspan><tspan fill="#8fd9be">field_key</tspan><tspan fill="#e6eae8">        </tspan><tspan fill="#8fd9be">1.00</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">jev </tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">field_key 1.00, body_fil…</tspan></text>
+<text x="20" y="139" class="a" style="animation-name:k2_229" xml:space="preserve"><tspan fill="#e6eae8">hello world                         </tspan><tspan fill="#8fd9be">field_value</tspan><tspan fill="#e6eae8">      </tspan><tspan fill="#8fd9be">0.85</tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">jev </tspan><tspan fill="#e6eae8">  </tspan><tspan fill="#97a19e">joined &quot;world&quot; p=0.85; f…</tspan></text>
+<text x="20" y="158" class="a" style="animation-name:k2_230" xml:space="preserve"><tspan fill="#97a19e">jev: typesafe/jev-1.13-20260917 · 14 questions · 360 ms · 2418 in / 921 out tokens · $0.0…</tspan></text>
+<text x="20" y="177" class="a" style="animation-name:k2_231" xml:space="preserve"></text>
+<text x="20" y="196" class="a" style="animation-name:k2_232" xml:space="preserve"><tspan fill="#e6eae8" font-weight="700">curl</tspan><tspan fill="#e6eae8"> \</tspan></text>
+<text x="20" y="215" class="a" style="animation-name:k2_233" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-sS</tspan><tspan fill="#e6eae8"> \</tspan></text>
+<text x="20" y="234" class="a" style="animation-name:k2_234" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-X</tspan><tspan fill="#e6eae8"> POST \</tspan></text>
+<text x="20" y="253" class="a" style="animation-name:k2_235" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7" font-weight="700">https://jsonplaceholder.typicode.com/posts</tspan><tspan fill="#e6eae8"> \</tspan></text>
+<text x="20" y="272" class="a" style="animation-name:k2_236" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-H</tspan><tspan fill="#e6eae8"> &#x27;Content-Type: application/json&#x27; \</tspan></text>
+<text x="20" y="291" class="a" style="animation-name:k2_237" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">-H</tspan><tspan fill="#e6eae8"> &#x27;Accept: application/json&#x27; \</tspan></text>
+<text x="20" y="310" class="a" style="animation-name:k2_238" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7ed6d4">--data</tspan><tspan fill="#e6eae8"> &#x27;{&quot;title&quot;:&quot;hello world&quot;}&#x27;</tspan></text>
+<text x="20" y="329" class="a" style="animation-name:k2_239" xml:space="preserve"></text>
+<text x="20" y="348" class="a" style="animation-name:k2_240" xml:space="preserve"><tspan fill="#f0c96a">run this? (interpreted by jev, confidence 0.85)</tspan><tspan fill="#e6eae8"> </tspan><tspan fill="#97a19e">[Y/n/e]</tspan><tspan fill="#e6eae8"> </tspan></text>
+<text x="20" y="367" class="a" style="animation-name:k2_241" xml:space="preserve"></text>
+<text x="20" y="386" class="a" style="animation-name:k2_242" xml:space="preserve"><tspan fill="#8fd9be">HTTP 201</tspan><tspan fill="#97a19e">  · 498ms</tspan></text>
+<text x="20" y="405" class="a" style="animation-name:k2_243" xml:space="preserve"><tspan fill="#e6eae8">{</tspan></text>
+<text x="20" y="424" class="a" style="animation-name:k2_244" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;title&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#8fd9be">&quot;hello world&quot;</tspan><tspan fill="#e6eae8">,</tspan></text>
+<text x="20" y="443" class="a" style="animation-name:k2_245" xml:space="preserve"><tspan fill="#e6eae8">  </tspan><tspan fill="#7aa2f7">&quot;id&quot;</tspan><tspan fill="#e6eae8">: </tspan><tspan fill="#d3a4f7">101</tspan></text>
+<text x="20" y="462" class="a" style="animation-name:k2_246" xml:space="preserve"><tspan fill="#e6eae8">}</tspan></text>
+</g>
 </svg>

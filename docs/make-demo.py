@@ -83,13 +83,14 @@ def main(path, at=None):
         # コマンドを 1 文字ずつ
         cmd = sc["cmd"]
         y = PAD_TOP + LH * rows
-        els.append(f'<text x="{PAD_X}" y="{y}" class="s{si}" fill="{DIM}" xml:space="preserve">$ </text>')
+        els.append(f'<g class="s{si}" data-scene="{si}">')
+        els.append(f'<text x="{PAD_X}" y="{y}" fill="{DIM}" xml:space="preserve">$ </text>')
         for i, ch in enumerate(cmd):
             t += TYPE
             kf = f"k{si}_{len(els)}"
             keyframes.append((kf, t))
             x = PAD_X + CW * (2 + i)
-            els.append(f'<text x="{x:.1f}" y="{y}" class="s{si} a" style="animation-name:{kf}" fill="{FG}" xml:space="preserve">{html.escape(ch)}</text>')
+            els.append(f'<text x="{x:.1f}" y="{y}" class="a" style="animation-name:{kf}" fill="{FG}" xml:space="preserve">{html.escape(ch)}</text>')
         t += 0.5
         rows += 1
         out = OTHER.sub("", sc["out"]).replace("\r", "")
@@ -106,7 +107,7 @@ def main(path, at=None):
             y = PAD_TOP + LH * rows
             kf = f"k{si}_{len(els)}"
             keyframes.append((kf, t))
-            els.append(text_el(PAD_X, y, clip(ansi_to_spans(ln), COLS), f"s{si} a", f' style="animation-name:{kf}"'))
+            els.append(text_el(PAD_X, y, clip(ansi_to_spans(ln), COLS), "a", f' style="animation-name:{kf}"'))
             rows += 1
             if "[Y/n/e]" in plain:
                 t += 1.4      # 人が読んで Enter
@@ -115,23 +116,27 @@ def main(path, at=None):
             else:
                 t += 0.03
         t += 3.2              # 読む時間
+        els.append("</g>")
         keyframes.append((f"scene{si}", (start, t)))
     T = t + 0.3
     if at is not None:
         show = {name: v for name, v in keyframes}
-        vis = []
+        vis, cur = [], None
         for e in els:
-            m = re.search(r'class="s(\d+)(?: a)?"', e)
-            si = int(m.group(1))
-            s0, s1 = show[f"scene{si}"]
+            m = re.match(r'<g class="s(\d+)"', e)
+            if m:
+                cur = int(m.group(1))
+                continue
+            if e == "</g>":
+                continue
+            s0, s1 = show[f"scene{cur}"]
             if not (s0 <= at < s1):
                 continue
             k = re.search(r"animation-name:(k\d+_\d+)", e)
             if k and show[k.group(1)] > at:
                 continue
-            vis.append(re.sub(r' class="[^"]*"| style="animation-name:[^"]*"', "", e))
+            vis.append(re.sub(r' class="a"| style="animation-name:[^"]*"', "", e))
         els = vis
-
     css = [
         f"@keyframes cursor{{0%,49%{{opacity:1}}50%,100%{{opacity:0}}}}",
         ".a{opacity:0;animation-duration:%.2fs;animation-timing-function:step-end;animation-iteration-count:infinite;animation-fill-mode:both}" % T,
@@ -158,7 +163,6 @@ def main(path, at=None):
     for i, c in enumerate(["#ff5f57", "#febc2e", "#28c840"]):
         out.append(f'<circle cx="{20 + i * 20}" cy="16" r="6" fill="{c}"/>')
     out.append(f'<text x="{W / 2}" y="21" text-anchor="middle" font-size="12" fill="{DIM}">jurl — jev × curl</text>')
-    out.append(f'<g class="s0">' if False else "")
     out.extend(els)
     out.append("</svg>")
     sys.stdout.write("\n".join(out))
