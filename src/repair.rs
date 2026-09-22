@@ -50,20 +50,22 @@ pub fn pair_key_values(tokens: &mut [Token], method_is_get: bool) {
             let is_key = (n % 2 == 0) == key_first;
             let t = &mut tokens[idx];
             let new_role = if is_key { if as_query { Role::Query } else { Role::FieldKey } } else { Role::FieldValue };
-            if t.role != Some(new_role) {
+            let switched = t.role != Some(new_role);
+            if switched {
                 let old = t.role.map(|r| r.key()).unwrap_or("?");
                 t.note = Some(format!("{old} → {} (paired){}", new_role.key(), t.note.as_deref().map(|n| format!("; {n}")).unwrap_or_default()));
             }
             t.role = Some(new_role);
-            // jev が付けた役割の確率と、run 全体の配置の確からしさの小さい方。
-            // (配置だけで 1.00 にすると、jev が field_key 0.7 と見ていた事実が消える)
             if let Some(m) = &t.probs {
                 let role_p = if is_key {
                     m.get("field_key").copied().unwrap_or(0.0) + m.get("query").copied().unwrap_or(0.0)
                 } else {
                     m.get("field_value").copied().unwrap_or(0.0)
                 };
-                t.confidence = role_p.min(conf);
+                // 配置で役割を変えた語(`first_name job` の job)は、jev の役割確率ではなく配置の確からしさを使う。
+                // jev は語ごとに独立に答えるので、隣が確実にキーなら「job は値」は配置から言える。
+                // jev の見立て(field_key 0.83 など)は note に残る。変えていない語は従来通り min。
+                t.confidence = if switched { conf } else { role_p.min(conf) };
             }
         }
     }
@@ -138,7 +140,9 @@ mod tests {
         pair_key_values(&mut ts, false);
         let roles: Vec<_> = ts.iter().map(|t| t.role.unwrap()).collect();
         assert_eq!(roles, [Role::FieldKey, Role::FieldValue, Role::FieldKey, Role::FieldValue]);
-        assert!((ts[1].confidence - 0.06).abs() < 1e-6, "{}", ts[1].confidence);
+        // job は配置で値に変えたので、配置の確からしさ(≈1.0)が confidence。jev の 0.90 は note に残る。
+        assert!(ts[1].confidence > 0.99, "{}", ts[1].confidence);
+        assert!(ts[1].note.as_deref().unwrap().contains("field_key → field_value (paired)"));
     }
 
     #[test]

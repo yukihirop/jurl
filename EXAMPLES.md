@@ -65,8 +65,9 @@ jurl api.zippopotam.us jp 100-0001
 止まったところで `e` を押すと `$EDITOR` に curl が開く。直して保存すればその内容で実行される。
 
 ```sh
-# 配列を空白区切りで書いた。jev は a b c を「別々の項目」と見るので結合されず、b がキー扱いになって止まる
-# → e で --data を '{"id":7,"tags":["a","b","c"]}' に(配列は tags:='["a","b","c"]' と書くのが正)
+# 配列を空白区切りで書いた。jev は a b c を「別々の項目」と見るので結合されず、
+# key value の交互配置で {"tags":"a","b":"c"} になる(確認は出る)→ e で '{"id":7,"tags":["a","b","c"]}' に
+# 配列は tags:='["a","b","c"]' と書くのが正
 jurl httpbin.org/anything put json id 7 tags a b c
 
 # desc が「値」か「クエリ名」か jev が割れる(0.45)→ e で確認・修正、または -y

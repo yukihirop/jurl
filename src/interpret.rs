@@ -134,9 +134,9 @@ mod tests {
         assert_eq!(req.url.render(), "http://localhost:3000/users");
         assert_eq!(req.body, Some(Body::Json(json!({"first_name": "job"}))));
         assert_eq!(ts[5].role, Some(Role::FieldValue));
-        // 配置で直したが、jev が value と見た確率(0.06)は confidence に残る。
-        assert!((ts[5].confidence - 0.06).abs() < 1e-6);
-        assert!((req.confidence - 0.06).abs() < 1e-6);
+        // 配置で直した語は配置の確からしさ: key-first 0.97*0.06 vs value-first 0.02*0.90 → 0.76。
+        assert!((ts[5].confidence - 0.76).abs() < 0.01, "{}", ts[5].confidence);
+        assert!((req.confidence - ts[5].confidence).abs() < 1e-6);
         // 3000 は port なので typed は body に影響しない。
         assert!(ts.iter().all(|t| t.source == Source::Jev));
     }
