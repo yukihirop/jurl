@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/hero.svg" alt="jurl — jev × curl. Throw words at it, in any order, misspelled. Get the curl you meant." width="880">
+  <img src="https://raw.githubusercontent.com/yukihirop/jurl/main/docs/hero.svg" alt="jurl — jev × curl. Throw words at it, in any order, misspelled. Get the curl you meant." width="880">
 </p>
 
 <p align="center">
@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/demo.svg" alt="Terminal demo: --explain showing how each word was classified and 'hello world' joined into one value; a misspelled POST with split key/values interpreted by jev and confirmed; a plain GET with response headers" width="930">
+  <img src="https://raw.githubusercontent.com/yukihirop/jurl/main/docs/demo.svg" alt="Terminal demo: --explain showing how each word was classified and 'hello world' joined into one value; a misspelled POST with split key/values interpreted by jev and confirmed; a plain GET with response headers" width="930">
 </p>
 
 ```sh
@@ -29,7 +29,7 @@ Typos (`psot`, `localhsot`), a bare port (`3000`), a key and value as two words 
 ## How it works
 
 <p align="center">
-  <img src="docs/flow.svg" alt="words → rules → all resolved? yes: curl. no: jev (one request) → confirm [Y/n/e] → curl" width="880">
+  <img src="https://raw.githubusercontent.com/yukihirop/jurl/main/docs/flow.svg" alt="words → rules → all resolved? yes: curl. no: jev (one request) → confirm [Y/n/e] → curl" width="880">
 </p>
 
 - **rules** — shapes like `post`, `k=v`, `k==v`, `Name:value`, `@file`, `-k` are decided in code. If every word resolves, jurl runs offline with no prompt.
