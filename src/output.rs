@@ -113,3 +113,18 @@ pub fn confirm(prompt: &str) -> bool {
     let s = s.trim().to_ascii_lowercase();
     s.is_empty() || s == "y" || s == "yes"
 }
+
+/// 既定が No の確認。
+pub fn confirm_no(prompt: &str) -> bool {
+    if !std::io::stdin().is_terminal() {
+        return false;
+    }
+    eprint!("{prompt} [y/N] ");
+    let _ = std::io::stderr().flush();
+    let mut s = String::new();
+    if std::io::stdin().read_line(&mut s).is_err() {
+        return false;
+    }
+    let s = s.trim().to_ascii_lowercase();
+    s == "y" || s == "yes"
+}

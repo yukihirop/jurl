@@ -17,6 +17,8 @@ pub struct Config {
 #[serde(default)]
 pub struct Jev {
     pub enabled: bool,
+    /// `jurl setup` が書く。env の OPENROUTER_API_KEY が優先。
+    pub api_key: Option<String>,
     pub model: String,
     pub confirm_below: f32,
     pub reject_below: f32,
@@ -36,6 +38,7 @@ impl Default for Jev {
     fn default() -> Self {
         Jev {
             enabled: true,
+            api_key: None,
             model: crate::jev::client::DEFAULT_MODEL.into(),
             confirm_below: 0.8,
             reject_below: 0.5,

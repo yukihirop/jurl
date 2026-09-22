@@ -8,6 +8,9 @@ usage: jurl [words ...] [flags] [-- curl args]
   words   any order: method, url, content-type, key=value, key:=json,
           key==query, Name:value (header), @file, curl flags (-k, --max-time 5)
 
+commands:
+  setup           save your OpenRouter API key to ~/.config/jurl/config.toml (0600)
+
 flags:
   -n, --dry-run   print the curl command instead of running it
       --explain   show how each word was classified (stderr)

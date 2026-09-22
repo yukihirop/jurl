@@ -8,6 +8,7 @@ mod jev;
 mod output;
 mod repair;
 mod rules;
+mod setup;
 mod token;
 mod url;
 
@@ -40,6 +41,10 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
     if words.is_empty() {
         return Err(JurlError::Usage("nothing to do. try: jurl post localhost json name=job".into()));
     }
+    // 第 1 引数がちょうど `setup` のときだけサブコマンド。
+    if words.len() == 1 && words[0] == "setup" {
+        return setup::run();
+    }
 
     let cfg = config::load()?;
     let words = config::expand_aliases(&cfg, &words);
@@ -56,7 +61,10 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
             return Err(JurlError::Unresolved(format!("{} (jev disabled)", bad.join(", "))));
         }
         let api_key = std::env::var("OPENROUTER_API_KEY")
-            .map_err(|_| JurlError::Jev("OPENROUTER_API_KEY is not set (needed to interpret ambiguous words)".into()))?;
+            .ok()
+            .filter(|k| !k.is_empty())
+            .or_else(|| cfg.jev.api_key.clone())
+            .ok_or_else(|| JurlError::Jev("no API key. run `jurl setup` or set OPENROUTER_API_KEY (needed to interpret ambiguous words)".into()))?;
         let oracle = jev::client::OpenRouter {
             api_key,
             model: cfg.jev.model.clone(),

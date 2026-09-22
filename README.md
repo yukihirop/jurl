@@ -19,8 +19,10 @@ jurl localhost/login form user=me pass=x -k               # curl のフラグは
 
 ```sh
 cargo install --path .
-export OPENROUTER_API_KEY=...   # jev を使うとき(OpenRouter の Decisions router 経由)
+jurl setup                      # OpenRouter の API キーを聞いて ~/.config/jurl/config.toml に 0600 で保存し、jev に疎通確認
 ```
+
+環境変数 `OPENROUTER_API_KEY` があればそちらが優先(CI やシェルで既に入れている人向け)。
 
 curl が PATH にあること。
 
@@ -61,6 +63,7 @@ confidence(解釈全体の最小値)が 0.8 未満なら解釈を見せて確認
 ```toml
 [jev]
 enabled = true
+api_key = "..."                 # jurl setup が書く。env の OPENROUTER_API_KEY が優先
 model = "typesafe/jev-1.13"     # JEV_MODEL でも上書き可
 confirm_below = 0.8
 reject_below = 0.5
