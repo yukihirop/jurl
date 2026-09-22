@@ -41,7 +41,7 @@ One call is 200–600 ms and under $0.0002.
 ## Setup
 
 ```sh
-cargo install --path .
+cargo install jurl
 jurl setup        # store your OpenRouter API key in ~/.config/jurl/config.toml (0600)
 jurl demo         # 12 examples against public APIs, pick with ↑↓
 ```
