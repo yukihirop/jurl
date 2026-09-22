@@ -57,7 +57,9 @@ fn run(parsed: cli::Parsed, typed: &str) -> Result<i32, JurlError> {
             return execute(&opts, w, passthrough, &format!("demo {n}  ({})", demo::join(ex.words)));
         }
         let mut last = 0;
-        while let Some(ex) = demo::ask()? {
+        let mut at = 0;
+        while let Some((i, ex)) = demo::ask(at)? {
+            at = i;
             let w: Vec<String> = ex.words.iter().map(|s| s.to_string()).collect();
             eprintln!("\n{}\n", color::paint(color::stderr_enabled(), color::C::Dim, &format!("$ jurl {}", demo::join(&w))));
             // 1 例の失敗(中止・低 confidence・HTTP エラー)でメニューを抜けない。

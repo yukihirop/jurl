@@ -25,7 +25,7 @@ jurl setup                      # OpenRouter の API キーを聞いて ~/.confi
 環境変数 `OPENROUTER_API_KEY` があればそちらが優先(CI やシェルで既に入れている人向け)。
 
 ```sh
-jurl demo                       # public-apis の認証不要 API を叩く 12 例から番号で選んで実行(繰り返し、q で終了)
+jurl demo                       # public-apis の認証不要 API を叩く 12 例を ↑↓(j/k、番号でも可)で選んで Enter で実行。終わるとメニューに戻る、q で終了
 jurl demo 8 --explain           # 番号を直接。-n / --explain / -y はそのまま効く
 ```
 
