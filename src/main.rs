@@ -1,6 +1,7 @@
 mod assemble;
 mod body;
 mod cli;
+mod color;
 mod config;
 mod curl;
 mod error;
@@ -90,7 +91,7 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
     if opts.explain {
         output::explain(&tokens, jev_info.as_ref());
         if let Some(p) = get_intent {
-            eprintln!("jev: read-only lookup p={p:.2} → GET, key/value words as query");
+            eprintln!("{}", color::paint(color::stderr_enabled(), color::C::Dim, &format!("jev: read-only lookup p={p:.2} → GET, key/value words as query")));
         }
     }
 
@@ -111,7 +112,7 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
 
     // 7. dry-run か実行。
     if opts.dry_run {
-        println!("{}", curl::render(&curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args)));
+        println!("{}", curl::render_with(&curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args), color::stdout_enabled()));
         return Ok(0);
     }
     let need_confirm = match cfg.jev.confirm.as_str() {
@@ -120,7 +121,7 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
         _ => jev_info.is_some() || req.confidence < confirm_below,
     };
     if need_confirm && !opts.yes {
-        eprintln!("{}", curl::render(&curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args)));
+        eprintln!("{}", curl::render_with(&curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args), color::stderr_enabled()));
         let why = if jev_info.is_some() { format!("interpreted by jev, confidence {:.2}", req.confidence) } else { format!("confidence {:.2}", req.confidence) };
         if !output::confirm(&format!("run this? ({why})")) {
             return Err(JurlError::Aborted);

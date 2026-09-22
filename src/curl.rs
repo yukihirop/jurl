@@ -62,11 +62,29 @@ pub fn argv(req: &Request, with_status: bool, passthrough: &[String], default_ar
 }
 
 /// `--dry-run` 用。1 引数 1 行、値を取るオプションはその値と同じ行、POSIX shell 用に quote。
+#[cfg(test)]
 pub fn render(argv: &[String]) -> String {
+    render_with(argv, false)
+}
+
+/// 色付き: `curl` 太字、オプションはシアン、URL は太字青、値はそのまま。
+pub fn render_with(argv: &[String], color: bool) -> String {
+    use crate::color::{paint, paint2, C};
     let mut lines: Vec<String> = Vec::new();
     let mut expect_value = false;
     for (i, a) in argv.iter().enumerate() {
         let q = quote(a);
+        let q = if i == 0 {
+            paint(color, C::Bold, &q)
+        } else if expect_value {
+            q
+        } else if a.starts_with('-') {
+            paint(color, C::Cyan, &q)
+        } else if a.contains("://") {
+            paint2(color, C::Bold, C::Blue, &q)
+        } else {
+            q
+        };
         if i == 0 {
             lines.push(q);
             continue;
