@@ -123,7 +123,7 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
     let mut argv = argv;
     if need_confirm && !opts.yes {
         let plain = curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args);
-        eprintln!("{}", curl::render_with(&plain, color::stderr_enabled()));
+        eprintln!("\n{}\n", curl::render_with(&plain, color::stderr_enabled()));
         let why = if jev_info.is_some() { format!("interpreted by jev, confidence {:.2}", req.confidence) } else { format!("confidence {:.2}", req.confidence) };
         match output::confirm(&format!("run this? ({why})")) {
             output::Choice::Yes => {}
@@ -132,7 +132,7 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
                 let Some(edited) = output::edit_command(&curl::render_with(&plain, false))? else {
                     return Err(JurlError::Aborted);
                 };
-                eprintln!("{}", curl::render_with(&edited, color::stderr_enabled()));
+                eprintln!("\n{}\n", curl::render_with(&edited, color::stderr_enabled()));
                 // ステータス行用の -w は jurl が付け直す。
                 argv = curl::with_status(edited, !opts.raw);
             }
