@@ -20,6 +20,8 @@ pub struct Jev {
     /// `jurl setup` が書く。env の OPENROUTER_API_KEY が優先。
     pub api_key: Option<String>,
     pub model: String,
+    /// "jev": jev が関わったら必ず確認 / "confidence": confirm_below 未満のときだけ / "never": 確認しない
+    pub confirm: String,
     pub confirm_below: f32,
     pub reject_below: f32,
     /// 取り消せないメソッド(PUT / PATCH / DELETE)の確認帯。
@@ -39,6 +41,7 @@ impl Default for Jev {
         Jev {
             enabled: true,
             api_key: None,
+            confirm: "jev".into(),
             model: crate::jev::client::DEFAULT_MODEL.into(),
             confirm_below: 0.8,
             reject_below: 0.5,

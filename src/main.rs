@@ -114,27 +114,19 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
         println!("{}", curl::render(&curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args)));
         return Ok(0);
     }
-    if req.confidence < confirm_below && !opts.yes {
-        let summary = summarize(&req);
-        if !output::confirm(&format!("{summary} (confidence {:.2}) — continue?", req.confidence)) {
+    let need_confirm = match cfg.jev.confirm.as_str() {
+        "never" => false,
+        "confidence" => req.confidence < confirm_below,
+        _ => jev_info.is_some() || req.confidence < confirm_below,
+    };
+    if need_confirm && !opts.yes {
+        eprintln!("{}", curl::render(&curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args)));
+        let why = if jev_info.is_some() { format!("interpreted by jev, confidence {:.2}", req.confidence) } else { format!("confidence {:.2}", req.confidence) };
+        if !output::confirm(&format!("run this? ({why})")) {
             return Err(JurlError::Aborted);
         }
     }
     let out = curl::run(&argv)?;
     output::print_response(&out.stdout, opts.raw)?;
     Ok(out.status)
-}
-
-fn summarize(req: &assemble::Request) -> String {
-    let mut s = format!("{} {}", req.method, req.url.render());
-    match &req.body {
-        Some(body::Body::Json(v)) => s.push_str(&format!(" {v}")),
-        Some(body::Body::Form(kv)) | Some(body::Body::Multipart(kv)) => {
-            s.push(' ');
-            s.push_str(&kv.iter().map(|(k, v)| format!("{k}={v}")).collect::<Vec<_>>().join("&"));
-        }
-        Some(body::Body::File(f)) => s.push_str(&format!(" @{f}")),
-        None => {}
-    }
-    s
 }

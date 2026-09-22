@@ -51,10 +51,10 @@ jurl [words ...] [flags] [-- curl args]
 | `-n, --dry-run` | curl コマンドを表示して終了 |
 | `--explain` | 各単語の役割・confidence・規則/jev どちらで決めたか、jev のコストを stderr に |
 | `--no-jev` | jev を呼ばない(`JURL_NO_JEV=1` でも可) |
-| `-y, --yes` | confidence が低いときの確認を省略 |
+| `-y, --yes` | 確認を省略 |
 | `--raw` | レスポンスを整形せずそのまま |
 
-confidence(解釈全体の最小値)が 0.8 未満なら解釈を見せて確認、0.5 未満なら実行しない(PUT / PATCH / DELETE は 0.9 未満で確認)。閾値は設定で変えられる。
+jev が関わった解釈は、組み立てた curl をそのまま見せて `[Y/n]` を聞いてから実行する(規則だけで決まった入力は即実行)。confidence(解釈全体の最小値)が 0.5 未満なら確認せずに止める。`confirm = "confidence"` にすると 0.8 未満(PUT / PATCH / DELETE は 0.9 未満)のときだけ確認、`"never"` で確認なし。
 
 ## 設定(全部省略可)
 
@@ -65,6 +65,7 @@ confidence(解釈全体の最小値)が 0.8 未満なら解釈を見せて確認
 enabled = true
 api_key = "..."                 # jurl setup が書く。env の OPENROUTER_API_KEY が優先
 model = "typesafe/jev-1.13"     # JEV_MODEL でも上書き可
+confirm = "jev"                 # "jev" | "confidence" | "never"
 confirm_below = 0.8
 reject_below = 0.5
 confirm_below_unsafe = 0.9

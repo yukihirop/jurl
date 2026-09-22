@@ -55,9 +55,15 @@ pub fn pair_key_values(tokens: &mut [Token], method_is_get: bool) {
                 t.note = Some(format!("{old} → {} (paired){}", new_role.key(), t.note.as_deref().map(|n| format!("; {n}")).unwrap_or_default()));
             }
             t.role = Some(new_role);
-            // jev が付けた役割ごとの confidence は捨て、run 全体の配置の確からしさに置き換える。
-            if t.probs.is_some() {
-                t.confidence = conf;
+            // jev が付けた役割の確率と、run 全体の配置の確からしさの小さい方。
+            // (配置だけで 1.00 にすると、jev が field_key 0.7 と見ていた事実が消える)
+            if let Some(m) = &t.probs {
+                let role_p = if is_key {
+                    m.get("field_key").copied().unwrap_or(0.0) + m.get("query").copied().unwrap_or(0.0)
+                } else {
+                    m.get("field_value").copied().unwrap_or(0.0)
+                };
+                t.confidence = role_p.min(conf);
             }
         }
     }
@@ -97,7 +103,7 @@ mod tests {
         pair_key_values(&mut ts, false);
         let roles: Vec<_> = ts.iter().map(|t| t.role.unwrap()).collect();
         assert_eq!(roles, [Role::FieldKey, Role::FieldValue, Role::FieldKey, Role::FieldValue]);
-        assert!(ts[1].confidence > 0.9, "{}", ts[1].confidence);
+        assert!((ts[1].confidence - 0.06).abs() < 1e-6, "{}", ts[1].confidence);
     }
 
     #[test]
