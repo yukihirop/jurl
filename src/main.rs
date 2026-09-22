@@ -169,7 +169,7 @@ fn execute(opts: &cli::Opts, words: Vec<String>, passthrough: Vec<String>, typed
         eprintln!("\n{}\n", curl::render_with(&plain, color::stderr_enabled()));
         let why = if jev_info.is_some() { format!("interpreted by jev, confidence {:.2}", req.confidence) } else { format!("confidence {:.2}", req.confidence) };
         match output::confirm(&format!("run this? ({why})")) {
-            output::Choice::Yes => {}
+            output::Choice::Yes => eprintln!(),
             output::Choice::No => return Err(JurlError::Aborted),
             output::Choice::Edit => {
                 let Some(edited) = output::edit_command(&curl::render_with(&plain, false), typed)? else {
