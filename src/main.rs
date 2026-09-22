@@ -4,6 +4,7 @@ mod cli;
 mod color;
 mod config;
 mod curl;
+mod demo;
 mod error;
 mod interpret;
 mod jev;
@@ -47,7 +48,35 @@ fn run(parsed: cli::Parsed, typed: &str) -> Result<i32, JurlError> {
     if words.len() == 1 && words[0] == "setup" {
         return setup::run();
     }
+    // `jurl demo [N]`: 例を選んで、残りのフラグ(-n, --explain, -y …)はそのまま効かせる。
+    if words[0] == "demo" {
+        if let Some(n) = words.get(1) {
+            let ex = demo::pick(n)?;
+            let w: Vec<String> = ex.words.iter().map(|s| s.to_string()).collect();
+            eprintln!("{}\n", color::paint(color::stderr_enabled(), color::C::Dim, &format!("$ jurl {}", demo::join(&w))));
+            return execute(&opts, w, passthrough, &format!("demo {n}  ({})", demo::join(ex.words)));
+        }
+        let mut last = 0;
+        while let Some(ex) = demo::ask()? {
+            let w: Vec<String> = ex.words.iter().map(|s| s.to_string()).collect();
+            eprintln!("\n{}\n", color::paint(color::stderr_enabled(), color::C::Dim, &format!("$ jurl {}", demo::join(&w))));
+            // 1 例の失敗(中止・低 confidence・HTTP エラー)でメニューを抜けない。
+            match execute(&opts, w, passthrough.clone(), &format!("demo  ({})", demo::join(ex.words))) {
+                Ok(code) => last = code,
+                Err(e) => {
+                    eprintln!("jurl: {e}");
+                    last = e.exit_code();
+                }
+            }
+            eprintln!();
+        }
+        return Ok(last);
+    }
 
+    execute(&opts, words, passthrough, typed)
+}
+
+fn execute(opts: &cli::Opts, words: Vec<String>, passthrough: Vec<String>, typed: &str) -> Result<i32, JurlError> {
     let cfg = config::load()?;
     let words = config::expand_aliases(&cfg, &words);
 
