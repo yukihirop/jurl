@@ -1,114 +1,93 @@
-# jurl
-
-jev × curl。順番も表記もバラバラな単語列から「言いたかった HTTP リクエスト」を復元して curl を叩く。
+<h1 align="center">jurl</h1>
+<p align="center"><b>jev × curl</b> — 順番も表記もバラバラな単語を投げると、curl になって返ってくる。</p>
 
 ```sh
-jurl post localhost application/json profile.first_name=job profile.family_name=amanda
-jurl profile.first_name=job localhost json POST          # 順不同
-jurl psot localhsot 3000 users first_name job             # タイポ・分離・省略
-jurl example.com/items page 2 get                         # GET なら key value はクエリ
-jurl localhost/login form user=me pass=x -k               # curl のフラグはそのまま通す
+$ jurl psot localhsot 3000 users first_name amanda
+
+curl \
+  -sS \
+  -X POST \
+  http://localhost:3000/users \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  --data '{"first_name":"amanda"}'
+
+run this? (interpreted by jev, confidence 0.98) [Y/n/e]
 ```
 
-- 規則で全部決まる入力は jev を呼ばない(高速パス、オフライン)
-- 決まらない単語が 1 つでもあれば、全単語の役割を jev(TypeSafe System One)に 1 リクエストで聞く
-- jev は選択肢から選ぶだけ。curl への変換はコード側で決定的
-- `--dry-run` で組み立てた curl を表示、`--explain` で各単語の分類と jev のコストを表示
+タイポ(`psot` `localhsot`)、ポートだけの `3000`、分かれたキーと値(`first_name amanda`)。
+どの順で並べても同じ curl になる。
+
+## どう動くか
+
+```
+words ──▶ rules ──▶ 全部決まった? ──yes──▶ curl を組み立てて実行
+                         │
+                         no
+                         ▼
+                   jev に 1 回聞く ──▶ 確認 [Y/n/e] ──▶ 実行
+```
+
+- **rules** — `post` `k=v` `k==v` `Name:value` `@file` `-k` のような形はコードで決める。全部決まればオフラインで即実行
+- **jev** — 決まらない単語があれば、全単語の役割を jev(TypeSafe System One、OpenRouter 経由)に **1 リクエスト**で聞く。jev は選択肢から選んで確率を返すだけで、curl 文字列は生成させない
+- **確認** — jev が関わった解釈は curl を見せてから実行。`e` で `$EDITOR` を開いて直せる。confidence が低ければ実行しない
+
+1 回 200–600 ms、$0.0002 以下。
 
 ## Setup
 
 ```sh
 cargo install --path .
-jurl setup                      # OpenRouter の API キーを聞いて ~/.config/jurl/config.toml に 0600 で保存し、jev に疎通確認
+jurl setup        # OpenRouter の API キーを ~/.config/jurl/config.toml に保存(0600)
+jurl demo         # public API を叩く 12 例を ↑↓ で選んで試す
 ```
 
-環境変数 `OPENROUTER_API_KEY` があればそちらが優先(CI やシェルで既に入れている人向け)。
+`OPENROUTER_API_KEY` があればそちらが優先。curl が PATH にあること。
 
-```sh
-jurl demo                       # public-apis の認証不要 API を叩く 12 例を ↑↓(j/k、番号でも可)で選んで Enter で実行。終わるとメニューに戻る、q で終了
-jurl demo 8                     # 番号を直接。demo は常に --explain 付き。-n / -y はそのまま効く
-```
+## 書き方
 
-curl が PATH にあること。
-
-## 使い方
-
-```
-jurl [words ...] [flags] [-- curl args]
-```
-
-| 単語の形 | 意味 |
+| こう書く | こうなる |
 |---|---|
 | `get` `post` `put` … | メソッド(省略時: ボディがあれば POST、無ければ GET) |
-| `localhost` `:3000/users` `example.com/x` `http://…` | URL(スキーム省略時は https、localhost / 私有 IP は http) |
-| `json` `form` `multipart` `application/json` | Content-Type(既定 json) |
-| `a.b=1` `a[0]=x` | ボディ(値は文字列) |
+| `localhost` `:3000/users` `api.example.com/x` | URL(https 既定、localhost / 私有 IP は http) |
+| `json` `form` `multipart` | Content-Type(既定 json) |
+| `a.b=1` `a[0]=x` | ボディ(文字列) |
 | `a:=1` `a:=true` | ボディ(JSON リテラル) |
 | `k==v` | クエリ |
-| `Name:value` `-H "Name: value"` | ヘッダ(この形だけ。jev には送らない) |
+| `Name:value` | ヘッダ(jev には送らない) |
 | `@file` | ボディをファイルから |
-| `-k` `--max-time 5` … | curl にそのまま渡す |
-
-上のどれにも当てはまらない単語(`psot`、`users`、`first_name` `job` のような分離したキー/値、裸の `3000`)は jev が役割を決める。`title hello world` のように値が複数語に分かれていたら、jev に「前の語と同じ値の続きか」を聞いて 1 つに結合する(空白区切りの配列は対象外。`tags:='["a","b"]'` と書く)。
+| `-k` `--max-time 5` | curl にそのまま |
+| それ以外 | jev が決める。`title hello world` のように分かれた値も 1 つに結合 |
 
 | フラグ | |
 |---|---|
-| `-n, --dry-run` | curl コマンドを表示して終了 |
-| `--explain` | 各単語の役割・confidence・規則/jev どちらで決めたか、jev のコストを stderr に |
-| `--no-jev` | jev を呼ばない(`JURL_NO_JEV=1` でも可) |
-| `-y, --yes` | 確認を省略 |
-| `--body` | レスポンスヘッダを出さない |
-| `--raw` | レスポンスを整形せずそのまま |
+| `-n` | curl を表示して終了 |
+| `--explain` | 各単語の役割・confidence・rule か jev か |
+| `-y` | 確認を省略 |
+| `--body` / `--raw` | ヘッダなし / 整形なし |
 
-jev が関わった解釈は、組み立てた curl をそのまま見せて `[Y/n/e]` を聞いてから実行する(規則だけで決まった入力は即実行)。`e` で `$EDITOR`(無ければ `vi`)が開くので、間違っていればそこで直して保存すればその内容で実行される。confidence(解釈全体の最小値)が 0.5 未満なら実行はせず、curl を見せて `[e/N]`(直すか止めるか)だけ聞く。`confirm = "confidence"` にすると 0.8 未満(PUT / PATCH / DELETE は 0.9 未満)のときだけ確認、`"never"` で確認なし。
+## 出力
 
-## 設定(全部省略可)
+端末では httpie と同じ並び: status line、ヘッダ、空行、ボディ(JSON は整形・色付き)。パイプに繋ぐとボディだけ。exit code は curl のもの。
 
-`~/.config/jurl/config.toml`(`JURL_CONFIG` で変更):
+## 設定(省略可)
+
+`~/.config/jurl/config.toml`
 
 ```toml
 [jev]
-enabled = true
-api_key = "..."                 # jurl setup が書く。env の OPENROUTER_API_KEY が優先
-model = "typesafe/jev-1.13"     # JEV_MODEL でも上書き可
-confirm = "jev"                 # "jev" | "confidence" | "never"
+confirm = "jev"          # "jev" | "confidence" | "never"
 confirm_below = 0.8
 reject_below = 0.5
-confirm_below_unsafe = 0.9
-timeout_ms = 5000
 
 [defaults]
-content_type = "json"
 curl_args = ["--max-time", "30"]
 
 [aliases]
 lh = "localhost"
-tok = "Authorization:Bearer $TOKEN"   # $VAR は環境変数で展開
+tok = "Authorization:Bearer $TOKEN"
 ```
 
-## 出力
+---
 
-- TTY: httpie と同じく status line + レスポンスヘッダ(色付き)、空行、ボディ(JSON なら整形)。`-L` で辿った分のヘッダも全部出る
-- `--body`: ヘッダなし(`HTTP 201 · 12ms` の行 + ボディ)
-- パイプ / `--raw`: ボディだけ stdout、ステータス行は stderr
-- exit code は curl のものを継承。jev 側の失敗・低 confidence は 2、curl が無ければ 127
-
-## 構成
-
-```
-src/
-  cli.rs        jurl 自身のフラグ
-  demo.rs       `jurl demo` の例一覧とメニュー
-  rules.rs      規則による役割分類(同義語表、curl オプション表)
-  jev/          OpenRouter Decisions router への問い合わせ(state / questions の組み立て、answers の書き戻し)
-  interpret.rs  jev パス(build → decide → apply → repair)。Oracle をモックにした統合テストはここ
-  repair.rs     jev の答えは質問ごとに独立なので、複数語の値の結合と key value の交互配置をコードで直す
-  assemble.rs   役割付きトークン → Request
-  body.rs       a.b[0].c → nested JSON / form 平坦化
-  url.rs        スキーム補完、:port、path、query
-  curl.rs       Request → argv、dry-run 表示、spawn
-  output.rs     ステータス行、整形、--explain
-  config.rs     env + config.toml
-```
-
-jev のワイヤ形式は [eg-jev](../../JavaScriptProjects/eg-jev) の `packages/recipes/src/lib/{openrouter,questions}.ts` に合わせている。
+<p align="center"><sub>例は <a href="EXAMPLES.md">EXAMPLES.md</a>、各モジュールの役割は <code>src/</code> の冒頭コメントに。jev のワイヤ形式は eg-jev の <code>packages/recipes/src/lib/{openrouter,questions}.ts</code> に合わせている。</sub></p>
