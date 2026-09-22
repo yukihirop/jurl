@@ -120,11 +120,22 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
         "confidence" => req.confidence < confirm_below,
         _ => jev_info.is_some() || req.confidence < confirm_below,
     };
+    let mut argv = argv;
     if need_confirm && !opts.yes {
-        eprintln!("{}", curl::render_with(&curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args), color::stderr_enabled()));
+        let plain = curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args);
+        eprintln!("{}", curl::render_with(&plain, color::stderr_enabled()));
         let why = if jev_info.is_some() { format!("interpreted by jev, confidence {:.2}", req.confidence) } else { format!("confidence {:.2}", req.confidence) };
-        if !output::confirm(&format!("run this? ({why})")) {
-            return Err(JurlError::Aborted);
+        match output::confirm(&format!("run this? ({why})")) {
+            output::Choice::Yes => {}
+            output::Choice::No => return Err(JurlError::Aborted),
+            output::Choice::Edit => {
+                let Some(edited) = output::edit_command(&curl::render_with(&plain, false))? else {
+                    return Err(JurlError::Aborted);
+                };
+                eprintln!("{}", curl::render_with(&edited, color::stderr_enabled()));
+                // ステータス行用の -w は jurl が付け直す。
+                argv = curl::with_status(edited, !opts.raw);
+            }
         }
     }
     let out = curl::run(&argv)?;

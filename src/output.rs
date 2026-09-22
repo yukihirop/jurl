@@ -119,21 +119,53 @@ pub struct JevInfo {
     pub usage: Option<Usage>,
 }
 
-pub fn confirm(prompt: &str) -> bool {
-    // 端末でなければ聞けない。--yes が無い限り実行しない。
+pub enum Choice {
+    Yes,
+    No,
+    Edit,
+}
+
+/// Y / n / e。端末でなければ聞けないので No(--yes が無い限り実行しない)。
+pub fn confirm(prompt: &str) -> Choice {
     if !std::io::stdin().is_terminal() {
         eprintln!("{prompt} — not a terminal, refusing to guess (use --yes)");
-        return false;
+        return Choice::No;
     }
     let on = color::stderr_enabled();
-    eprint!("{} {} ", paint(on, C::Yellow, prompt), paint(on, C::Dim, "[Y/n]"));
+    eprint!("{} {} ", paint(on, C::Yellow, prompt), paint(on, C::Dim, "[Y/n/e]"));
     let _ = std::io::stderr().flush();
     let mut s = String::new();
     if std::io::stdin().read_line(&mut s).is_err() {
-        return false;
+        return Choice::No;
     }
-    let s = s.trim().to_ascii_lowercase();
-    s.is_empty() || s == "y" || s == "yes"
+    match s.trim().to_ascii_lowercase().as_str() {
+        "" | "y" | "yes" => Choice::Yes,
+        "e" | "edit" => Choice::Edit,
+        _ => Choice::No,
+    }
+}
+
+/// $EDITOR(無ければ vi)で curl コマンドを編集させ、shell の語分割で argv に戻す。
+/// 空にして保存したら None。
+pub fn edit_command(rendered: &str) -> Result<Option<Vec<String>>, crate::error::JurlError> {
+    use crate::error::JurlError;
+    let editor = std::env::var("VISUAL").or_else(|_| std::env::var("EDITOR")).unwrap_or_else(|_| "vi".into());
+    let path = std::env::temp_dir().join(format!("jurl-{}.sh", std::process::id()));
+    let text = format!(
+        "{rendered}\n\n# jurl: edit the command above, save and quit to run it.\n# Lines starting with # are ignored. Empty the file to abort.\n"
+    );
+    std::fs::write(&path, text)?;
+    let words = shell_words::split(&editor).map_err(|e| JurlError::Usage(format!("bad $EDITOR: {e}")))?;
+    let (prog, args) = words.split_first().ok_or_else(|| JurlError::Usage("empty $EDITOR".into()))?;
+    let status = std::process::Command::new(prog).args(args).arg(&path).status()?;
+    let edited = std::fs::read_to_string(&path).unwrap_or_default();
+    let _ = std::fs::remove_file(&path);
+    if !status.success() {
+        return Err(JurlError::Aborted);
+    }
+    let script: String = edited.lines().filter(|l| !l.trim_start().starts_with('#')).collect::<Vec<_>>().join("\n");
+    let argv = shell_words::split(&script).map_err(|e| JurlError::Usage(format!("cannot parse edited command: {e}")))?;
+    Ok(if argv.is_empty() { None } else { Some(argv) })
 }
 
 /// 既定が No の確認。

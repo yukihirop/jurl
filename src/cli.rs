@@ -15,7 +15,8 @@ flags:
   -n, --dry-run   print the curl command instead of running it
       --explain   show how each word was classified (stderr)
       --no-jev    never call jev; unresolved words are an error
-  -y, --yes       skip the confirmation (shown whenever jev interpreted the words)
+  -y, --yes       skip the [Y/n/e] confirmation (shown whenever jev interpreted the words;
+                  e opens the curl command in $EDITOR)
       --raw       print the response body untouched, no status line
   -h, --help
   -V, --version

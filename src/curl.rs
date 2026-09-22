@@ -7,7 +7,7 @@ use std::process::{Command, Stdio};
 
 pub const STATUS_MARK: &str = "\n\u{1}jurl\u{1}";
 
-pub fn argv(req: &Request, with_status: bool, passthrough: &[String], default_args: &[String]) -> Vec<String> {
+pub fn argv(req: &Request, status: bool, passthrough: &[String], default_args: &[String]) -> Vec<String> {
     let mut a: Vec<String> = vec!["curl".into(), "-sS".into()];
     a.extend(default_args.iter().cloned());
     a.extend(req.curl_extra.iter().cloned());
@@ -53,11 +53,16 @@ pub fn argv(req: &Request, with_status: bool, passthrough: &[String], default_ar
         }
         None => {}
     }
-    if with_status {
+    a.extend(passthrough.iter().cloned());
+    with_status(a, status)
+}
+
+/// 出力整形用の `-w` を末尾に付ける(既に -w があれば付けない)。
+pub fn with_status(mut a: Vec<String>, on: bool) -> Vec<String> {
+    if on && !a.iter().any(|x| x == "-w" || x == "--write-out") {
         a.push("-w".into());
         a.push(format!("{STATUS_MARK}%{{http_code}} %{{time_total}}"));
     }
-    a.extend(passthrough.iter().cloned());
     a
 }
 
