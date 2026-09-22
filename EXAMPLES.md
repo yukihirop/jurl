@@ -40,6 +40,10 @@ jurl api.open-meteo.com/v1 forecast latitude 35.68 longitude 139.69 current_weat
 jurl httpbin.org/anything psot user me role admin
 #   → POST https://httpbin.org/anything  {"user":"me","role":"admin"}
 
+# 値が 2 語。jev に「前の語と同じ値の続きか」を聞いて結合する(p=0.81)
+jurl httpbin.org/anything post title hello world
+#   → POST  {"title":"hello world"}
+
 # メソッドが最後、値は型付け(userId 1 → 1)
 jurl jsonplaceholder.typicode.com/posts title hello body world userId 1 post
 #   → POST  {"title":"hello","body":"world","userId":1}  (201)
@@ -61,11 +65,8 @@ jurl api.zippopotam.us jp 100-0001
 止まったところで `e` を押すと `$EDITOR` に curl が開く。直して保存すればその内容で実行される。
 
 ```sh
-# 値が 2 語("hello world")。jev は単語ごとに独立に答えるので world をキーにしてしまい、
-# confidence 0.01 で止まる → e で --data を '{"title":"hello world"}' に直す
-jurl httpbin.org/anything post title hello world
-
-# 配列を空白区切りで書いた。b がキー扱いになって止まる → e で --data を '{"id":7,"tags":["a","b","c"]}' に
+# 配列を空白区切りで書いた。jev は a b c を「別々の項目」と見るので結合されず、b がキー扱いになって止まる
+# → e で --data を '{"id":7,"tags":["a","b","c"]}' に(配列は tags:='["a","b","c"]' と書くのが正)
 jurl httpbin.org/anything put json id 7 tags a b c
 
 # desc が「値」か「クエリ名」か jev が割れる(0.45)→ e で確認・修正、または -y
@@ -80,4 +81,4 @@ jurl pokeapi.co/api/v2 pokemon 25
 jurl localhost 8080 delete users 42            # DELETE は 0.9 未満で確認
 ```
 
-値に空白や配列が要るときは、最初から `title='hello world'` / `tags:='["a","b","c"]'` と書けば jev を通らず即実行になる。
+配列が要るときは `tags:='["a","b","c"]'` と書く。値の空白は `title='hello world'` と書けば jev を通らず即実行になる。

@@ -1,6 +1,6 @@
 //! jev の答えは質問ごとに独立なので、隣接関係(キーの次は値)はコードで直す(設計図 §5)。
 
-use crate::token::{Role, Token};
+use crate::token::{Role, Source, Token};
 
 /// `key value key value …` の並びを強制する。
 /// 連続する {FieldKey, FieldValue, 裸の Query} の run ごとに、
@@ -69,6 +69,42 @@ pub fn pair_key_values(tokens: &mut [Token], method_is_get: bool) {
     }
 }
 
+/// jev が「前の語と同じ値の続き」(join.i > 0.5)と言った語を前の語に結合する(`title hello world` → `hello world`)。
+/// 前が jev の FieldValue か、規則の `k=v`(Field)のときだけ。後ろから見るので `a b c` も 1 つになる。
+/// 結合した語の confidence は min(前の conf, p)。配列は対象外(空白区切りの配列は文字列 1 つになる)。
+pub fn merge_joined(tokens: &mut Vec<Token>, answers: &crate::jev::Answers) {
+    let mut i = tokens.len();
+    while i > 1 {
+        i -= 1;
+        let Some(p) = answers.get(&format!("join.{i}")).and_then(|a| a.noul()) else { continue };
+        if p <= 0.5 {
+            continue;
+        }
+        // 前の語自身が「さらに前の続き」(join.{i-1} > 0.5)なら、jev が中間の語を key と言っていても連鎖を切らない。
+        let prev_joins = answers.get(&format!("join.{}", i - 1)).and_then(|a| a.noul()).map(|q| q > 0.5).unwrap_or(false);
+        let prev_ok = match tokens[i - 1].role {
+            Some(Role::FieldValue) => tokens[i - 1].source == Source::Jev,
+            Some(Role::Field) => !tokens[i - 1].typed,
+            _ => tokens[i - 1].source == Source::Jev && prev_joins,
+        };
+        if !prev_ok || tokens[i].source != Source::Jev {
+            continue;
+        }
+        let cur = tokens.remove(i);
+        let prev = &mut tokens[i - 1];
+        prev.text = format!("{} {}", prev.text, cur.text);
+        prev.fixed = None;
+        prev.typed = false;
+        prev.confidence = prev.confidence.min(p);
+        // pair_key_values は probs から confidence を引き直すので、「値である確率」にも join の p を反映しておく。
+        if let Some(m) = prev.probs.as_mut() {
+            let v = m.entry("field_value".to_string()).or_insert(1.0);
+            *v = v.min(p);
+        }
+        prev.note = Some(format!("joined \"{}\" p={p:.2}{}", cur.text, prev.note.as_deref().map(|n| format!("; {n}")).unwrap_or_default()));
+    }
+}
+
 fn is_kv(t: &Token) -> bool {
     match t.role {
         Some(Role::FieldKey) | Some(Role::FieldValue) => true,
@@ -80,7 +116,6 @@ fn is_kv(t: &Token) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::token::Source;
     use std::collections::BTreeMap;
 
     fn jev(text: &str, role: Role, key: f32, val: f32) -> Token {

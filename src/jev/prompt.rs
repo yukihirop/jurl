@@ -62,6 +62,17 @@ pub fn build(tokens: &[Token]) -> Built {
                 ),
             );
         }
+        // 直前も jev 行き(または k=v)なら「同じ値の続きか」を聞く。`title hello world` の world 用。
+        if i > 0 && joinable_prev(&tokens[i - 1]) {
+            let prev = &tokens[i - 1].text;
+            questions.insert(
+                format!("join.{i}"),
+                noul(format!(
+                    "Is `tokens[{i}]` (\"{w}\") a continuation of the same value as `tokens[{}]` (\"{prev}\"), i.e. do the two words together form one multi-word value (a title, a sentence, a name), rather than `tokens[{i}]` starting a new key or being a separate item?",
+                    i - 1
+                )),
+            );
+        }
         if looks_typed(w) {
             questions.insert(
                 format!("typed.{i}"),
@@ -88,6 +99,10 @@ pub fn build(tokens: &[Token]) -> Built {
         "method_known": method_known,
     });
     Built { state, questions }
+}
+
+fn joinable_prev(t: &Token) -> bool {
+    !t.resolved() || (t.role == Some(Role::Field) && !t.typed)
 }
 
 fn could_be_word(w: &str) -> bool {

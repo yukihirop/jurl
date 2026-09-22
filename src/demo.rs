@@ -25,7 +25,7 @@ pub const EXAMPLES: &[Example] = &[
     Example { what: "split path, numbers and booleans typed", words: &["api.open-meteo.com/v1", "forecast", "latitude", "35.68", "longitude", "139.69", "current_weather", "true"], jev: true },
     Example { what: "typo `psot`, split key/values → POST JSON", words: &["httpbin.org/anything", "psot", "user", "me", "role", "admin"], jev: true },
     Example { what: "method last, userId 1 sent as a number", words: &["jsonplaceholder.typicode.com/posts", "title", "hello", "body", "world", "userId", "1", "post"], jev: true },
-    Example { what: "two-word value breaks → press e and fix --data", words: &["httpbin.org/anything", "post", "title", "hello", "world"], jev: true },
+    Example { what: "two-word value joined into one (\"hello world\")", words: &["httpbin.org/anything", "post", "title", "hello", "world"], jev: true },
 ];
 
 /// 1 行分の表示(番号・説明・コマンド)。`sel` の行は `>` と反転で目立たせる。

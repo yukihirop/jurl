@@ -14,13 +14,14 @@ pub struct Interpreted {
     pub get_intent: Option<f32>,
 }
 
-pub fn interpret(tokens: &mut [Token], oracle: &dyn Oracle) -> Result<Interpreted, JurlError> {
+pub fn interpret(tokens: &mut Vec<Token>, oracle: &dyn Oracle) -> Result<Interpreted, JurlError> {
     let built = jev::prompt::build(tokens);
     let n = built.questions.len();
     let t0 = Instant::now();
     let res = oracle.decide(built.state, built.questions)?;
     let info = JevInfo { model: res.model.clone(), questions: n, ms: t0.elapsed().as_millis(), usage: res.usage.clone() };
     jev::prompt::apply(tokens, &res.answers);
+    repair::merge_joined(tokens, &res.answers);
 
     let mut is_get = tokens.iter().any(|t| t.role == Some(Role::Method) && t.value() == "GET");
     let mut get_intent = None;
@@ -126,7 +127,7 @@ mod tests {
         }));
         let out = interpret(&mut ts, &mock).unwrap();
         assert!(out.get_intent.is_none());
-        assert_eq!(out.info.questions, 26, "6 role + 6x3 typo/ct/host + typed.2 + get_intent");
+        assert_eq!(out.info.questions, 31, "6 role + 6x3 typo/ct/host + 5 join + typed.2 + get_intent");
 
         let req = assemble(&ts, "application/json").unwrap();
         assert_eq!(req.method, "POST");
@@ -243,6 +244,59 @@ mod tests {
             Err(JurlError::Unresolved(s)) => assert_eq!(s, "job"),
             other => panic!("{other:?}"),
         }
+    }
+
+    #[test]
+    fn join_merges_multi_word_value() {
+        // jurl httpbin.org/anything post title hello world  (live 2026-09-22: join.4 = 0.81)
+        let mut ts = classify(&words("httpbin.org/anything post title hello world"));
+        let mock = Mock::new(json!({
+            "role.2": choice("field_key", &[("field_key", 1.0)]),
+            "role.3": choice("field_value", &[("field_value", 0.93), ("field_key", 0.07)]),
+            "join.3": noul(0.05),
+            "role.4": choice("field_key", &[("field_key", 0.6), ("field_value", 0.4)]),
+            "join.4": noul(0.81),
+        }));
+        interpret(&mut ts, &mock).unwrap();
+        assert!(!mock.questions().contains_key("join.2"), "post is rule-resolved, title cannot continue it");
+        assert_eq!(ts.len(), 4);
+        assert_eq!(ts[3].text, "hello world");
+        assert_eq!(ts[3].role, Some(Role::FieldValue));
+        assert!((ts[3].confidence - 0.81).abs() < 1e-6, "min(0.93, p) = {}", ts[3].confidence);
+        let req = assemble(&ts, "application/json").unwrap();
+        assert_eq!(req.body, Some(Body::Json(json!({"title": "hello world"}))));
+    }
+
+    #[test]
+    fn join_chains_and_extends_a_rule_field() {
+        // jurl post httpbin.org/anything title=hello world again
+        let mut ts = classify(&words("post httpbin.org/anything title=hello world again"));
+        let mock = Mock::new(json!({
+            "role.3": choice("field_key", &[("field_key", 0.5)]),
+            "join.3": noul(0.7),
+            "role.4": choice("field_value", &[("field_value", 0.5)]),
+            "join.4": noul(0.9),
+        }));
+        interpret(&mut ts, &mock).unwrap();
+        assert_eq!(ts.len(), 3);
+        assert_eq!(ts[2].text, "title=hello world again");
+        assert_eq!(ts[2].role, Some(Role::Field));
+        let req = assemble(&ts, "application/json").unwrap();
+        assert_eq!(req.body, Some(Body::Json(json!({"title": "hello world again"}))));
+    }
+
+    #[test]
+    fn join_never_swallows_a_key() {
+        // jev が join と言っても、前が値でなければ結合しない(first_name job: job は first_name の続きではない)。
+        let mut ts = classify(&words("post localhost first_name job"));
+        let mock = Mock::new(json!({
+            "role.2": choice("field_key", &[("field_key", 0.98)]),
+            "role.3": choice("field_value", &[("field_value", 0.9)]),
+            "join.3": noul(0.9),
+        }));
+        interpret(&mut ts, &mock).unwrap();
+        assert_eq!(ts.len(), 4);
+        assert_eq!(ts[3].text, "job");
     }
 
     #[test]

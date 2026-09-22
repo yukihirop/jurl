@@ -49,7 +49,7 @@ jurl [words ...] [flags] [-- curl args]
 | `@file` | ボディをファイルから |
 | `-k` `--max-time 5` … | curl にそのまま渡す |
 
-上のどれにも当てはまらない単語(`psot`、`users`、`first_name` `job` のような分離したキー/値、裸の `3000`)は jev が役割を決める。
+上のどれにも当てはまらない単語(`psot`、`users`、`first_name` `job` のような分離したキー/値、裸の `3000`)は jev が役割を決める。`title hello world` のように値が複数語に分かれていたら、jev に「前の語と同じ値の続きか」を聞いて 1 つに結合する(空白区切りの配列は対象外。`tags:='["a","b"]'` と書く)。
 
 | フラグ | |
 |---|---|
@@ -100,7 +100,7 @@ src/
   rules.rs      規則による役割分類(同義語表、curl オプション表)
   jev/          OpenRouter Decisions router への問い合わせ(state / questions の組み立て、answers の書き戻し)
   interpret.rs  jev パス(build → decide → apply → repair)。Oracle をモックにした統合テストはここ
-  repair.rs     jev の答えは質問ごとに独立なので、key value の交互配置をコードで直す
+  repair.rs     jev の答えは質問ごとに独立なので、複数語の値の結合と key value の交互配置をコードで直す
   assemble.rs   役割付きトークン → Request
   body.rs       a.b[0].c → nested JSON / form 平坦化
   url.rs        スキーム補完、:port、path、query
