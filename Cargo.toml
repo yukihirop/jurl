@@ -1,0 +1,13 @@
+[package]
+name = "jurl"
+version = "0.1.0"
+edition = "2021"
+description = "jev x curl: turn loosely ordered words into a curl command and run it"
+license = "MIT"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+ureq = { version = "3", features = ["json"] }
+toml = "1"
+thiserror = "2"
