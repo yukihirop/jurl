@@ -1,7 +1,7 @@
 [package]
 name = "jurl"
-version = "0.1.1"
-edition = "2021"
+version = "0.1.2"
+edition = "2024"
 description = "jev x curl: turn loosely ordered words into a curl command and run it"
 license = "MIT"
 repository = "https://github.com/yukihirop/jurl"
