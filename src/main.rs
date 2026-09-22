@@ -5,6 +5,7 @@ mod color;
 mod config;
 mod curl;
 mod error;
+mod interpret;
 mod jev;
 mod output;
 mod repair;
@@ -14,9 +15,6 @@ mod token;
 mod url;
 
 use error::JurlError;
-use jev::Oracle;
-use token::Role;
-use std::time::Instant;
 
 fn main() {
     let parsed = cli::parse(std::env::args().skip(1));
@@ -72,20 +70,9 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
             timeout: std::time::Duration::from_millis(cfg.jev.timeout_ms),
             max_retries: 3,
         };
-        let built = jev::prompt::build(&tokens);
-        let n = built.questions.len();
-        let t0 = Instant::now();
-        let res = oracle.decide(built.state, built.questions)?;
-        jev_info = Some(output::JevInfo { model: res.model.clone(), questions: n, ms: t0.elapsed().as_millis(), usage: res.usage.clone() });
-        jev::prompt::apply(&mut tokens, &res.answers);
-        let mut is_get = tokens.iter().any(|t| t.role == Some(Role::Method) && t.value() == "GET");
-        if let Some(p) = res.answers.get("get_intent").and_then(|a| a.noul()) {
-            if p > 0.5 && !tokens.iter().any(|t| t.role == Some(Role::Method)) {
-                is_get = true;
-                get_intent = Some(p);
-            }
-        }
-        repair::pair_key_values(&mut tokens, is_get);
+        let out = interpret::interpret(&mut tokens, &oracle)?;
+        jev_info = Some(out.info);
+        get_intent = out.get_intent;
     }
 
     if opts.explain {

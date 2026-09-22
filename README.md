@@ -93,6 +93,7 @@ src/
   cli.rs        jurl 自身のフラグ
   rules.rs      規則による役割分類(同義語表、curl オプション表)
   jev/          OpenRouter Decisions router への問い合わせ(state / questions の組み立て、answers の書き戻し)
+  interpret.rs  jev パス(build → decide → apply → repair)。Oracle をモックにした統合テストはここ
   repair.rs     jev の答えは質問ごとに独立なので、key value の交互配置をコードで直す
   assemble.rs   役割付きトークン → Request
   body.rs       a.b[0].c → nested JSON / form 平坦化
