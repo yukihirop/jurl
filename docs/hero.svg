@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="230" viewBox="0 0 880 230" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1a1a"/>
+      <stop offset="1" stop-color="#132726"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4fc1bf"/>
+      <stop offset="1" stop-color="#8fd9be"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4fc1bf"/>
+    </marker>
+  </defs>
+  <rect width="880" height="230" rx="14" fill="url(#bg)"/>
+
+  <!-- wordmark -->
+  <text x="40" y="92" font-size="64" font-weight="700" fill="url(#accent)" letter-spacing="-2">jurl</text>
+  <text x="40" y="126" font-size="17" fill="#97a19e">jev × curl</text>
+  <text x="40" y="166" font-size="14" fill="#c9d1ce">Throw words at it, in any order, misspelled.</text>
+  <text x="40" y="188" font-size="14" fill="#c9d1ce">Get the curl you meant.</text>
+
+  <!-- scattered words -->
+  <g font-size="14" fill="#e6eae8">
+    <rect x="420" y="46" width="52" height="26" rx="6" fill="#1f3331"/><text x="431" y="64">psot</text>
+    <rect x="484" y="46" width="88" height="26" rx="6" fill="#1f3331"/><text x="495" y="64">localhsot</text>
+    <rect x="420" y="82" width="46" height="26" rx="6" fill="#1f3331"/><text x="431" y="100">3000</text>
+    <rect x="478" y="82" width="52" height="26" rx="6" fill="#1f3331"/><text x="489" y="100">users</text>
+    <rect x="420" y="118" width="94" height="26" rx="6" fill="#1f3331"/><text x="431" y="136">first_name</text>
+    <rect x="526" y="118" width="64" height="26" rx="6" fill="#1f3331"/><text x="537" y="136">amanda</text>
+  </g>
+
+  <!-- arrow -->
+  <path d="M604,96 L640,96" stroke="#4fc1bf" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="608" y="84" font-size="11" fill="#4fc1bf">jev</text>
+
+  <!-- curl -->
+  <g font-size="12" fill="#e6eae8">
+    <rect x="650" y="36" width="214" height="134" rx="8" fill="#0b1413" stroke="#2b3331"/>
+    <text x="662" y="58" fill="#8fd9be">curl \</text>
+    <text x="676" y="78">-X <tspan fill="#f0c96a">POST</tspan> \</text>
+    <text x="676" y="98" fill="#7ed6d4">http://localhost:3000/users<tspan fill="#e6eae8"> \</tspan></text>
+    <text x="676" y="118">-H 'Content-Type: …' \</text>
+    <text x="676" y="138">--data '{"first_name":</text>
+    <text x="700" y="158">"amanda"}'</text>
+  </g>
+</svg>

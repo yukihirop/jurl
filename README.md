@@ -1,5 +1,10 @@
-<h1 align="center">jurl</h1>
-<p align="center"><b>jev × curl</b> — 順番も表記もバラバラな単語を投げると、curl になって返ってくる。</p>
+<p align="center">
+  <img src="docs/hero.svg" alt="jurl — jev × curl. Throw words at it, in any order, misspelled. Get the curl you meant." width="880">
+</p>
+
+<p align="center">
+  <b>jurl</b> turns a loose pile of words — misspelled, split, out of order — into the HTTP request you meant, then runs it with curl.
+</p>
 
 ```sh
 $ jurl psot localhsot 3000 users first_name amanda
@@ -15,62 +20,57 @@ curl \
 run this? (interpreted by jev, confidence 0.98) [Y/n/e]
 ```
 
-タイポ(`psot` `localhsot`)、ポートだけの `3000`、分かれたキーと値(`first_name amanda`)。
-どの順で並べても同じ curl になる。
+Typos (`psot`, `localhsot`), a bare port (`3000`), a key and value as two words (`first_name amanda`). Any order gives the same curl.
 
-## どう動くか
+## How it works
 
-```
-words ──▶ rules ──▶ 全部決まった? ──yes──▶ curl を組み立てて実行
-                         │
-                         no
-                         ▼
-                   jev に 1 回聞く ──▶ 確認 [Y/n/e] ──▶ 実行
-```
+<p align="center">
+  <img src="docs/flow.svg" alt="words → rules → all resolved? yes: curl. no: jev (one request) → confirm [Y/n/e] → curl" width="880">
+</p>
 
-- **rules** — `post` `k=v` `k==v` `Name:value` `@file` `-k` のような形はコードで決める。全部決まればオフラインで即実行
-- **jev** — 決まらない単語があれば、全単語の役割を jev(TypeSafe System One、OpenRouter 経由)に **1 リクエスト**で聞く。jev は選択肢から選んで確率を返すだけで、curl 文字列は生成させない
-- **確認** — jev が関わった解釈は curl を見せてから実行。`e` で `$EDITOR` を開いて直せる。confidence が低ければ実行しない
+- **rules** — shapes like `post`, `k=v`, `k==v`, `Name:value`, `@file`, `-k` are decided in code. If every word resolves, jurl runs offline with no prompt.
+- **jev** — anything left over goes to [jev](https://openrouter.ai) (TypeSafe System One, via OpenRouter) in **one request**: "what is the role of each word?" jev only picks from fixed choices and returns probabilities; it never generates the curl string.
+- **confirm** — whenever jev was involved, jurl shows the curl before running. `e` opens it in `$EDITOR`. Below a confidence floor it refuses to run as is.
 
-1 回 200–600 ms、$0.0002 以下。
+One call is 200–600 ms and under $0.0002.
 
 ## Setup
 
 ```sh
 cargo install --path .
-jurl setup        # OpenRouter の API キーを ~/.config/jurl/config.toml に保存(0600)
-jurl demo         # public API を叩く 12 例を ↑↓ で選んで試す
+jurl setup        # store your OpenRouter API key in ~/.config/jurl/config.toml (0600)
+jurl demo         # 12 examples against public APIs, pick with ↑↓
 ```
 
-`OPENROUTER_API_KEY` があればそちらが優先。curl が PATH にあること。
+`OPENROUTER_API_KEY` in the environment takes precedence. curl must be on `PATH`.
 
-## 書き方
+## Grammar
 
-| こう書く | こうなる |
+| you write | it means |
 |---|---|
-| `get` `post` `put` … | メソッド(省略時: ボディがあれば POST、無ければ GET) |
-| `localhost` `:3000/users` `api.example.com/x` | URL(https 既定、localhost / 私有 IP は http) |
-| `json` `form` `multipart` | Content-Type(既定 json) |
-| `a.b=1` `a[0]=x` | ボディ(文字列) |
-| `a:=1` `a:=true` | ボディ(JSON リテラル) |
-| `k==v` | クエリ |
-| `Name:value` | ヘッダ(jev には送らない) |
-| `@file` | ボディをファイルから |
-| `-k` `--max-time 5` | curl にそのまま |
-| それ以外 | jev が決める。`title hello world` のように分かれた値も 1 つに結合 |
+| `get` `post` `put` … | method (default: POST with a body, GET without) |
+| `localhost` `:3000/users` `api.example.com/x` | URL (https by default; localhost and private IPs get http) |
+| `json` `form` `multipart` | Content-Type (default json) |
+| `a.b=1` `a[0]=x` | body field, string |
+| `a:=1` `a:=true` | body field, JSON literal |
+| `k==v` | query parameter |
+| `Name:value` | header (never sent to jev) |
+| `@file` | body from a file |
+| `-k` `--max-time 5` | passed to curl untouched |
+| anything else | jev decides. Split values like `title hello world` are joined back into one |
 
-| フラグ | |
+| flag | |
 |---|---|
-| `-n` | curl を表示して終了 |
-| `--explain` | 各単語の役割・confidence・rule か jev か |
-| `-y` | 確認を省略 |
-| `--body` / `--raw` | ヘッダなし / 整形なし |
+| `-n` | print the curl and exit |
+| `--explain` | per-word role, confidence, and whether a rule or jev decided it |
+| `-y` | skip the confirmation |
+| `--body` / `--raw` | no headers / no formatting |
 
-## 出力
+## Output
 
-端末では httpie と同じ並び: status line、ヘッダ、空行、ボディ(JSON は整形・色付き)。パイプに繋ぐとボディだけ。exit code は curl のもの。
+On a terminal, the same order as httpie: status line, response headers, blank line, body (JSON pretty-printed and colored). Piped, you get the body only. The exit code is curl's.
 
-## 設定(省略可)
+## Config (optional)
 
 `~/.config/jurl/config.toml`
 
@@ -90,4 +90,4 @@ tok = "Authorization:Bearer $TOKEN"
 
 ---
 
-<p align="center"><sub>例は <a href="EXAMPLES.md">EXAMPLES.md</a>、各モジュールの役割は <code>src/</code> の冒頭コメントに。jev のワイヤ形式は eg-jev の <code>packages/recipes/src/lib/{openrouter,questions}.ts</code> に合わせている。</sub></p>
+<p align="center"><sub>More inputs in <a href="EXAMPLES.md">EXAMPLES.md</a>. Each module in <code>src/</code> starts with a comment on what it does. The jev wire format follows eg-jev's <code>packages/recipes/src/lib/{openrouter,questions}.ts</code>.</sub></p>
