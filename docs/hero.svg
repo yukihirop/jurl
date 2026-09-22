@@ -31,17 +31,17 @@
   </g>
 
   <!-- arrow -->
-  <path d="M604,96 L640,96" stroke="#4fc1bf" stroke-width="2.5" marker-end="url(#arrow)"/>
-  <text x="608" y="84" font-size="11" fill="#4fc1bf">jev</text>
+  <path d="M600,96 L630,96" stroke="#4fc1bf" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="602" y="84" font-size="11" fill="#4fc1bf">jev</text>
 
-  <!-- curl -->
+  <!-- curl: 長い行は textLength で幅を固定(フォントが変わってもはみ出さない) -->
   <g font-size="12" fill="#e6eae8">
-    <rect x="650" y="36" width="214" height="134" rx="8" fill="#0b1413" stroke="#2b3331"/>
-    <text x="662" y="58" fill="#8fd9be">curl \</text>
-    <text x="676" y="78">-X <tspan fill="#f0c96a">POST</tspan> \</text>
-    <text x="676" y="98" fill="#7ed6d4">http://localhost:3000/users<tspan fill="#e6eae8"> \</tspan></text>
-    <text x="676" y="118">-H 'Content-Type: …' \</text>
-    <text x="676" y="138">--data '{"first_name":</text>
-    <text x="700" y="158">"amanda"}'</text>
+    <rect x="640" y="36" width="224" height="134" rx="8" fill="#0b1413" stroke="#2b3331"/>
+    <text x="652" y="58" fill="#8fd9be">curl \</text>
+    <text x="666" y="78">-X <tspan fill="#f0c96a">POST</tspan> \</text>
+    <text x="666" y="98" fill="#7ed6d4" textLength="186" lengthAdjust="spacingAndGlyphs">http://localhost:3000/users<tspan fill="#e6eae8"> \</tspan></text>
+    <text x="666" y="118" textLength="160" lengthAdjust="spacingAndGlyphs">-H 'Content-Type: …' \</text>
+    <text x="666" y="138" textLength="170" lengthAdjust="spacingAndGlyphs">--data '{"first_name":</text>
+    <text x="690" y="158">"amanda"}'</text>
   </g>
 </svg>
