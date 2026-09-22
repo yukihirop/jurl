@@ -137,7 +137,7 @@ fn execute(opts: &cli::Opts, words: Vec<String>, passthrough: Vec<String>, typed
         eprintln!("\n{}\n", curl::render_with(&plain, color::stderr_enabled()));
         match output::confirm_edit(&format!("confidence {:.2} is too low to run as is. edit it?", req.confidence)) {
             output::Choice::Edit => {
-                let Some(edited) = output::edit_command(&curl::render_with(&plain, false), typed)? else {
+                let Some(edited) = output::edit_command(&curl::render_with(&plain, false), typed, &output::explain_text(&tokens, jev_info.as_ref(), false))? else {
                     return Err(JurlError::Aborted);
                 };
                 eprintln!("\n{}\n", curl::render_with(&edited, color::stderr_enabled()));
@@ -176,7 +176,7 @@ fn execute(opts: &cli::Opts, words: Vec<String>, passthrough: Vec<String>, typed
             output::Choice::Yes => eprintln!(),
             output::Choice::No => return Err(JurlError::Aborted),
             output::Choice::Edit => {
-                let Some(edited) = output::edit_command(&curl::render_with(&plain, false), typed)? else {
+                let Some(edited) = output::edit_command(&curl::render_with(&plain, false), typed, &output::explain_text(&tokens, jev_info.as_ref(), false))? else {
                     return Err(JurlError::Aborted);
                 };
                 eprintln!("\n{}\n", curl::render_with(&edited, color::stderr_enabled()));

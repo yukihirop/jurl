@@ -115,9 +115,14 @@ pub fn print_response(stdout: &[u8], raw: bool, headers: bool) -> std::io::Resul
 }
 
 pub fn explain(tokens: &[Token], jev: Option<&JevInfo>) {
+    eprint!("{}", explain_text(tokens, jev, color::stderr_enabled()));
+}
+
+/// `--explain` の表を文字列で(edit 画面のコメントにも使うので色は引数で切れる)。
+pub fn explain_text(tokens: &[Token], jev: Option<&JevInfo>, on: bool) -> String {
     use crate::token::Role;
-    let on = color::stderr_enabled();
-    let mut e = std::io::stderr().lock();
+    let mut e = String::new();
+    use std::fmt::Write as _;
     let w = tokens.iter().map(|t| t.text.len()).max().unwrap_or(4).clamp(4, 40);
     let _ = writeln!(e, "{}", paint(on, C::Dim, &format!("{:<w$}  {:<16} {:<5} {:<4}  note", "word", "role", "conf", "by", w = w)));
     for t in tokens {
@@ -150,6 +155,7 @@ pub fn explain(tokens: &[Token], jev: Option<&JevInfo>) {
         Some(j) => writeln!(e, "{}", paint(on, C::Dim, &j.line())),
         None => writeln!(e, "{}", paint(on, C::Dim, "jev: not called (fast path)")),
     };
+    e
 }
 
 pub struct JevInfo {
@@ -230,15 +236,16 @@ fn wait_flag(prog: &str) -> Option<&'static str> {
 }
 
 /// $EDITOR(無ければ vi)で curl コマンドを編集させ、shell の語分割で argv に戻す。
-/// `typed` は元の入力(コメントとして表示するだけ)。
+/// `typed` は元の入力、`explain` は解釈の表(どちらもコメントとして表示するだけ)。
 /// 空にして保存したら None。
-pub fn edit_command(rendered: &str, typed: &str) -> Result<Option<Vec<String>>, crate::error::JurlError> {
+pub fn edit_command(rendered: &str, typed: &str, explain: &str) -> Result<Option<Vec<String>>, crate::error::JurlError> {
     use crate::error::JurlError;
     let editor = std::env::var("VISUAL").or_else(|_| std::env::var("EDITOR")).unwrap_or_else(|_| "vi".into());
     let path = std::env::temp_dir().join(format!("jurl-{}.sh", std::process::id()));
-    // 元の入力もコメントで見せる(何を打ったか覚えていない前提で、curl と見比べられるように)。
+    // 元の入力と、各語をどう解釈したか(--explain と同じ表)をコメントで見せる。直す判断の材料になるので、--explain の有無に関係なく出す。
+    let table: String = explain.lines().map(|l| format!("#   {}\n", l.trim_end())).collect();
     let text = format!(
-        "# you typed:\n#   jurl {typed}\n\n{rendered}\n\n# jurl: edit the command above, save and quit to run it.\n# Lines starting with # are ignored. Empty the file to abort.\n"
+        "# you typed:\n#   jurl {typed}\n#\n# how it was read:\n{table}\n{rendered}\n\n# jurl: edit the command above, save and quit to run it.\n# Lines starting with # are ignored. Empty the file to abort.\n"
     );
     std::fs::write(&path, text)?;
     let mut words = shell_words::split(&editor).map_err(|e| JurlError::Usage(format!("bad $EDITOR: {e}")))?;
