@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/demo.svg" alt="Terminal demo: a plain GET with headers; a misspelled POST with split key/values interpreted by jev and confirmed; --explain showing how 'hello world' was joined into one value" width="900">
+  <img src="docs/demo.svg" alt="Terminal demo: --explain showing how each word was classified and 'hello world' joined into one value; a misspelled POST with split key/values interpreted by jev and confirmed; a plain GET with response headers" width="930">
 </p>
 
 ```sh

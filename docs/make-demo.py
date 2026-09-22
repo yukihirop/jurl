@@ -6,7 +6,7 @@
 """
 import json, re, sys, html
 
-COLS, ROWS = 90, 24
+COLS, ROWS = 106, 24
 CW, LH = 8.4, 19          # 文字幅・行高(px)。font-size 14 の等幅フォント前提
 PAD_X, PAD_TOP, PAD_BOT = 20, 44, 16
 W = int(PAD_X * 2 + COLS * CW)
