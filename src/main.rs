@@ -101,11 +101,27 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
     // 6. confidence で 実行 / 確認 / 中止。
     let unsafe_method = matches!(req.method.as_str(), "PUT" | "PATCH" | "DELETE");
     let confirm_below = if unsafe_method { cfg.jev.confirm_below_unsafe } else { cfg.jev.confirm_below };
+    // 低すぎる confidence: 実行はしない。curl を見せて、直す(e)か止めるか。
+    let mut edited_low: Option<Vec<String>> = None;
     if req.confidence < cfg.jev.reject_below {
         if !opts.explain {
             output::explain(&tokens, jev_info.as_ref());
         }
-        return Err(JurlError::LowConfidence(req.confidence, cfg.jev.reject_below));
+        if opts.dry_run || opts.yes {
+            return Err(JurlError::LowConfidence(req.confidence, cfg.jev.reject_below));
+        }
+        let plain = curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args);
+        eprintln!("\n{}\n", curl::render_with(&plain, color::stderr_enabled()));
+        match output::confirm_edit(&format!("confidence {:.2} is too low to run as is. edit it?", req.confidence)) {
+            output::Choice::Edit => {
+                let Some(edited) = output::edit_command(&curl::render_with(&plain, false))? else {
+                    return Err(JurlError::Aborted);
+                };
+                eprintln!("\n{}\n", curl::render_with(&edited, color::stderr_enabled()));
+                edited_low = Some(edited);
+            }
+            _ => return Err(JurlError::LowConfidence(req.confidence, cfg.jev.reject_below)),
+        }
     }
 
     let argv = curl::argv(&req, !opts.raw, &passthrough, &cfg.defaults.curl_args);
@@ -121,7 +137,9 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
         _ => jev_info.is_some() || req.confidence < confirm_below,
     };
     let mut argv = argv;
-    if need_confirm && !opts.yes {
+    if let Some(e) = edited_low {
+        argv = curl::with_status(e, !opts.raw);
+    } else if need_confirm && !opts.yes {
         let plain = curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args);
         eprintln!("\n{}\n", curl::render_with(&plain, color::stderr_enabled()));
         let why = if jev_info.is_some() { format!("interpreted by jev, confidence {:.2}", req.confidence) } else { format!("confidence {:.2}", req.confidence) };

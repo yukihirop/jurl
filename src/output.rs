@@ -145,6 +145,24 @@ pub fn confirm(prompt: &str) -> Choice {
     }
 }
 
+/// e / N。既定は No。
+pub fn confirm_edit(prompt: &str) -> Choice {
+    if !std::io::stdin().is_terminal() {
+        return Choice::No;
+    }
+    let on = color::stderr_enabled();
+    eprint!("{} {} ", paint(on, C::Red, prompt), paint(on, C::Dim, "[e/N]"));
+    let _ = std::io::stderr().flush();
+    let mut s = String::new();
+    if std::io::stdin().read_line(&mut s).is_err() {
+        return Choice::No;
+    }
+    match s.trim().to_ascii_lowercase().as_str() {
+        "e" | "edit" => Choice::Edit,
+        _ => Choice::No,
+    }
+}
+
 /// 閉じるまで待つためのフラグ。既知の GUI エディタだけ。
 fn wait_flag(prog: &str) -> Option<&'static str> {
     let name = std::path::Path::new(prog).file_name().and_then(|n| n.to_str()).unwrap_or(prog);

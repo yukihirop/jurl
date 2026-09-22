@@ -55,3 +55,29 @@ jurl api.zippopotam.us jp 100-0001
 - `note` の `field_key → field_value (paired)`: jev は単語ごとに独立に答えるので、`key value key value` の交互配置はコードで直している
 - `jev:` 行の ms と $: 1 回 250〜600 ms、$0.0002 以下
 - confidence が 0.8 未満なら解釈を見せて確認、0.5 未満なら実行しない
+
+## `e` で直したくなる例(jev の解釈がずれる・割れる)
+
+止まったところで `e` を押すと `$EDITOR` に curl が開く。直して保存すればその内容で実行される。
+
+```sh
+# 値が 2 語("hello world")。jev は単語ごとに独立に答えるので world をキーにしてしまい、
+# confidence 0.01 で止まる → e で --data を '{"title":"hello world"}' に直す
+jurl httpbin.org/anything post title hello world
+
+# 配列を空白区切りで書いた。b がキー扱いになって止まる → e で --data を '{"id":7,"tags":["a","b","c"]}' に
+jurl httpbin.org/anything put json id 7 tags a b c
+
+# desc が「値」か「クエリ名」か jev が割れる(0.45)→ e で確認・修正、または -y
+jurl httpbin.org/get limit 10 offset 20 sort desc
+
+# rust が値かどうか割れる(0.44)。GitHub search は q=rust が正解
+jurl api.github.com search repositories q rust
+
+# パスが分かれている(0.57〜0.9)。確認は出るが解釈は合っている → Enter
+jurl api.zippopotam.us jp 100-0001
+jurl pokeapi.co/api/v2 pokemon 25
+jurl localhost 8080 delete users 42            # DELETE は 0.9 未満で確認
+```
+
+値に空白や配列が要るときは、最初から `title='hello world'` / `tags:='["a","b","c"]'` と書けば jev を通らず即実行になる。
