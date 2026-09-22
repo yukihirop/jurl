@@ -46,7 +46,7 @@ jurl setup        # store your OpenRouter API key in ~/.config/jurl/config.toml 
 jurl demo         # 12 examples against public APIs, pick with ↑↓
 ```
 
-`OPENROUTER_API_KEY` in the environment takes precedence. curl must be on `PATH`.
+`OPENROUTER_API_KEY` in the environment takes precedence. curl must be on `PATH`. Tested on macOS; Linux should behave the same. Windows compiles the number-prompt variant of `demo` but is untested.
 
 ## Grammar
 

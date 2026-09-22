@@ -4,6 +4,11 @@ version = "0.1.0"
 edition = "2021"
 description = "jev x curl: turn loosely ordered words into a curl command and run it"
 license = "MIT"
+repository = "https://github.com/yukihirop/jurl"
+readme = "README.md"
+keywords = ["curl", "http", "cli", "jev", "httpie"]
+categories = ["command-line-utilities", "web-programming::http-client"]
+exclude = ["docs/", ".gitignore"]
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }
@@ -13,4 +18,6 @@ toml = "1"
 thiserror = "2"
 rpassword = "7"
 shell-words = "1"
+
+[target.'cfg(unix)'.dependencies]
 libc = "0.2"

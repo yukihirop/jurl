@@ -72,108 +72,115 @@ pub fn pick(s: &str) -> Result<&'static Example, JurlError> {
     EXAMPLES.get(n.wrapping_sub(1)).ok_or_else(|| JurlError::Usage(format!("demo: no example {n} (1-{})", EXAMPLES.len())))
 }
 
-/// 端末を raw(行編集・エコー・シグナルなし)にして、drop で戻す。
-/// ISIG も切る: SIGINT で死ぬと drop が走らずエコー無しの端末が残るので、Ctrl-C は read_key で quit にする。
-struct Raw {
-    orig: libc::termios,
-}
+/// 矢印キー選択に要る raw tty(termios / ioctl / poll)。unix だけ。
+#[cfg(unix)]
+mod tty {
+    /// 端末を raw(行編集・エコー・シグナルなし)にして、drop で戻す。
+    /// ISIG も切る: SIGINT で死ぬと drop が走らずエコー無しの端末が残るので、Ctrl-C は read_key で quit にする。
+    pub struct Raw {
+        orig: libc::termios,
+    }
 
-impl Raw {
-    fn enable() -> std::io::Result<Raw> {
-        // SAFETY: termios は POD。fd 0 が端末であることは呼ぶ側が確認済み。
+    impl Raw {
+        pub fn enable() -> std::io::Result<Raw> {
+            // SAFETY: termios は POD。fd 0 が端末であることは呼ぶ側が確認済み。
+            unsafe {
+                let mut t: libc::termios = std::mem::zeroed();
+                if libc::tcgetattr(0, &mut t) != 0 {
+                    return Err(std::io::Error::last_os_error());
+                }
+                let orig = t;
+                t.c_lflag &= !(libc::ICANON | libc::ECHO | libc::ISIG);
+                t.c_cc[libc::VMIN] = 1;
+                t.c_cc[libc::VTIME] = 0;
+                if libc::tcsetattr(0, libc::TCSANOW, &t) != 0 {
+                    return Err(std::io::Error::last_os_error());
+                }
+                Ok(Raw { orig })
+            }
+        }
+    }
+
+    impl Drop for Raw {
+        fn drop(&mut self) {
+            // SAFETY: enable() で取った値をそのまま戻すだけ。
+            unsafe {
+                libc::tcsetattr(0, libc::TCSANOW, &self.orig);
+            }
+        }
+    }
+
+    pub fn term_cols() -> usize {
+        // SAFETY: winsize は POD。失敗したら 80。
         unsafe {
-            let mut t: libc::termios = std::mem::zeroed();
-            if libc::tcgetattr(0, &mut t) != 0 {
-                return Err(std::io::Error::last_os_error());
-            }
-            let orig = t;
-            t.c_lflag &= !(libc::ICANON | libc::ECHO | libc::ISIG);
-            t.c_cc[libc::VMIN] = 1;
-            t.c_cc[libc::VTIME] = 0;
-            if libc::tcsetattr(0, libc::TCSANOW, &t) != 0 {
-                return Err(std::io::Error::last_os_error());
-            }
-            Ok(Raw { orig })
-        }
-    }
-}
-
-impl Drop for Raw {
-    fn drop(&mut self) {
-        // SAFETY: enable() で取った値をそのまま戻すだけ。
-        unsafe {
-            libc::tcsetattr(0, libc::TCSANOW, &self.orig);
-        }
-    }
-}
-
-fn term_cols() -> usize {
-    // SAFETY: winsize は POD。失敗したら 80。
-    unsafe {
-        let mut w: libc::winsize = std::mem::zeroed();
-        if libc::ioctl(2, libc::TIOCGWINSZ, &mut w) == 0 && w.ws_col > 0 {
-            w.ws_col as usize
-        } else {
-            80
-        }
-    }
-}
-
-/// fd 0 を直接 1 バイト読む。`std::io::stdin()` はバッファ付きで、矢印の `ESC [ A` を先読みしてしまい
-/// 後段の poll が「続きなし」と見て単独 ESC に化けるので使わない。
-fn read_byte() -> Option<u8> {
-    let mut b = 0u8;
-    // SAFETY: 1 バイト分のバッファへの read。
-    let n = unsafe { libc::read(0, &mut b as *mut u8 as *mut libc::c_void, 1) };
-    if n == 1 { Some(b) } else { None }
-}
-
-/// ESC の後に続きが来ているか(単独の ESC と矢印を区別する)。
-fn pending_within(ms: i32) -> bool {
-    let mut p = libc::pollfd { fd: 0, events: libc::POLLIN, revents: 0 };
-    // SAFETY: pollfd 1 個、タイムアウト付き。
-    unsafe { libc::poll(&mut p, 1, ms) > 0 }
-}
-
-enum Key {
-    Up,
-    Down,
-    Enter,
-    Quit,
-    Digit(u8),
-    Other,
-}
-
-fn read_key() -> Key {
-    match read_byte() {
-        None | Some(0x03) | Some(0x04) => Key::Quit, // EOF, Ctrl-C, Ctrl-D
-        Some(b'q') | Some(b'Q') => Key::Quit,
-        Some(b'\r') | Some(b'\n') => Key::Enter,
-        Some(b'k') => Key::Up,
-        Some(b'j') => Key::Down,
-        Some(d @ b'0'..=b'9') => Key::Digit(d - b'0'),
-        Some(0x1b) => {
-            if !pending_within(50) {
-                return Key::Quit; // 単独の ESC
-            }
-            match (read_byte(), read_byte()) {
-                (Some(b'['), Some(b'A')) | (Some(b'O'), Some(b'A')) => Key::Up,
-                (Some(b'['), Some(b'B')) | (Some(b'O'), Some(b'B')) => Key::Down,
-                _ => Key::Other,
+            let mut w: libc::winsize = std::mem::zeroed();
+            if libc::ioctl(2, libc::TIOCGWINSZ, &mut w) == 0 && w.ws_col > 0 {
+                w.ws_col as usize
+            } else {
+                80
             }
         }
-        Some(_) => Key::Other,
     }
+
+    /// fd 0 を直接 1 バイト読む。`std::io::stdin()` はバッファ付きで、矢印の `ESC [ A` を先読みしてしまい
+    /// 後段の poll が「続きなし」と見て単独 ESC に化けるので使わない。
+    fn read_byte() -> Option<u8> {
+        let mut b = 0u8;
+        // SAFETY: 1 バイト分のバッファへの read。
+        let n = unsafe { libc::read(0, &mut b as *mut u8 as *mut libc::c_void, 1) };
+        if n == 1 { Some(b) } else { None }
+    }
+
+    /// ESC の後に続きが来ているか(単独の ESC と矢印を区別する)。
+    fn pending_within(ms: i32) -> bool {
+        let mut p = libc::pollfd { fd: 0, events: libc::POLLIN, revents: 0 };
+        // SAFETY: pollfd 1 個、タイムアウト付き。
+        unsafe { libc::poll(&mut p, 1, ms) > 0 }
+    }
+
+    pub enum Key {
+        Up,
+        Down,
+        Enter,
+        Quit,
+        Digit(u8),
+        Other,
+    }
+
+    pub fn read_key() -> Key {
+        match read_byte() {
+            None | Some(0x03) | Some(0x04) => Key::Quit, // EOF, Ctrl-C, Ctrl-D
+            Some(b'q') | Some(b'Q') => Key::Quit,
+            Some(b'\r') | Some(b'\n') => Key::Enter,
+            Some(b'k') => Key::Up,
+            Some(b'j') => Key::Down,
+            Some(d @ b'0'..=b'9') => Key::Digit(d - b'0'),
+            Some(0x1b) => {
+                if !pending_within(50) {
+                    return Key::Quit; // 単独の ESC
+                }
+                match (read_byte(), read_byte()) {
+                    (Some(b'['), Some(b'A')) | (Some(b'O'), Some(b'A')) => Key::Up,
+                    (Some(b'['), Some(b'B')) | (Some(b'O'), Some(b'B')) => Key::Down,
+                    _ => Key::Other,
+                }
+            }
+            Some(_) => Key::Other,
+        }
+    }
+
 }
 
 /// メニューを出して上下(または j/k、番号)で選ばせる。q / Esc / Ctrl-C / EOF で None。
 /// 戻り値の usize は選んだ位置(次回の initial に渡す)。
+#[cfg(unix)]
 pub fn ask(initial: usize) -> Result<Option<(usize, &'static Example)>, JurlError> {
     if !std::io::stdin().is_terminal() || !std::io::stderr().is_terminal() {
         return Err(JurlError::Usage(format!("demo: not a terminal. pick one directly: jurl demo <1-{}>", EXAMPLES.len())));
     }
     let on = color::stderr_enabled();
-    let cols = term_cols();
+    use tty::{Key, Raw};
+    let cols = tty::term_cols();
     eprintln!(
         "{}  {}\n{} {}   {} {}",
         paint2(on, C::Bold, C::Magenta, "jurl demo — public APIs, no auth needed"),
@@ -188,7 +195,7 @@ pub fn ask(initial: usize) -> Result<Option<(usize, &'static Example)>, JurlErro
     draw(sel, on, cols, false);
     let raw = Raw::enable()?;
     let picked = loop {
-        match read_key() {
+        match tty::read_key() {
             Key::Quit => break None,
             Key::Enter => break Some((sel, &EXAMPLES[sel])),
             Key::Up => {
@@ -222,6 +229,33 @@ pub fn ask(initial: usize) -> Result<Option<(usize, &'static Example)>, JurlErro
     };
     drop(raw);
     Ok(picked)
+}
+
+/// unix 以外: raw tty を触らず、番号を打ってもらう(Windows は未検証)。
+#[cfg(not(unix))]
+pub fn ask(initial: usize) -> Result<Option<(usize, &'static Example)>, JurlError> {
+    if !std::io::stdin().is_terminal() || !std::io::stderr().is_terminal() {
+        return Err(JurlError::Usage(format!("demo: not a terminal. pick one directly: jurl demo <1-{}>", EXAMPLES.len())));
+    }
+    let on = color::stderr_enabled();
+    eprintln!("{}  {}", paint2(on, C::Bold, C::Magenta, "jurl demo — public APIs, no auth needed"), paint(on, C::Dim, "type a number, Enter to run, q to quit"));
+    draw(initial.min(EXAMPLES.len() - 1), on, 100, false);
+    loop {
+        eprint!("{} {} ", paint(on, C::Yellow, "which one?"), paint(on, C::Dim, &format!("[1-{}, q]", EXAMPLES.len())));
+        let _ = std::io::stderr().flush();
+        let mut s = String::new();
+        if std::io::stdin().read_line(&mut s)? == 0 {
+            return Ok(None);
+        }
+        let s = s.trim();
+        if s.is_empty() || s.eq_ignore_ascii_case("q") {
+            return Ok(None);
+        }
+        match pick(s) {
+            Ok(ex) => return Ok(Some((EXAMPLES.iter().position(|e| std::ptr::eq(e, ex)).unwrap_or(0), ex))),
+            Err(e) => eprintln!("jurl: {e}"),
+        }
+    }
 }
 
 /// 表示用: `k=v` や `a.b` をクォートしない shell 風の結合。
