@@ -6,6 +6,10 @@
   <b>jurl</b> turns a loose pile of words — misspelled, split, out of order — into the HTTP request you meant, then runs it with curl.
 </p>
 
+<p align="center">
+  <img src="docs/demo.svg" alt="Terminal demo: a plain GET with headers; a misspelled POST with split key/values interpreted by jev and confirmed; --explain showing how 'hello world' was joined into one value" width="900">
+</p>
+
 ```sh
 $ jurl psot localhsot 3000 users first_name amanda
 
