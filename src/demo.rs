@@ -1,7 +1,7 @@
 //! `jurl demo`: public-apis の認証不要 API を叩く例を並べて、番号で選んで実行する。
 //! 例は EXAMPLES.md と同じもの(2026-09-22 に実機で通したもの)。
 
-use crate::color::{self, paint, C};
+use crate::color::{self, paint, paint2, C};
 use crate::error::JurlError;
 use std::io::{IsTerminal, Write};
 
@@ -176,7 +176,7 @@ pub fn ask(initial: usize) -> Result<Option<(usize, &'static Example)>, JurlErro
     let cols = term_cols();
     eprintln!(
         "{}  {}\n{} {}   {} {}",
-        paint(on, C::Bold, "jurl demo — public APIs, no auth needed"),
+        paint2(on, C::Bold, C::Magenta, "jurl demo — public APIs, no auth needed"),
         paint(on, C::Dim, "↑↓ / j k / number, Enter to run, q to quit"),
         paint(on, C::Green, "rule"),
         paint(on, C::Dim, "= words resolved by rules, runs offline"),
