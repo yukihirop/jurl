@@ -3,6 +3,12 @@
 </p>
 
 <p align="center">
+  <a href="https://crates.io/crates/jurl"><img src="https://img.shields.io/crates/v/jurl.svg" alt="crates.io"></a>
+  <a href="https://crates.io/crates/jurl"><img src="https://img.shields.io/crates/d/jurl.svg" alt="downloads"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT"></a>
+</p>
+
+<p align="center">
   <b>jurl</b> turns a loose pile of words — misspelled, split, out of order — into the HTTP request you meant, then runs it with curl.
 </p>
 
