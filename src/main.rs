@@ -166,6 +166,10 @@ fn execute(opts: &cli::Opts, words: Vec<String>, passthrough: Vec<String>, typed
         argv = curl::with_headers(curl::with_status(e, !opts.raw), show_headers);
     } else if need_confirm && !opts.yes {
         let plain = curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args);
+        // --explain なしでも「jev を呼んだ・何問・何 ms・いくら」は毎回見せる(表は --explain のときだけ)。
+        if let (Some(j), false) = (jev_info.as_ref(), opts.explain) {
+            eprintln!("{}", color::paint(color::stderr_enabled(), color::C::Dim, &j.line()));
+        }
         eprintln!("\n{}\n", curl::render_with(&plain, color::stderr_enabled()));
         let why = if jev_info.is_some() { format!("interpreted by jev, confidence {:.2}", req.confidence) } else { format!("confidence {:.2}", req.confidence) };
         match output::confirm(&format!("run this? ({why})")) {

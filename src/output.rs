@@ -147,19 +147,7 @@ pub fn explain(tokens: &[Token], jev: Option<&JevInfo>) {
         let _ = writeln!(e, "{:<w$}  {} {}  {}  {}", t.text, role, color::conf(on, t.confidence), by, paint(on, C::Dim, &note), w = w);
     }
     let _ = match jev {
-        Some(j) => {
-            let u = j.usage.clone().unwrap_or_default();
-            let line = format!(
-                "jev: {} · {} questions · {} ms · {} in / {} out tokens · ${}",
-                j.model,
-                j.questions,
-                j.ms,
-                u.input_tokens,
-                u.output_tokens,
-                u.cost.map(|c| format!("{c:.6}")).unwrap_or_else(|| "?".into())
-            );
-            writeln!(e, "{}", paint(on, C::Dim, &line))
-        }
+        Some(j) => writeln!(e, "{}", paint(on, C::Dim, &j.line())),
         None => writeln!(e, "{}", paint(on, C::Dim, "jev: not called (fast path)")),
     };
 }
@@ -169,6 +157,22 @@ pub struct JevInfo {
     pub questions: usize,
     pub ms: u128,
     pub usage: Option<Usage>,
+}
+
+impl JevInfo {
+    /// `jev: model · N questions · ms · tokens · $` の 1 行(--explain の末尾と、確認前の表示で共用)。
+    pub fn line(&self) -> String {
+        let u = self.usage.clone().unwrap_or_default();
+        format!(
+            "jev: {} · {} questions · {} ms · {} in / {} out tokens · ${}",
+            self.model,
+            self.questions,
+            self.ms,
+            u.input_tokens,
+            u.output_tokens,
+            u.cost.map(|c| format!("{c:.6}")).unwrap_or_else(|| "?".into())
+        )
+    }
 }
 
 pub enum Choice {
