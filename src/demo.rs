@@ -56,7 +56,7 @@ fn line(i: usize, sel: bool, on: bool, cols: usize) -> String {
 
 fn draw(sel: usize, on: bool, cols: usize, redraw: bool) {
     let mut e = std::io::stderr().lock();
-    let rows = EXAMPLES.len() + 1;
+    let rows = EXAMPLES.len();
     if redraw {
         let _ = write!(e, "\x1b[{rows}A");
     }
