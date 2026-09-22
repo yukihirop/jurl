@@ -174,13 +174,15 @@ fn wait_flag(prog: &str) -> Option<&'static str> {
 }
 
 /// $EDITOR(無ければ vi)で curl コマンドを編集させ、shell の語分割で argv に戻す。
+/// `typed` は元の入力(コメントとして表示するだけ)。
 /// 空にして保存したら None。
-pub fn edit_command(rendered: &str) -> Result<Option<Vec<String>>, crate::error::JurlError> {
+pub fn edit_command(rendered: &str, typed: &str) -> Result<Option<Vec<String>>, crate::error::JurlError> {
     use crate::error::JurlError;
     let editor = std::env::var("VISUAL").or_else(|_| std::env::var("EDITOR")).unwrap_or_else(|_| "vi".into());
     let path = std::env::temp_dir().join(format!("jurl-{}.sh", std::process::id()));
+    // 元の入力もコメントで見せる(何を打ったか覚えていない前提で、curl と見比べられるように)。
     let text = format!(
-        "{rendered}\n\n# jurl: edit the command above, save and quit to run it.\n# Lines starting with # are ignored. Empty the file to abort.\n"
+        "# you typed:\n#   jurl {typed}\n\n{rendered}\n\n# jurl: edit the command above, save and quit to run it.\n# Lines starting with # are ignored. Empty the file to abort.\n"
     );
     std::fs::write(&path, text)?;
     let mut words = shell_words::split(&editor).map_err(|e| JurlError::Usage(format!("bad $EDITOR: {e}")))?;

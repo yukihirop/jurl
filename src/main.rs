@@ -17,8 +17,10 @@ mod url;
 use error::JurlError;
 
 fn main() {
-    let parsed = cli::parse(std::env::args().skip(1));
-    match run(parsed) {
+    let argv: Vec<String> = std::env::args().skip(1).collect();
+    let typed = shell_words::join(&argv);
+    let parsed = cli::parse(argv);
+    match run(parsed, &typed) {
         Ok(code) => std::process::exit(code),
         Err(e) => {
             eprintln!("jurl: {e}");
@@ -27,7 +29,8 @@ fn main() {
     }
 }
 
-fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
+/// `typed` は打ち込まれた引数そのもの(edit 画面のコメント用)。
+fn run(parsed: cli::Parsed, typed: &str) -> Result<i32, JurlError> {
     let cli::Parsed { opts, words, passthrough } = parsed;
     if opts.help {
         print!("{}", cli::HELP);
@@ -101,7 +104,7 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
         eprintln!("\n{}\n", curl::render_with(&plain, color::stderr_enabled()));
         match output::confirm_edit(&format!("confidence {:.2} is too low to run as is. edit it?", req.confidence)) {
             output::Choice::Edit => {
-                let Some(edited) = output::edit_command(&curl::render_with(&plain, false))? else {
+                let Some(edited) = output::edit_command(&curl::render_with(&plain, false), typed)? else {
                     return Err(JurlError::Aborted);
                 };
                 eprintln!("\n{}\n", curl::render_with(&edited, color::stderr_enabled()));
@@ -134,7 +137,7 @@ fn run(parsed: cli::Parsed) -> Result<i32, JurlError> {
             output::Choice::Yes => {}
             output::Choice::No => return Err(JurlError::Aborted),
             output::Choice::Edit => {
-                let Some(edited) = output::edit_command(&curl::render_with(&plain, false))? else {
+                let Some(edited) = output::edit_command(&curl::render_with(&plain, false), typed)? else {
                     return Err(JurlError::Aborted);
                 };
                 eprintln!("\n{}\n", curl::render_with(&edited, color::stderr_enabled()));
