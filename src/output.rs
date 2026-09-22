@@ -145,6 +145,16 @@ pub fn confirm(prompt: &str) -> Choice {
     }
 }
 
+/// 閉じるまで待つためのフラグ。既知の GUI エディタだけ。
+fn wait_flag(prog: &str) -> Option<&'static str> {
+    let name = std::path::Path::new(prog).file_name().and_then(|n| n.to_str()).unwrap_or(prog);
+    match name {
+        "code" | "code-insiders" | "codium" | "cursor" | "windsurf" | "subl" | "zed" | "atom" | "mate" => Some("--wait"),
+        "bbedit" => Some("-w"),
+        _ => None,
+    }
+}
+
 /// $EDITOR(無ければ vi)で curl コマンドを編集させ、shell の語分割で argv に戻す。
 /// 空にして保存したら None。
 pub fn edit_command(rendered: &str) -> Result<Option<Vec<String>>, crate::error::JurlError> {
@@ -155,8 +165,18 @@ pub fn edit_command(rendered: &str) -> Result<Option<Vec<String>>, crate::error:
         "{rendered}\n\n# jurl: edit the command above, save and quit to run it.\n# Lines starting with # are ignored. Empty the file to abort.\n"
     );
     std::fs::write(&path, text)?;
-    let words = shell_words::split(&editor).map_err(|e| JurlError::Usage(format!("bad $EDITOR: {e}")))?;
-    let (prog, args) = words.split_first().ok_or_else(|| JurlError::Usage("empty $EDITOR".into()))?;
+    let mut words = shell_words::split(&editor).map_err(|e| JurlError::Usage(format!("bad $EDITOR: {e}")))?;
+    if words.is_empty() {
+        return Err(JurlError::Usage("empty $EDITOR".into()));
+    }
+    // GUI エディタはファイルを開いてすぐ戻るので、閉じるまで待つフラグを足す(無ければ編集前に実行してしまう)。
+    if let Some(flag) = wait_flag(&words[0]) {
+        if !words.iter().any(|w| w == flag || w == "-w" || w == "--wait") {
+            words.push(flag.to_string());
+        }
+    }
+    eprintln!("{}", paint(color::stderr_enabled(), C::Dim, &format!("editing with: {} {}", shell_words::join(&words), path.display())));
+    let (prog, args) = words.split_first().unwrap();
     let status = std::process::Command::new(prog).args(args).arg(&path).status()?;
     let edited = std::fs::read_to_string(&path).unwrap_or_default();
     let _ = std::fs::remove_file(&path);
