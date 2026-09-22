@@ -24,30 +24,82 @@ pub fn split(stdout: &[u8]) -> Split<'_> {
     Split { body: stdout, status: None }
 }
 
-pub fn print_response(stdout: &[u8], raw: bool) -> std::io::Result<()> {
+/// `-i` で先頭に付いた `HTTP/… ` ブロックを切り離す。`-L` や 100 Continue で複数あれば全部。
+pub fn split_headers(body: &[u8]) -> (Vec<String>, &[u8]) {
+    let mut blocks = Vec::new();
+    let mut rest = body;
+    while rest.starts_with(b"HTTP/") {
+        let Some(end) = rest.windows(4).position(|w| w == b"\r\n\r\n").map(|p| (p, 4)).or_else(|| rest.windows(2).position(|w| w == b"\n\n").map(|p| (p, 2))) else { break };
+        blocks.push(String::from_utf8_lossy(&rest[..end.0]).replace("\r\n", "\n"));
+        rest = &rest[end.0 + end.1..];
+    }
+    (blocks, rest)
+}
+
+fn status_color(code: &str) -> C {
+    match code.chars().next() {
+        Some('2') => C::Green,
+        Some('3') => C::Cyan,
+        Some('4') => C::Yellow,
+        _ => C::Red,
+    }
+}
+
+/// ヘッダブロックを色付きで書く。1 行目(status line)はコードの色、以降は `Name:` をシアンに。
+fn write_headers(o: &mut impl Write, on: bool, block: &str, tail: &str) -> std::io::Result<()> {
+    let mut lines = block.lines();
+    if let Some(first) = lines.next() {
+        let code = first.split_whitespace().nth(1).unwrap_or("");
+        writeln!(o, "{}{}", paint(on, status_color(code), first.trim_end()), tail)?;
+    }
+    for l in lines {
+        match l.split_once(':') {
+            Some((k, v)) => writeln!(o, "{}:{}", paint(on, C::Cyan, k), v)?,
+            None => writeln!(o, "{l}")?,
+        }
+    }
+    Ok(())
+}
+
+/// `headers`: 端末向け表示のときレスポンスヘッダも出す(curl に -i を付けてある前提)。
+pub fn print_response(stdout: &[u8], raw: bool, headers: bool) -> std::io::Result<()> {
     let out = std::io::stdout();
     let tty = out.is_terminal();
     let s = split(stdout);
     let mut o = out.lock();
     let mut e = std::io::stderr().lock();
 
-    if let Some((code, time)) = s.status.as_ref().filter(|(c, _)| c != "000") {
-        let ms = time.parse::<f64>().map(|t| (t * 1000.0).round() as u64).unwrap_or(0);
+    let ms_tail = |on: bool| -> String {
+        match s.status.as_ref() {
+            Some((_, time)) => {
+                let ms = time.parse::<f64>().map(|t| (t * 1000.0).round() as u64).unwrap_or(0);
+                paint(on, C::Dim, &format!("  · {ms}ms"))
+            }
+            None => String::new(),
+        }
+    };
+
+    let (blocks, body) = if headers { split_headers(s.body) } else { (Vec::new(), s.body) };
+    if !blocks.is_empty() {
+        // httpie 風: ヘッダ、空行、ボディ。所要時間は最後の status line の右に。
+        let on = color::stdout_enabled();
+        let n = blocks.len();
+        for (i, b) in blocks.iter().enumerate() {
+            let tail = if i + 1 == n { ms_tail(on) } else { String::new() };
+            write_headers(&mut o, on, b, &tail)?;
+            writeln!(o)?;
+        }
+    } else if let Some((code, _)) = s.status.as_ref().filter(|(c, _)| c != "000") {
         let to_stdout = tty && !raw;
         let on = if to_stdout { color::stdout_enabled() } else { color::stderr_enabled() };
-        let c = match code.chars().next() {
-            Some('2') => C::Green,
-            Some('3') => C::Cyan,
-            Some('4') => C::Yellow,
-            _ => C::Red,
-        };
-        let line = format!("{} {}", paint(on, c, &format!("HTTP {code}")), paint(on, C::Dim, &format!("· {ms}ms")));
+        let line = format!("{}{}", paint(on, status_color(code), &format!("HTTP {code}")), ms_tail(on));
         if to_stdout {
             writeln!(o, "{line}")?;
         } else {
             writeln!(e, "{line}")?;
         }
     }
+    let s = Split { body, status: s.status };
     if tty && !raw {
         if let Ok(v) = serde_json::from_slice::<serde_json::Value>(s.body) {
             let pretty = serde_json::to_string_pretty(&v).unwrap_or_default();
@@ -221,4 +273,24 @@ pub fn confirm_no(prompt: &str) -> bool {
     }
     let s = s.trim().to_ascii_lowercase();
     s == "y" || s == "yes"
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn split_headers_takes_every_leading_block() {
+        let raw = b"HTTP/1.1 301 Moved\r\nLocation: /x\r\n\r\nHTTP/2 200 \r\ncontent-type: application/json\r\n\r\n{\"a\":1}";
+        let (blocks, body) = split_headers(raw);
+        assert_eq!(blocks, ["HTTP/1.1 301 Moved\nLocation: /x", "HTTP/2 200 \ncontent-type: application/json"]);
+        assert_eq!(body, b"{\"a\":1}");
+    }
+
+    #[test]
+    fn split_headers_leaves_plain_body_alone() {
+        let (blocks, body) = split_headers(b"{\"a\":1}");
+        assert!(blocks.is_empty());
+        assert_eq!(body, b"{\"a\":1}");
+    }
 }

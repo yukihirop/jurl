@@ -147,7 +147,9 @@ fn execute(opts: &cli::Opts, words: Vec<String>, passthrough: Vec<String>, typed
         }
     }
 
-    let argv = curl::argv(&req, !opts.raw, &passthrough, &cfg.defaults.curl_args);
+    // 端末向け表示のときはレスポンスヘッダも見せる(httpie と同じ)。パイプ / --raw / --body ではボディだけ。
+    let show_headers = !opts.raw && !opts.body && std::io::IsTerminal::is_terminal(&std::io::stdout());
+    let argv = curl::with_headers(curl::argv(&req, !opts.raw, &passthrough, &cfg.defaults.curl_args), show_headers);
 
     // 7. dry-run か実行。
     if opts.dry_run {
@@ -161,7 +163,7 @@ fn execute(opts: &cli::Opts, words: Vec<String>, passthrough: Vec<String>, typed
     };
     let mut argv = argv;
     if let Some(e) = edited_low {
-        argv = curl::with_status(e, !opts.raw);
+        argv = curl::with_headers(curl::with_status(e, !opts.raw), show_headers);
     } else if need_confirm && !opts.yes {
         let plain = curl::argv(&req, false, &passthrough, &cfg.defaults.curl_args);
         eprintln!("\n{}\n", curl::render_with(&plain, color::stderr_enabled()));
@@ -175,11 +177,11 @@ fn execute(opts: &cli::Opts, words: Vec<String>, passthrough: Vec<String>, typed
                 };
                 eprintln!("\n{}\n", curl::render_with(&edited, color::stderr_enabled()));
                 // ステータス行用の -w は jurl が付け直す。
-                argv = curl::with_status(edited, !opts.raw);
+                argv = curl::with_headers(curl::with_status(edited, !opts.raw), show_headers);
             }
         }
     }
     let out = curl::run(&argv)?;
-    output::print_response(&out.stdout, opts.raw)?;
+    output::print_response(&out.stdout, opts.raw, show_headers)?;
     Ok(out.status)
 }

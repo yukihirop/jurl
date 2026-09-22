@@ -57,6 +57,7 @@ jurl [words ...] [flags] [-- curl args]
 | `--explain` | 各単語の役割・confidence・規則/jev どちらで決めたか、jev のコストを stderr に |
 | `--no-jev` | jev を呼ばない(`JURL_NO_JEV=1` でも可) |
 | `-y, --yes` | 確認を省略 |
+| `--body` | レスポンスヘッダを出さない |
 | `--raw` | レスポンスを整形せずそのまま |
 
 jev が関わった解釈は、組み立てた curl をそのまま見せて `[Y/n/e]` を聞いてから実行する(規則だけで決まった入力は即実行)。`e` で `$EDITOR`(無ければ `vi`)が開くので、間違っていればそこで直して保存すればその内容で実行される。confidence(解釈全体の最小値)が 0.5 未満なら実行はせず、curl を見せて `[e/N]`(直すか止めるか)だけ聞く。`confirm = "confidence"` にすると 0.8 未満(PUT / PATCH / DELETE は 0.9 未満)のときだけ確認、`"never"` で確認なし。
@@ -87,7 +88,8 @@ tok = "Authorization:Bearer $TOKEN"   # $VAR は環境変数で展開
 
 ## 出力
 
-- TTY: `HTTP 201 · 12ms` の行 + JSON なら整形
+- TTY: httpie と同じく status line + レスポンスヘッダ(色付き)、空行、ボディ(JSON なら整形)。`-L` で辿った分のヘッダも全部出る
+- `--body`: ヘッダなし(`HTTP 201 · 12ms` の行 + ボディ)
 - パイプ / `--raw`: ボディだけ stdout、ステータス行は stderr
 - exit code は curl のものを継承。jev 側の失敗・低 confidence は 2、curl が無ければ 127
 

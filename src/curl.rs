@@ -66,6 +66,14 @@ pub fn with_status(mut a: Vec<String>, on: bool) -> Vec<String> {
     a
 }
 
+/// レスポンスヘッダも stdout に出す `-i`(既に -i / -I があれば付けない)。output::split_headers が切り出す。
+pub fn with_headers(mut a: Vec<String>, on: bool) -> Vec<String> {
+    if on && !a.iter().any(|x| x == "-i" || x == "--include" || x == "-I" || x == "--head") {
+        a.push("-i".into());
+    }
+    a
+}
+
 /// `--dry-run` 用。1 引数 1 行、値を取るオプションはその値と同じ行、POSIX shell 用に quote。
 #[cfg(test)]
 pub fn render(argv: &[String]) -> String {

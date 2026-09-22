@@ -19,7 +19,8 @@ flags:
       --no-jev    never call jev; unresolved words are an error
   -y, --yes       skip the [Y/n/e] confirmation (shown whenever jev interpreted the words;
                   e opens the curl command in $EDITOR)
-      --raw       print the response body untouched, no status line
+      --body      response body only, no headers (headers are shown on a terminal, like httpie)
+      --raw       print the response body untouched, no status line or headers
   -h, --help
   -V, --version
 
@@ -37,6 +38,7 @@ pub struct Opts {
     pub no_jev: bool,
     pub yes: bool,
     pub raw: bool,
+    pub body: bool,
     pub help: bool,
     pub version: bool,
 }
@@ -64,6 +66,7 @@ pub fn parse(args: impl IntoIterator<Item = String>) -> Parsed {
             "--no-jev" => opts.no_jev = true,
             "-y" | "--yes" => opts.yes = true,
             "--raw" => opts.raw = true,
+            "--body" => opts.body = true,
             "-h" | "--help" => opts.help = true,
             "-V" | "--version" => opts.version = true,
             _ => words.push(a),
