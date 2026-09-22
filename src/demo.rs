@@ -8,42 +8,51 @@ use std::io::{IsTerminal, Write};
 pub struct Example {
     pub what: &'static str,
     pub words: &'static [&'static str],
+    /// jev が役割を決める例か(false なら規則だけで決まり、オフラインで即実行)。
+    pub jev: bool,
 }
 
 /// 前半は規則だけで決まる入力(jev を呼ばない)、後半は jev が役割を決める崩れた入力。
 pub const EXAMPLES: &[Example] = &[
-    Example { what: "GET: random dog picture", words: &["dog.ceo/api/breeds/image/random"] },
-    Example { what: "GET: cat fact", words: &["catfact.ninja/fact"] },
-    Example { what: "GET with query (k==v)", words: &["api.agify.io", "name==michael"] },
-    Example { what: "GET with several query params", words: &["api.open-meteo.com/v1/forecast", "latitude==35.68", "longitude==139.69", "current_weather==true"] },
-    Example { what: "GET, curl -L passes through (follows 301)", words: &["restcountries.com/v3.1/name/japan", "fields==name,capital", "-L"] },
-    Example { what: "POST nested JSON (a.b=v)", words: &["post", "httpbin.org/post", "json", "profile.first_name=job", "profile.family_name=amanda"] },
-    Example { what: "PUT with JSON literal (k:=v)", words: &["put", "jsonplaceholder.typicode.com/posts/1", "id:=1", "title=changed"] },
-    Example { what: "jev: key and value split, no method → GET + query", words: &["api.agify.io", "name", "michael"] },
-    Example { what: "jev: split path, numbers and booleans typed", words: &["api.open-meteo.com/v1", "forecast", "latitude", "35.68", "longitude", "139.69", "current_weather", "true"] },
-    Example { what: "jev: typo `psot`, split key/values → POST JSON", words: &["httpbin.org/anything", "psot", "user", "me", "role", "admin"] },
-    Example { what: "jev: method last, userId 1 sent as a number", words: &["jsonplaceholder.typicode.com/posts", "title", "hello", "body", "world", "userId", "1", "post"] },
-    Example { what: "jev: two-word value breaks → press e and fix --data", words: &["httpbin.org/anything", "post", "title", "hello", "world"] },
+    Example { what: "GET: random dog picture", words: &["dog.ceo/api/breeds/image/random"], jev: false },
+    Example { what: "GET: cat fact", words: &["catfact.ninja/fact"], jev: false },
+    Example { what: "GET with query (k==v)", words: &["api.agify.io", "name==michael"], jev: false },
+    Example { what: "GET with several query params", words: &["api.open-meteo.com/v1/forecast", "latitude==35.68", "longitude==139.69", "current_weather==true"], jev: false },
+    Example { what: "GET, curl -L passes through (follows 301)", words: &["restcountries.com/v3.1/name/japan", "fields==name,capital", "-L"], jev: false },
+    Example { what: "POST nested JSON (a.b=v)", words: &["post", "httpbin.org/post", "json", "profile.first_name=job", "profile.family_name=amanda"], jev: false },
+    Example { what: "PUT with JSON literal (k:=v)", words: &["put", "jsonplaceholder.typicode.com/posts/1", "id:=1", "title=changed"], jev: false },
+    Example { what: "key and value split, no method → GET + query", words: &["api.agify.io", "name", "michael"], jev: true },
+    Example { what: "split path, numbers and booleans typed", words: &["api.open-meteo.com/v1", "forecast", "latitude", "35.68", "longitude", "139.69", "current_weather", "true"], jev: true },
+    Example { what: "typo `psot`, split key/values → POST JSON", words: &["httpbin.org/anything", "psot", "user", "me", "role", "admin"], jev: true },
+    Example { what: "method last, userId 1 sent as a number", words: &["jsonplaceholder.typicode.com/posts", "title", "hello", "body", "world", "userId", "1", "post"], jev: true },
+    Example { what: "two-word value breaks → press e and fix --data", words: &["httpbin.org/anything", "post", "title", "hello", "world"], jev: true },
 ];
 
 /// 1 行分の表示(番号・説明・コマンド)。`sel` の行は `>` と反転で目立たせる。
 fn line(i: usize, sel: bool, on: bool, cols: usize) -> String {
     let ex = &EXAMPLES[i];
     let mark = if sel { ">" } else { " " };
-    let plain = format!("{mark} {:>2}  {:<52} jurl {}", i + 1, ex.what, join(ex.words));
+    let tag = if ex.jev { "jev " } else { "rule" };
+    let plain = format!("{mark} {:>2}  {tag}  {:<48} jurl {}", i + 1, ex.what, join(ex.words));
     let plain: String = plain.chars().take(cols.saturating_sub(1)).collect();
     if sel {
         // 反転 + 太字。色なしなら `>` だけで示す。
         if on { format!("\x1b[1;7m{plain}\x1b[0m") } else { plain }
     } else {
-        // 番号だけシアン、コマンドは薄く。
-        let (head, rest) = plain.split_at(plain.find("  ").map(|p| p + 2).unwrap_or(plain.len()));
+        // 番号はシアン、rule/jev は --explain の by 列と同じ緑/青、コマンドは薄く。
+        let n_end = 5.min(plain.len());
+        let tag_end = (n_end + 6).min(plain.len());
+        let rest = &plain[tag_end..];
         let cmd_at = rest.find(" jurl ").map(|p| p + 1).unwrap_or(rest.len());
-        format!("{}{}{}", paint(on, C::Cyan, head), &rest[..cmd_at], paint(on, C::Dim, &rest[cmd_at..]))
+        format!(
+            "{}{}{}{}",
+            paint(on, C::Cyan, &plain[..n_end]),
+            paint(on, if ex.jev { C::Blue } else { C::Green }, &plain[n_end..tag_end]),
+            &rest[..cmd_at],
+            paint(on, C::Dim, &rest[cmd_at..])
+        )
     }
 }
-
-const SEP_BEFORE: usize = 7; // この番号の前に「ここから jev」の区切りを出す
 
 fn draw(sel: usize, on: bool, cols: usize, redraw: bool) {
     let mut e = std::io::stderr().lock();
@@ -52,9 +61,6 @@ fn draw(sel: usize, on: bool, cols: usize, redraw: bool) {
         let _ = write!(e, "\x1b[{rows}A");
     }
     for i in 0..EXAMPLES.len() {
-        if i == SEP_BEFORE {
-            let _ = writeln!(e, "\x1b[2K{}", paint(on, C::Dim, "  -- the rest need jev (OPENROUTER_API_KEY) --"));
-        }
         let _ = writeln!(e, "\x1b[2K{}", line(i, i == sel, on, cols));
     }
     let _ = e.flush();
@@ -168,7 +174,15 @@ pub fn ask(initial: usize) -> Result<Option<(usize, &'static Example)>, JurlErro
     }
     let on = color::stderr_enabled();
     let cols = term_cols();
-    eprintln!("{}  {}", paint(on, C::Bold, "jurl demo — public APIs, no auth needed"), paint(on, C::Dim, "↑↓ / j k / number, Enter to run, q to quit"));
+    eprintln!(
+        "{}  {}\n{} {}   {} {}",
+        paint(on, C::Bold, "jurl demo — public APIs, no auth needed"),
+        paint(on, C::Dim, "↑↓ / j k / number, Enter to run, q to quit"),
+        paint(on, C::Green, "rule"),
+        paint(on, C::Dim, "= words resolved by rules, runs offline"),
+        paint(on, C::Blue, "jev"),
+        paint(on, C::Dim, "= jev decides the roles (needs OPENROUTER_API_KEY, asks before running)")
+    );
     let mut sel = initial.min(EXAMPLES.len() - 1);
     let mut typed = String::new();
     draw(sel, on, cols, false);
